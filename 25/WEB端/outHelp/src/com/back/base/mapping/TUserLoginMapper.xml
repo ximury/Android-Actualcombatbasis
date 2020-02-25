@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.TUserLoginMapper">
+	<resultMap id="ResultMap" type="com.back.base.pageModel.Login">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="PERSONID" property="personid" jdbcType="VARCHAR" />
+		<result column="USERNAME" property="username" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="LOGINIP" property="loginip" jdbcType="VARCHAR" />
+		<result column="ENABLESTATE" property="enablestate" jdbcType="CHAR" />
+		<result column="ENABLETIME" property="enabletime" jdbcType="VARCHAR" />
+		<result column="LOGINTIME" property="logintime" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+		<result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Column_List">
+		TLOGIN.ID, PERSONID, USERNAME, PASSWORD, LOGINIP,
+		ENABLESTATE,
+		ENABLETIME,
+		LOGINTIME, TLOGIN.CREATETIME,
+		TLOGIN.UPDATETIME, NAME, SEX
+	</sql>
+                        
+	<select id="findUserByName" resultMap="ResultMap" parameterType="com.back.base.pageModel.Login">
+		select
+		<include refid="Column_List" />
+		from tlogin join tperson on tlogin.PERSONID = tperson.ID
+		where USERNAME
+		= #{username,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="findUserByNameAndPassword" resultMap="ResultMap" parameterType="com.back.base.pageModel.Login">
+		select
+		<include refid="Column_List" />
+		from tlogin join tperson on tlogin.PERSONID = tperson.ID
+		where USERNAME
+		= #{username,jdbcType=VARCHAR} and PASSWORD =
+		#{password,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

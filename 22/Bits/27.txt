@@ -1,0 +1,62 @@
+public class SwitchButton extends FrameLayout {
+    private ImageView openImage;                //打开按钮的图片
+    private ImageView closeImage;            //关闭按钮的图片
+
+    public SwitchButton(Context context) {        //联系上下文
+        this(context, null);
+    }
+
+    /**
+     * 构造方法
+     */
+    public SwitchButton(Context context, AttributeSet attrs, int defStyleAttr) {
+        this(context, attrs);
+    }
+
+    public SwitchButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        /**
+         *context通过调用obtainStyledAttributes方法来获取一个TypeArray，然后由该TypeArray
+         *来对属性进行设置
+         */
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.
+                SwitchButton);
+        //画出开关为打开的状态
+        Drawable openDrawable = typedArray.getDrawable(R.styleable.
+                SwitchButton_switchOpenImage);
+        //画出开关为关闭的状态
+        Drawable closeDrawable = typedArray.getDrawable(R.styleable.
+                SwitchButton_switchCloseImage);
+        int switchStatus = typedArray.getInt(R.styleable.
+                SwitchButton_switchStatus, 0);
+        //调用结束后务必调用recycle()方法，否则这次的设定会对下次的使用造成影响
+        typedArray.recycle();
+        LayoutInflater.from(context).inflate(
+                R.layout.switch_button, this);            //绑定布局文件
+        openImage = (ImageView) findViewById(R.id.iv_switch_open);      //绑定id
+        closeImage = (ImageView) findViewById(R.id.iv_switch_close);    //绑定id
+        if (openDrawable != null) {                                //如果是打开状态
+            openImage.setImageDrawable(openDrawable);        //设置显示图片
+        }
+        if (closeDrawable != null) {                            //如果是关闭状态
+            closeImage.setImageDrawable(closeDrawable);            //设置关闭图片
+        }
+        if (switchStatus == 1) {                                //判断开关的状态
+            closeSwitch();                                    //执行关闭的方法
+        }
+    }
+
+    public boolean isSwitchOpen() {                            //判断开关的状态
+        return openImage.getVisibility() == View.VISIBLE;
+    }
+
+    public void openSwitch() {                                //打开开关
+        openImage.setVisibility(View.VISIBLE);                    //显示打开图片
+        closeImage.setVisibility(View.INVISIBLE);            //隐藏关闭图片
+    }
+
+    public void closeSwitch() {                                //关闭开关
+        openImage.setVisibility(View.INVISIBLE);                    //隐藏打开图片
+        closeImage.setVisibility(View.VISIBLE);                //显示关闭图片
+    }
+}

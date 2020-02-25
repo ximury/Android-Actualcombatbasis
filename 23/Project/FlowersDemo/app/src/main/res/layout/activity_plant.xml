@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mrkj.flowersdemo.ui.activity.PlantActivity">
+    <!-- 控件的底部效果 -->
+    <mrkj.flowersdemo.view.PlantFlowers
+        android:id="@+id/plant"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true">
+    </mrkj.flowersdemo.view.PlantFlowers>
+    <!-- 太阳 -->
+    <ImageView
+        android:id="@+id/sun"
+        android:layout_marginTop="@dimen/with_50dp"
+        android:layout_marginLeft="@dimen/with_50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sun"
+        android:layout_marginRight="@dimen/with_30dp"
+        android:layout_alignParentRight="true"/>
+    <!-- 随机绘制的下落的圆圈 -->
+
+        <!--<mrkj.flowersdemo.view.MySurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+  -->
+    <mrkj.flowersdemo.view.DandelionView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <!-- 飞鸟 -->
+    <ImageView
+        android:id="@+id/cloud"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/with_80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bird"
+        />
+    <!-- 提示和计时 -->
+    <FrameLayout
+        android:layout_marginTop="@dimen/with_10dp"
+        android:layout_below="@id/cloud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/hint_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/left_text_color"
+            android:textSize="@dimen/font_26sp"
+            />
+        <!-- 计时器 -->
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textColor="@color/left_text_color"
+            android:textSize="@dimen/font_26sp"/>
+    </FrameLayout>
+    <!-- 用来显示花的个数 -->
+    <LinearLayout
+        android:layout_margin="@dimen/with_10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mrkj_flower_num"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/with_3dp"
+            />
+        <TextView
+            android:id="@+id/flower_counts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#F6003C"
+            android:textSize="@dimen/font_20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"/>
+    </LinearLayout>
+</RelativeLayout>

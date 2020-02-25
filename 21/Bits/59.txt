@@ -1,0 +1,5 @@
+    public void OnBack(View v){  		//实现关闭关于界面返回上一界面
+        AboutActivity.this.finish();   	//关闭关于界面
+    }
+
+

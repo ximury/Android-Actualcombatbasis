@@ -1,0 +1,32 @@
+    // 获取显示写数字的ImageView组件
+    iv_frame = (ImageView) findViewById(R.id.iv_frame);
+    // 获取写数字区域的布局
+    linearLayout = (LinearLayout) findViewById(R.id.LinearLayout1);
+    // 获取书写界面布局
+    LinearLayout write_layout= (LinearLayout) findViewById(R.id.LinearLayout_number);
+    // 设置书写界面布局背景
+    write_layout.setBackgroundResource(R.drawable.bg1);
+    // 获取屏幕宽度
+    widthPixels = this.getResources().getDisplayMetrics().widthPixels;
+    // 获取屏幕高度
+    heightPixels = this.getResources().getDisplayMetrics().heightPixels;
+    // 因为图片等资源是按1280*720来准备的，如果是其它分辨率，适应屏幕做准备
+    scaleWidht = ((float) widthPixels / 720);
+    scaleHeight = ((float) heightPixels / 1280);
+    try {
+        // 通过输入流打开第一张图片
+        InputStream is = getResources().getAssets().open("on1_1.png");
+        // 使用Bitmap解析第一张图片
+        arrdown = BitmapFactory.decodeStream(is);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    // 获取布局的宽高信息
+    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) iv_frame.getLayoutParams();
+        // 获取图片缩放后宽度
+    layoutParams.width = (int) (arrdown.getWidth() * scaleHeight);
+    // 获取图片缩放后高度
+    layoutParams.height = (int) (arrdown.getHeight() * scaleHeight);
+    // 根据图片缩放后的宽高，设置iv_frame的宽高
+    iv_frame.setLayoutParams(layoutParams);
+    lodimagep(1);// 调用lodimagep()方法，进入页面后加载第一个图片

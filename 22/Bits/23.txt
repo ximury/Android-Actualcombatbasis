@@ -1,0 +1,120 @@
+    <!--画十字网格的父布局（相对布局）-->
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp">
+        <!--此文本用来绘制十字的竖-->
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/black" />
+        <!--此文本用来绘制十字的横-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:background="@android:color/black" />
+        <!--用于显示“答错题数”的文本控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="答错题数"
+            android:textSize="20sp" />
+        <!--用于显示“掌握单词”的文本控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="掌握单词"
+            android:textSize="20sp" />
+        <!--用于显示英文名人名言的文本控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="140dp"
+            android:text="学习难度"
+            android:textSize="20sp" />
+        <!--用于显示“总共学习”的文本控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="140dp"
+            android:text="总共学习"
+            android:textSize="20sp" />
+        <!--用于显示答错题的数目的文本控件-->
+        <TextView
+            android:id="@+id/wrong_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="60dp"
+            android:text="10"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="27sp" />
+        <!--用于显示“词”的文本控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="65dp"
+            android:text="词"
+            android:textSize="20sp" />
+        <!--用于显示“四级英语”的文本控件-->
+        <TextView
+            android:id="@+id/difficulty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:text="四级英语"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="20sp" />
+        <!--用于显示总共学习的数目的文本控件-->
+        <TextView
+            android:id="@+id/already_study"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="200dp"
+            android:text="70"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="27sp" />
+        <!--用于显示“词”的文本控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="205dp"
+            android:text="词"
+            android:textSize="20sp" />
+        <!--用于显示掌握单词的数目的文本控件-->
+        <TextView
+            android:id="@+id/already_mastered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="60dp"
+            android:text="40"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="27sp" />
+        <!--用于显示“词”的文本控件-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="65dp"
+            android:text="词"
+            android:textSize="20sp" />
+    </RelativeLayout>

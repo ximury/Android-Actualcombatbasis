@@ -1,0 +1,283 @@
+@charset "utf-8";
+
+@import url("search.css");
+
+@import url("table.css");
+/* CSS Document */
+html,body {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	background: #FFF url(../images/mainbg1.gif) repeat-x top;
+	font-size: 12px;
+	font-family: "宋体";
+}
+
+a {
+	color: #005eac;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #F60;
+}
+
+ul,li,h1,h2,h3,p,form,dl,dt,dd {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+img {
+	border: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.red {
+	color: #F00;
+}
+
+.fb2 {
+	color: #b2b2b2;
+}
+
+/*表单及按钮样式*/
+.but_shop {
+	background: #f7fbfe url(../images/but_shop.gif) repeat-x bottom;
+	border: 1px solid #a4c4cd;
+	font-size: 12px;
+	color: #005eac;
+	padding: 0px 10px;
+	height: 20px;
+	line-height: 16px;
+	cursor: pointer;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	position: relative;
+	behavior: url("css/PIE.htc");
+}
+
+.but_shop:hover {
+	color: #06F;
+	border: 1px solid #70b4cd;
+}
+
+.but_gray {
+	background: #fefefe url(../images/but_gary.gif) repeat-x bottom;
+	font-size: 12px;
+	height: 18px;
+	border: 1px solid #cccccc;
+	line-height: 18px;
+	padding: 0px 5px;
+}
+
+.font12 {
+	font-size: 12px;
+}
+
+/*页面布局样式*/
+.dqwz {
+	line-height: 36px;
+	height: 36px;
+	background: url(../images/dqwz.gif) no-repeat 14px 10px;
+	padding-left: 32px;
+	display: none;
+}
+
+.dqwz a {
+	color: #000;
+	text-decoration: none;
+}
+
+.main {
+	padding: 10px;
+}
+
+.maintit {
+	height: 23px;
+	padding: 4px 8px 0px;
+	background: url(../images/tabbg.gif) repeat-x top;
+}
+
+.maintit h2 {
+	background: url(../images/tabdowm.gif) repeat-x top;
+	padding: 5px 24px 0px 12px;
+	border: 1px solid #8da5b9;
+	border-bottom: none;
+	float: left;
+	height: 17px;
+	font-size: 12px;
+	color: #a6030f;
+}
+
+.maintit h3 {
+	float: right;
+	padding: 2px 6px 0px 0px;
+	font-size: 12px;
+	color: #FFF;
+	font-weight: normal;
+}
+
+.maintit h3 a {
+	color: #FFF;
+}
+
+.centent {
+	background: #fdeeef url(../images/boxbg.gif) repeat-x top;
+}
+
+.shop {
+	background: #fbdede;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+	padding: 5px 10px;
+	height: 21px;
+	overflow: hidden;
+	line-height: 21px;
+	color: #9c0013;
+}
+
+/*弹出框*/
+.openbox {
+	width: 320px;
+	border: 1px solid #cccccc;
+	background: #FFF;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -160px;
+	margin-top: -180px;
+	z-index: 99;
+	line-height: 24px;
+	visibility: hidden;
+}
+
+.openboxtit {
+	background: url(../images/opentit.gif) repeat-x top;
+	border-bottom: 1px solid #dddddd;
+	padding: 2px 8px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.openboxtit a {
+	float: right;
+	font-family: Arial;
+	font-size: 10px;
+	display: block;
+	padding: 0px 8px;
+}
+
+/*内容中的左侧菜单*/
+.frame {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 0;
+	_height: 96%;
+	padding: 10px;
+}
+
+.frame-box {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	right: 10px;
+	top: 37px;
+	border: 1px solid #c6d4db;
+	border-top: none;
+	_height: 93.5%;
+	_width: 99.8%;
+}
+
+.frame-menu {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	top: 0px;
+	border-right: 1px solid #c6d4db;
+	width: 159px;
+	z-index: 30;
+	_height: 100%;
+	_position: relative;
+	_float: left;
+}
+
+
+.frame-menu_new {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	top: 0px;
+	border-right: 1px solid #c6d4db;
+	width: 159px;
+	z-index: 30;
+	_height: 100%;
+	_position: relative;
+	_float: right;
+}
+
+.frame-cen {
+	background: #fff url(../images/frame_centit.gif) repeat-x top;
+	position: absolute;
+	left: 159px;
+	bottom: 1px;
+	top: 1px;
+	right: 1px;
+	z-index: 20;
+	_position: relative;
+	_height: 100%;
+	_left: 0px;
+	_top: 0px;
+	_right: 0px;
+	_margin-left: 160px;
+}
+
+.menu-title {
+	padding-top: 30px;
+	height: 31px;
+	background: url(../images/frame_title.gif) no-repeat right bottom;
+}
+
+.menu-title h2 {
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+	background: url(../images/icon_frame_lefttit.gif) no-repeat 5px 7px;
+	padding-left: 28px;
+}
+
+.menu-box {
+	padding: 12px;
+	font-size: 12px;
+}
+
+.frame-centit {
+	height: 29px;
+	background: url(../images/icon_arrow.gif) no-repeat 14px 10px;
+	text-indent: 32px;
+	font-weight: bold;
+	line-height: 30px;
+	overflow: hidden;
+}
+.fieldReq{
+	color:red;
+	padding-left: 5px;
+}

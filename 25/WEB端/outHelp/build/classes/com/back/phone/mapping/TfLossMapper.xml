@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfLossMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfLoss" >
+    <id column="loss_id" property="lossId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="loss_name" property="lossName" jdbcType="VARCHAR" />
+    <result column="loss_money" property="lossMoney" jdbcType="VARCHAR" />
+    <result column="loss_status" property="lossStatus" jdbcType="VARCHAR" />
+    <result column="loss_end" property="lossEnd" jdbcType="VARCHAR" />
+    <result column="loss_spare1" property="lossSpare1" jdbcType="VARCHAR" />
+    <result column="loss_spare2" property="lossSpare2" jdbcType="VARCHAR" />
+    <result column="loss_spare3" property="lossSpare3" jdbcType="VARCHAR" />
+    <result column="loss_spare4" property="lossSpare4" jdbcType="VARCHAR" />
+    <result column="loss_spare5" property="lossSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    loss_id, user_id, loss_name, loss_money, loss_status, loss_end, loss_spare1, loss_spare2, 
+    loss_spare3, loss_spare4, loss_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_loss
+    where loss_id = #{lossId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_loss
+    where loss_id = #{lossId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfLoss" >
+    insert into tf_loss (loss_id, user_id, loss_name, 
+      loss_money, loss_status, loss_end, 
+      loss_spare1, loss_spare2, loss_spare3, 
+      loss_spare4, loss_spare5)
+    values (#{lossId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{lossName,jdbcType=VARCHAR}, 
+      #{lossMoney,jdbcType=VARCHAR}, #{lossStatus,jdbcType=VARCHAR}, #{lossEnd,jdbcType=VARCHAR}, 
+      #{lossSpare1,jdbcType=VARCHAR}, #{lossSpare2,jdbcType=VARCHAR}, #{lossSpare3,jdbcType=VARCHAR}, 
+      #{lossSpare4,jdbcType=VARCHAR}, #{lossSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfLoss" >
+    insert into tf_loss
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lossId != null" >
+        loss_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="lossName != null" >
+        loss_name,
+      </if>
+      <if test="lossMoney != null" >
+        loss_money,
+      </if>
+      <if test="lossStatus != null" >
+        loss_status,
+      </if>
+      <if test="lossEnd != null" >
+        loss_end,
+      </if>
+      <if test="lossSpare1 != null" >
+        loss_spare1,
+      </if>
+      <if test="lossSpare2 != null" >
+        loss_spare2,
+      </if>
+      <if test="lossSpare3 != null" >
+        loss_spare3,
+      </if>
+      <if test="lossSpare4 != null" >
+        loss_spare4,
+      </if>
+      <if test="lossSpare5 != null" >
+        loss_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lossId != null" >
+        #{lossId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lossName != null" >
+        #{lossName,jdbcType=VARCHAR},
+      </if>
+      <if test="lossMoney != null" >
+        #{lossMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="lossStatus != null" >
+        #{lossStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lossEnd != null" >
+        #{lossEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare1 != null" >
+        #{lossSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare2 != null" >
+        #{lossSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare3 != null" >
+        #{lossSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare4 != null" >
+        #{lossSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare5 != null" >
+        #{lossSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfLoss" >
+    update tf_loss
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lossName != null" >
+        loss_name = #{lossName,jdbcType=VARCHAR},
+      </if>
+      <if test="lossMoney != null" >
+        loss_money = #{lossMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="lossStatus != null" >
+        loss_status = #{lossStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lossEnd != null" >
+        loss_end = #{lossEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare1 != null" >
+        loss_spare1 = #{lossSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare2 != null" >
+        loss_spare2 = #{lossSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare3 != null" >
+        loss_spare3 = #{lossSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare4 != null" >
+        loss_spare4 = #{lossSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="lossSpare5 != null" >
+        loss_spare5 = #{lossSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where loss_id = #{lossId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfLoss" >
+    update tf_loss
+    set user_id = #{userId,jdbcType=VARCHAR},
+      loss_name = #{lossName,jdbcType=VARCHAR},
+      loss_money = #{lossMoney,jdbcType=VARCHAR},
+      loss_status = #{lossStatus,jdbcType=VARCHAR},
+      loss_end = #{lossEnd,jdbcType=VARCHAR},
+      loss_spare1 = #{lossSpare1,jdbcType=VARCHAR},
+      loss_spare2 = #{lossSpare2,jdbcType=VARCHAR},
+      loss_spare3 = #{lossSpare3,jdbcType=VARCHAR},
+      loss_spare4 = #{lossSpare4,jdbcType=VARCHAR},
+      loss_spare5 = #{lossSpare5,jdbcType=VARCHAR}
+    where loss_id = #{lossId,jdbcType=VARCHAR}
+  </update>
+  
+	<select id="queryTempList" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfLoss">
+		select
+		<include refid="Base_Column_List" />
+		from tf_loss
+		<where>
+		 (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+			<if test="lossSpare2!=null and lossSpare2!=''">
+				and loss_spare2 like concat('%',concat(#{lossSpare2}),'%')
+			</if>
+			<if test="lossStatus!=null and lossStatus!=''">
+				and loss_status like concat('%',concat(#{lossStatus}),'%')
+			</if>
+		</where>
+		order by loss_spare2 desc ,loss_id desc
+	</select>
+</mapper>

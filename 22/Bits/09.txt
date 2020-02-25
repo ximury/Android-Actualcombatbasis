@@ -1,0 +1,12 @@
+    /**
+     * 将错题存到数据库
+     **/
+    private void saveWrongData() {
+        String word = datas.get(k).getWord();         //获取答错这道题的单词
+        String english = datas.get(k).getEnglish();  //获取答错这道题的音标
+        String china = datas.get(k).getChina();       //获取答错这道题的汉语意思
+        String sign = datas.get(k).getSign();         //获取答错这道题的标记
+        CET4Entity data = new CET4Entity(Long.valueOf(dbDao.count()),
+                word, english, china, sign);
+        dbDao.insertOrReplace(data);                   //把这些字段存到数据库
+    }

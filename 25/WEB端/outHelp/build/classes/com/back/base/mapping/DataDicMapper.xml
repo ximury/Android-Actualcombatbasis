@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.DataDicMapper" >
+  <resultMap id="BaseResultMap" type="com.back.base.model.DataDic" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TYPE_ID" property="typeId" jdbcType="VARCHAR" />
+    <result column="DIC_NAME" property="dicName" jdbcType="VARCHAR" />
+    <result column="DIC_VALUE" property="dicValue" jdbcType="VARCHAR" />
+    <result column="BUS_CODE" property="busCode" jdbcType="VARCHAR" />
+    <result column="DIC_CODE" property="dicCode" jdbcType="VARCHAR" />
+    <result column="ORDERS" property="orders" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CREATE_ID" property="createId" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="UPDATE_ID" property="updateId" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR" />
+    <result column="TYPE_BUS_CODE" property="typeBusCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TYPE_ID, DIC_VALUE, BUS_CODE, DIC_CODE, ORDERS, REMARK, STATUS, 
+    CREATE_ID, CREATE_TIME, UPDATE_ID, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select d.*,t.bus_code as type_bus_code,t.dic_name
+<!--     <include refid="Base_Column_List" /> -->
+    from SYS_DATA_DIC d left join sys_dic_type t on d.type_id=t.pk_id
+    where d.ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SYS_DATA_DIC 
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.base.model.DataDic" >
+    insert into SYS_DATA_DIC (ID, TYPE_ID,
+      DIC_VALUE, BUS_CODE, DIC_CODE, 
+      ORDERS, REMARK, STATUS, 
+      CREATE_ID, CREATE_TIME, UPDATE_ID, 
+      UPDATE_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, 
+      #{dicValue,jdbcType=VARCHAR}, #{busCode,jdbcType=VARCHAR}, #{dicCode,jdbcType=VARCHAR}, 
+      #{orders,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.base.model.DataDic" >
+    insert into SYS_DATA_DIC
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="typeId != null" >
+        TYPE_ID,
+      </if>
+      <if test="dicValue != null" >
+        DIC_VALUE,
+      </if>
+      <if test="busCode != null" >
+        BUS_CODE,
+      </if>
+      <if test="dicCode != null" >
+        DIC_CODE,
+      </if>
+      <if test="orders != null" >
+        ORDERS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createId != null" >
+        CREATE_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateId != null" >
+        UPDATE_ID,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="dicValue != null" >
+        #{dicValue,jdbcType=VARCHAR},
+      </if>
+      <if test="busCode != null" >
+        #{busCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicCode != null" >
+        #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null" >
+        #{orders,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null" >
+        #{updateId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.DataDic" >
+    update SYS_DATA_DIC
+    <set >
+      <if test="typeId != null" >
+        TYPE_ID = #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="dicValue != null" >
+        DIC_VALUE = #{dicValue,jdbcType=VARCHAR},
+      </if>
+      <if test="busCode != null" >
+        BUS_CODE = #{busCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicCode != null" >
+        DIC_CODE = #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null" >
+        ORDERS = #{orders,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        CREATE_ID = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null" >
+        UPDATE_ID = #{updateId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.base.model.DataDic" >
+    update SYS_DATA_DIC
+    set TYPE_ID = #{typeId,jdbcType=VARCHAR},
+      DIC_VALUE = #{dicValue,jdbcType=VARCHAR},
+      BUS_CODE = #{busCode,jdbcType=VARCHAR},
+      DIC_CODE = #{dicCode,jdbcType=VARCHAR},
+      ORDERS = #{orders,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      CREATE_ID = #{createId,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      UPDATE_ID = #{updateId,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+ 
+  <select id="query" resultMap="BaseResultMap" parameterType="com.back.base.model.DataDic">
+		<!--
+		select
+		<include refid="Column_List" />
+		from tlogin left join tperson on tlogin.PERSONID = tperson.ID
+		where USERNAME
+		= #{username,jdbcType=VARCHAR} and PASSWORD =
+		#{password,jdbcType=VARCHAR}
+		-->
+		 select d.*,t.bus_code as type_bus_code,t.dic_name from sys_data_dic d left join sys_dic_type t on d.type_id=t.pk_id
+    	<where>
+		 
+			<if test="dicName != null and dicName !=''">
+				 DIC_NAME like concat(concat('%',#{dicName}),'%')
+			</if>
+		    <if test="busCode != null and busCode !=''">
+				and BUS_CODE &lt;= #{busCode}
+			</if>
+			<if test="dicValue != null and dicValue !=''">
+				and DIC_VALUE like concat(concat('%',#{dicValue}),'%')
+			</if>			
+
+		</where>
+	</select>
+	
+	
+	<select id="queryByRole" resultMap="BaseResultMap" parameterType="com.back.base.model.DataDic">
+		<!--
+		select
+		<include refid="Column_List" />
+		from tlogin left join tperson on tlogin.PERSONID = tperson.ID
+		where USERNAME
+		= #{username,jdbcType=VARCHAR} and PASSWORD =
+		#{password,jdbcType=VARCHAR}
+		-->
+		 select d.*,t.bus_code as type_bus_code,t.dic_name from sys_data_dic d left join sys_dic_type t on d.type_id=t.pk_id
+    	<where>
+		   d.bus_code in (SELECT tt.fun_id FROM tloginrole t , troletask tt  where t.loginid = #{id,jdbcType=VARCHAR} and t.ROLEID=tt.role_id  )
+			<if test="dicName != null and dicName !=''">
+				and  DIC_NAME like concat(concat('%',#{dicName}),'%')
+			</if>
+			
+			
+		</where>
+		
+		order by d.bus_code
+	</select>
+	
+	<select id="selectAll" resultMap="BaseResultMap" parameterType="com.back.base.model.DataDic">
+		 select d.*,t.dic_name from sys_data_dic d left join sys_dic_type t on d.type_id=t.pk_id
+    	<where>
+		 
+			<if test="dicName != null and dicName !=''">
+				 DIC_NAME like concat(concat('%',#{dicName}),'%')
+			</if>
+		    <if test="busCode != null and busCode !=''">
+				and BUS_CODE &lt;= #{busCode}
+			</if>
+			<if test="dicValue != null and dicValue !=''">
+				and DIC_VALUE like concat(concat('%',#{dicValue}),'%')
+			</if>			
+			<if test="typeId != null and typeId !=''">
+				and type_Id like concat(concat('%',#{typeId}),'%')
+			</if>	
+		</where>
+		order by d.bus_code asc
+	</select>
+</mapper>

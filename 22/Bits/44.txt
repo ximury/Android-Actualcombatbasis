@@ -1,0 +1,29 @@
+	     <!--用于加载复习与设置按钮的父布局-->
+	 <LinearLayout					
+	        android:layout_width="match_parent"			
+	        android:layout_height="40dp"				
+	        android:layout_alignParentBottom="true"		
+	        android:layout_marginBottom="3dp"			
+	        android:orientation="horizontal">		
+	  <!--“复习”按钮控件-->
+	        <Button				
+	            android:layout_width="0dp"				
+	            android:layout_height="match_parent"		
+	            android:layout_marginLeft="3dp"				
+	            android:layout_weight="1"					
+	            android:background="@android:color/holo_blue_light"		
+	            android:onClick="study"						
+	            android:text="复习"						
+	            android:textColor="#FFFFFF" />				
+	  <!--“设置”按钮控件-->
+	        <Button					
+	            android:layout_width="0dp"					
+	            android:layout_height="match_parent"		
+	            android:layout_marginLeft="3dp"			
+	            android:layout_marginRight="3dp"				
+	            android:layout_weight="1"					
+	            android:background="@android:color/holo_blue_light"	
+	            android:onClick="set"								
+	            android:text="设置"							
+	            android:textColor="#FFFFFF" />					
+	    </LinearLayout>

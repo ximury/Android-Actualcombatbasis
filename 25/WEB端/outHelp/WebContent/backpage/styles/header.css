@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{margin:0px; background:url(../images/header_bg.jpg) repeat-x top;font-size:12px;color:#FFF;}
+a{color:#FFF; text-decoration:none;}
+a:hover{color:#FF9;}
+img{border:none;}
+.logo{float:left; background:url(../images/logo.jpg) no-repeat left top;width:570px;height:82px;}
+.info{width:210px;float:right;padding-top:18px;padding-left:165px;height:64px; background:url(../images/header_banner.jpg) no-repeat right top;line-height:24px;}
+.time{padding-left:22px;height:24px; background:url(../images/icon_time.gif) no-repeat 0px 5px;}
+.welcome{padding-left:22px;height:24px; background:url(../images/icon_welcome.gif) no-repeat 0px 5px;}
+.navbar{clear:both;padding:4px 18px;height:25px;overflow:hidden;}
+.nav{float:left;line-height:25px;}
+.nav a{display:block;float:left;padding:0px 18px; background:url(../images/nav_line.gif) no-repeat right top;}
+.nav a.chose{padding:0px 18px 0px 0px; background:url(../images/nav_chose.gif) no-repeat right top;}
+.nav a.chose span{display:block;padding-left:18px;background:url(../images/nav_chose.gif) no-repeat left top;}
+
+.function{float:right;padding-top:5px;}
+.function a{padding-right:20px;}

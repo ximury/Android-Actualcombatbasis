@@ -1,0 +1,26 @@
+	/**
+	 * 单击不同的按钮显示不同的fragment
+	 * */
+	public void setFragment(Fragment fragment) {
+	    transaction = getFragmentManager().beginTransaction();
+	//初始化transaction
+	    transaction.replace(R.id.frame_layout, fragment);   
+	    //绑定id
+	    transaction.commit();
+	}
+	
+	//单击进入复习页面
+	public void study(View v) {
+	    if (studyFragment == null) {
+	        studyFragment = new StudyFragment();
+	    }
+	    setFragment(studyFragment);
+	}
+	
+	//单击进入设置界面
+	public void set(View v) {
+	    if (setFragment == null) {
+	        setFragment = new SetFragment();
+	    }
+	    setFragment(setFragment);
+	}

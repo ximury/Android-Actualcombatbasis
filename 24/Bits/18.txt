@@ -1,0 +1,48 @@
+	/**
+     * 初始化数据资源
+     */
+@Override
+protected void initValues() {
+ids = new int[]{R.mipmap.mrkj_gu, R.mipmap.mrkj_cai,
+        R.mipmap.mrkj_guo, R.mipmap.mrkj_rou, R.mipmap.mrkj_dan,
+        R.mipmap.mrkj_yv, R.mipmap.mrkj_nai, R.mipmap.mrkj_he,
+        R.mipmap.mrkj_jun, R.mipmap.you};			//准备图片的资源ID数组
+bitmaps = new Bitmap[ids.length];
+for (int i = 0;i <ids.length ; i++){
+bitmaps[i] = BitmapFactory.decodeResource(getResources(),ids[i]);
+        }
+food_type_array = new String[]{"五谷类",
+"蔬菜类", "水果类", "肉类",
+"蛋类", "水产类", "奶类",
+"饮料类", "菌藻类", "油脂类"};		//准备显示名称的数组
+food_list = new ArrayList<>();				//创建食物集合
+//构造数据源
+DBHelper dbHelper = new DBHelper();
+        Cursor cursor = dbHelper.selectAllDataOfTable("hot");//查询数据库中的数据
+for (int i = 0; i <10; i++) {				//循环
+            FoodType foodType = null;				//创建食物类型对象
+            List<FoodMessage> foods = null;			//创建对应类型的食物集合
+int counts = 1;						//用于计数
+while (cursor.moveToNext()) {			//循环查询
+String name = cursor.getString(cursor.getColumnIndex("name"));
+                String hot = cursor.getString(cursor.getColumnIndex("hot"));
+                String type_name = cursor.getString(cursor.getColumnIndex("type_name"));
+if (counts == 1) {					
+                    foodType = new FoodType();		//实例化对象
+                    foods = new ArrayList<>();		//实例化对象
+                    foodType.setFood_type(type_name);//实例化对象
+}
+                FoodMessage foodMessage = new FoodMessage();
+                foodMessage.setFood_name(name);		//存入食物名称
+                foodMessage.setHot(hot);			//存入食物热量
+                foods.add(foodMessage);				//添加到对应类型的集合中
+                foodType.setFood_list(foods);
+if (counts == 20) {
+food_list.add(foodType);			//向集合中添加数据
+break;
+                }
+                counts++;
+            }
+        }
+        cursor.close();							//关闭游标
+}

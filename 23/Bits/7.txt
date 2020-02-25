@@ -1,0 +1,62 @@
+/**
+ * 构造
+ *
+ * @param context
+* @param attrs
+* @param defStyleAttr
+*/
+public DandelionView(Context context, AttributeSet attrs, int defStyleAttr) {
+super(context, attrs, defStyleAttr);
+   init();				//初始化
+}
+
+public DandelionView(Context context, AttributeSet attrs) {
+super(context, attrs);
+   init();				//初始化
+}
+
+public DandelionView(Context context) {
+super(context);
+   init();				//初始化
+}
+
+/**
+ * 初始化
+ */
+private void init() {
+screenWidth = getResources().getDisplayMetrics().widthPixels;	//获取屏幕的宽度
+screenHeight = getResources().getDisplayMetrics().heightPixels;	//获取屏幕的高度
+mHolder = this.getHolder();									//获取纹理控制器
+mHolder.addCallback(this);										//添加接口回调
+   setZOrderOnTop(true);								//设置该控件显示在屏幕的最上方
+mHolder.setFormat(PixelFormat.TRANSPARENT);		//设置背景透明
+// 获取bitmap位图
+bitmaps[0] = BitmapFactory.decodeResource(getResources(), R.mipmap.mrkj_dandelion_30);
+bitmaps[1] = BitmapFactory.decodeResource(getResources(), R.mipmap.mrkj_dandelion_40);
+bitmaps[2] = BitmapFactory.decodeResource(getResources(), R.mipmap.mrkj_dandelion_50);
+bitmaps[3] = BitmapFactory.decodeResource(getResources(), R.mipmap.mrkj_dandelion_60);
+bitmaps[4] = BitmapFactory.decodeResource(getResources(), R.mipmap.mrkj_dandelion_70);
+//添加模型
+for (int i = 0; i <drawCounts; i++) {				//添加想要绘制的图片
+	 //向图片集合中添加图片
+dandelionModels_S.add(new DandelionModel(
+			random.nextInt(screenWidth) + (bitmaps[0].getWidth() >>1),
+	random.nextInt(screenHeight) + (bitmaps[0].getHeight() >>1), 2, 4));
+//向图片集合中添加图片
+	dandelionModels_M.add(new DandelionModel(
+			random.nextInt(screenWidth) + (bitmaps[1].getWidth() >>1),
+	random.nextInt(screenHeight) + (bitmaps[1].getHeight() >>1), 4, 4));
+//向图片集合中添加图片
+dandelionModels_L.add(new DandelionModel(
+			random.nextInt(screenWidth) + (bitmaps[2].getWidth() >>1),
+	random.nextInt(screenHeight) + (bitmaps[2].getHeight() >>1), 6, 4));
+      //向图片集合中添加图片
+dandelionModels_X.add(new DandelionModel(
+			random.nextInt(screenWidth) + (bitmaps[3].getWidth() >>1),
+	random.nextInt(screenHeight) + (bitmaps[3].getHeight() >>1), 8, 4));
+      //向图片集合中添加图片
+dandelionModels_XX.add(new DandelionModel(
+			random.nextInt(screenWidth) + (bitmaps[4].getWidth() >>1),
+	random.nextInt(screenHeight) + (bitmaps[4].getHeight() >>1), 10, 4));
+   }
+}

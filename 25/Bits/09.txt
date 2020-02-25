@@ -1,0 +1,68 @@
+private void drawFrame(LinearLayout oneCalendar) {
+// 添加周末线性布局
+      LinearLayout title = new LinearLayout(getContext());
+      title.setBackgroundColor(COLOR_BG_WEEK);					//设置背景颜色
+      title.setOrientation(LinearLayout.HORIZONTAL);			//设置布局方向
+      LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(-1, 0,0.5f);
+      Resources res = getResources();
+      fLOAT_TB = res.getDimension(R.dimen.historyscore_tb);
+      layout.setMargins(0, 0, 0, (int) (fLOAT_TB * 1.2));
+      title.setLayoutParams(layout);							//给标题设置布局
+      oneCalendar.addView(title);								//将标题添加进来
+      // 添加周末TextView
+      for (int i = 0; i <COLS_CALENDAR; i++) {
+         TextView view = new TextView(getContext());			//初始化TextView的控件
+         view.setGravity(Gravity.CENTER);						//设置居中
+         view.setText(weekday[i]);								//将星期添加进来
+         view.setTextColor(COLOR_TX_WEEK);						//设置颜色
+         view.setLayoutParams(new LinearLayout.LayoutParams(0, -1, 1));
+         title.addView(view);
+      }
+
+      // 添加日期布局
+      LinearLayout content = new LinearLayout(getContext());
+      content.setOrientation(LinearLayout.VERTICAL);			//设置布局方向
+      content.setLayoutParams(new LinearLayout.LayoutParams(-1, 0, 7f));
+      oneCalendar.addView(content);
+
+      // 添加日期TextView
+      for (int i = 0; i <ROWS_CALENDAR; i++) {					//绘制日历上的行
+         LinearLayout row = new LinearLayout(getContext());
+         row.setOrientation(LinearLayout.HORIZONTAL);			//行布局方向
+        row.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 0, 1));
+         content.addView(row);
+       // 绘制日历上的列
+       for (int j = 0; j <COLS_CALENDAR; j++) {
+            RelativeLayout col = new RelativeLayout(getContext());//定义一个相对布局
+        col.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
+            col.setBackgroundResource(R.drawable.datak);			  //给日历设置背景
+            row.addView(col);
+       // 给每一天加上监听
+      col.setOnClickListener(new OnClickListener() {
+@Override
+public void onClick(View v) {
+                  ViewGroup parent = (ViewGroup) v.getParent();	 //获取父类布局
+        int row = 0, col = 0;
+
+        // 循环获取列坐标
+        for (int i = 0; i < parent.getChildCount(); i++) {
+                    if (v.equals(parent.getChildAt(i))) {
+                        col = i;
+                        break;
+                     }
+                  }
+         // 循环获取行坐标
+        ViewGroup pparent = (ViewGroup) parent.getParent();
+        for (int i = 0; i < pparent.getChildCount(); i++) {
+                if (parent.equals(pparent.getChildAt(i))) {
+                        row = i;
+                        break;
+                     }
+                  }
+                if (onCalendarClickListener != null) {			//判断监听是否为空
+                        onCalendarClickListener.onCalendarClick(row, col, dates[row][col]);
+                  }
+            });
+         }
+      }
+   }

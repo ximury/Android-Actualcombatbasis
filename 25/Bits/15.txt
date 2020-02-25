@@ -1,0 +1,33 @@
+//从服务器上获取数据
+private void getData(String msg) {
+//获取服务器数据的接口
+String ul = BaseApplication.getUrl() + "tfBusinessReport_list.do";
+//上传用户的id（因为每个用户的数据不同）
+params.addBodyParameter("id", sharedPreferences.getString("userid", ""));
+//默认加载全部记录
+if (msg.equals("全部记录")) {
+    params.addBodyParameter("brStatus", "");  //加载“全部记录”时此参数上传空
+} else {
+    params.addBodyParameter("brStatus", msg);	//不是加载“全部记录”则需要把加载类型传给后台
+}
+    //执行该方法获取服务器数据
+	httpUtilsConnection(ul, params, HttpMethod.POST);	
+    }
+	//从服务器获取数据的方法
+private void httpUtilsConnection(String url, RequestParams params, HttpMethod method) {
+httpUitil.send(method, url, params, new RequestCallBack<String>() {
+
+@Override
+public void onSuccess(ResponseInfo<String> responseInfo) {
+
+    //responseInfo.result是从服务器返回来的数据，只需要用Gson解析一下即可。
+	TaskGetEntity find = new Gson().fromJson(responseInfo.result, TaskGetEntity.class);
+     adapter.addData(find.getTfBusinessReport());  //将数据设置到adapter里显示出来
+	//详情请参考源码
+      }
+@Override
+public void onFailure(HttpException error, String msg) {
+			  //从数据库获取数据失败的操作写在这里
+}
+        });
+    }

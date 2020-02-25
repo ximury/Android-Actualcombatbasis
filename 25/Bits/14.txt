@@ -1,0 +1,60 @@
+/**往服务器上传数据*/
+private void upFileUseXUtills(String tp, String them, String location, String connect) {
+    String url = BaseApplication.getUrl() + "tfBusinessReport_add.do";//上传数据的接口
+    File fl = new File(BaseApplication.getTempFile().getPath());		  //读取文件的路径
+    params.addBodyParameter("filename", fl);						  //将图片添加到参数里
+    params.addBodyParameter("id", sharedPreferences.getString("userid", ""));//用户id
+    params.addBodyParameter("brName", them);						  //任务上报的主题
+    params.addBodyParameter("brContent", connect);					  //任务上报的内容
+    params.addBodyParameter("brPlace", location);					  //上报任务时的位置信息
+    params.addBodyParameter("brStatus", tp);						  //任务上报的类型
+    uploadMethod(params, url);										  //执行上传数据的方法
+}
+//将数据上传到服务器方法
+public void uploadMethod(final RequestParams params, final String uploadHost) {
+    httpUitil.send(HttpMethod.POST, uploadHost, params, new RequestCallBack<String>() {
+        // 单击打卡按钮时页面弹出一个progressbar的动画
+        private boolean progressShow = true;
+         //初始化进度条
+        final ProgressDialog pd = new ProgressDialog(TaskEditeActivity.this);
+        @Override
+        public void onStart() {
+            //上传开始
+        }
+        @Override
+        public void onLoading(long total, long current, boolean isUploading) {
+            //上传中
+            pd.setCanceledOnTouchOutside(false);
+            pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    progressShow = false;
+                }
+            });
+            pd.setMessage("正在提交...."); 				//显示的进度条的文字
+            pd.show();									//界面开始显示进度
+        }
+        @Override
+        public void onSuccess(ResponseInfo<String> responseInfo) {
+            //上传成功，这里面的返回值，就是服务器返回的数据
+            String result = responseInfo.result.toString().substring(1, 2);
+            if (result.equals("t")) {
+                pd.dismiss(); 							// 进度消失
+                //弹出“提交成功”的提示
+                Toast.makeText(TaskEditeActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                pd.dismiss();							// 进度消失
+                //弹出“提交失败”的提示
+                Toast.makeText(TaskEditeActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
+            }
+        }
+        @Override
+        public void onFailure(HttpException error, String msg) {
+            //上传失败
+            pd.dismiss();								// 进度消失
+           //弹出“网络错误”的提示
+            Toast.makeText(TaskEditeActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+        }
+    });
+}

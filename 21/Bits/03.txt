@@ -1,0 +1,7 @@
+public class StartActivity extends AppCompatActivity {    //StartActivity类头部
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {    // onCreate()方法头部
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
+    }      //onCreate()方法尾部
+}     //StartActivity类尾部

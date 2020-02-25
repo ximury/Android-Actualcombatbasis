@@ -1,0 +1,11 @@
+
+
+public void OnYS(View v) {  	// 创建演示按钮，单击事件方法头部
+    if (mdialog == null) {  	// 如果自定义对话框为空
+        // 实例化自定义对话框，设置显示文字和动画文件
+        mdialog = new mCustomProgressDialog(this, "演示中点击边缘取消", R.anim.frame1);
+    }
+    mdialog.show();   		// 显示对话框
+}   // 创建演示按钮，单击事件方法尾部
+
+

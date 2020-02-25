@@ -1,0 +1,43 @@
+01	@Override
+02	protected void initViews() {
+03	data_list = (ExpandableListView) findViewById(R.id.food_list);//实例化控件
+04	}
+05	/**
+06	 * 绑定适配器
+07	 */
+08	@Override
+09	protected void setViewsFunction() {
+10	    MyFoodAdapter adapter = new MyFoodAdapter();	//创建适配器
+11	data_list.setAdapter(adapter);					//绑定适配器
+12	}
+13	/**
+14	 * 设置单击事件，展开一个，其余的都收起
+15	 */
+16	@Override
+17	protected void setViewsListener() {
+18	data_list.setOnGroupClickListener( new  ExpandableListView.OnGroupClickListener() {
+19	
+20	@Override
+21	public   boolean  onGroupClick(ExpandableListView parent, View v,
+22	int  groupPosition,  long  id) {
+23	if  (sign== - 1 ) {
+24	// 展开被选的group
+25	data_list.expandGroup(groupPosition);
+26	// 设置被选中的group置于顶端
+27	data_list.setSelectedGroup(groupPosition);
+28	sign= groupPosition;
+29	            }  else   if  (sign== groupPosition) {
+30	data_list.collapseGroup(sign);
+31	sign= - 1 ;
+32	            }  else  {
+33	data_list.collapseGroup(sign);
+34	// 展开被选的group
+35	data_list.expandGroup(groupPosition);
+36	// 设置被选中的group置于顶端
+37	data_list.setSelectedGroup(groupPosition);
+38	sign= groupPosition;
+39	            }
+40	return true ;
+41	        }
+42	    });
+43	}

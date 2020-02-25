@@ -1,0 +1,81 @@
+/**
+ *   此方法是绘制线形图的方法
+ * */
+private void getDateTest(AnalysisAllEntity entity) {
+    /**
+     * 将数据提取出来
+     * */
+    int one = Integer.parseInt(entity.getBusAll());
+    int two = Integer.parseInt(entity.getViAll());
+    int three = Integer.parseInt(entity.getCusAll());
+    int [] points = {one,two,three};            //定义一个数组 把从服务器上获取到的数据加进来
+    String [] name={"业绩","拜访量","客户量"};  //定义一个list，用于显示设置线形图的横坐标
+    List<AxisValue> axisValues = new ArrayList<>();
+    /**
+     * 通过循环的方式把网络上获取到的信息与横坐标联系起来
+     * */
+    for (int i = 0; i < points.length; i++) {
+        AxisValue axisValue = new AxisValue(i);		
+        axisValue.setLabel(name[i]);
+        axisValues.add(axisValue);
+    }
+    Axis axisx = new Axis();    				//定义坐标轴的X轴
+    Axis axisy = new Axis();	  				//定义坐标轴的Y轴
+    /**
+     * 设置横坐标的变量
+     * 把上面定义的String数组里面的额数据加进来
+     * 以及字体的颜色
+     * */
+    axisx.setTextColor(Color.BLACK).setName("").setValues(axisValues);
+    /**
+     * 设置纵坐标的单位
+     * 以及字体的颜色
+     * */
+    axisy.setTextColor(Color.BLACK).setName("数量").setHasLines(true).setMaxLabelChars(5);
+    /**
+     * 把定义好的点加到横坐标上
+     * */
+    List<PointValue> values = new ArrayList<>();
+    for (int i = 0; i < 3; i++) {
+        values.add(new PointValue(i, points[i]));
+    }
+    List<Line> lines = new ArrayList<>();       	//绘制的第一条线
+    Line line = new Line(values)
+            .setColor(Color.parseColor("#4592F3"))   //设置线的颜色
+            .setCubic(false)
+            .setHasPoints(false);						
+    /**
+     * 设置线形图的一些属性
+     * */
+    line.setHasLines(true);						//设置线
+    line.setHasLabels(true);						//设置标签
+    line.setHasPoints(true);						//设置点
+    List<PointValue> values2 = new ArrayList<>();
+    int oneP = Integer.parseInt(entity.getBusPer());
+    int twoP = Integer.parseInt(entity.getViPer());
+    int threeP = Integer.parseInt(entity.getCusPer());
+    int [] pointsP = {oneP,twoP,threeP};
+    for (int i = 0; i < 3; i++) {
+        values2.add(new PointValue(i, pointsP[i]));
+    }
+    Line line2 = new Line(values2)             			 //绘制的第二条线
+            .setColor(Color.parseColor("#ff0000"))        //设置线的颜色
+            .setCubic(false)
+            .setHasPoints(false);
+    /**
+     * 设置线形图的一些属性
+     * */
+    line2.setHasLines(true);
+    line2.setHasLabels(true);
+    line2.setHasPoints(true);
+    /**
+     * 把这两个线形图放到一起显示出来
+     * */
+    lines.add(line2);
+    lines.add(line);
+    data = new LineChartData();     		//初始化线形图
+    data.setLines(lines);       			//把数据加进去
+    data.setAxisYLeft(axisy);       		//绘制纵坐标
+    data.setAxisXBottom(axisx);        		//绘制横坐标
+    chart.setLineChartData(data);       	//绘制出线形图
+}

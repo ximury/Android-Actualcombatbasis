@@ -1,0 +1,20 @@
+private void jlodimage() {  	//当手势抬起时数字资源图片倒退显示jlodimage()方法头部
+    if (i == 25) { 			// 如果当前图片位置等于25
+    } else if (i < 25) { 		// 否则如果当前图片小于25
+        if (i > 1) { 			// 如果当前图片大于1
+            i--;
+        } else if (i == 1) { 	// 否则如果当前图片等于1
+            i = 1;
+            if (touchTimer != null) { 	// 判断计时器是否为空
+                touchTimer.cancel(); 	// 中断计时器
+                touchTimer = null; 		// 设置计时器为空
+            }
+        }
+        String name = "on1_" + i; 		// 图片的名称
+        // 获取图片资源
+        int imgid = getResources().getIdentifier(name, "drawable",
+                "com.mingrisoft.writenumber");
+        // 给imageview设置图片
+        iv_frame.setBackgroundResource(imgid);
+    }
+}  //当手势抬起时数字资源图片倒退显示jlodimage()方法尾部

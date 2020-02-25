@@ -1,0 +1,16 @@
+// 设置起终点信息，对于transfer search 来说，城市名无意义
+    String city = sharedPreferences.getString("city", "长春");
+    PlanNode stNode = PlanNode.withCityNameAndPlaceName(city, editSt.getText().toString());
+    PlanNode enNode = PlanNode.withCityNameAndPlaceName(city, editEn.getText().toString());
+    // 实际使用中请对起点终点城市进行正确的设定
+    if (v.getId() == R.id.drive) {
+        mSearch.drivingSearch((new DrivingRoutePlanOption()).from(stNode).to(enNode));
+    } else if (v.getId() == R.id.transit) {
+       mSearch.transitSearch((newTransitRoutePlanOption()).from(stNode)
+                                city(city).to(enNode));
+    } else if (v.getId() == R.id.walk) {
+        mSearch.walkingSearch((new WalkingRoutePlanOption()).from(stNode).to(enNode));
+    } else if (v.getId() == R.id.bike) {
+        mSearch.bikingSearch((new BikingRoutePlanOption()).from(stNode).to(enNode));
+    }
+}

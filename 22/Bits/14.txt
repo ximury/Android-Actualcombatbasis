@@ -1,0 +1,60 @@
+    /**
+     * 设置选项
+     */
+    private void setChina(List<CET4Entity> datas, int j) {
+        /**
+         * 随机产生几个随机数， 这里面产生几个随机数  是用于解锁单词
+         * 因为此demo输入数据库里面20个单词， 所以产生的随机数是20以内的
+         * */
+        Random r = new Random();
+        List<Integer> listInt = new ArrayList<>();
+        int i;
+        while (listInt.size() < 4) {
+            i = r.nextInt(20);
+            if (!listInt.contains(i)) {
+                listInt.add(i);
+            }
+        }
+        /**
+         * 以下的判断是给这个单词设置三个选项，设置单词选项是有规律的
+         *三个选项，分别是正确的、正确的前一个、正确的后一个
+         *将这三个解释设置到单词的选项上，以下为实现逻辑
+         * */
+        if (listInt.get(0) < 7) {
+            radioOne.setText("A: " + datas.get(k).getChina());
+            if (k - 1 >= 0) {
+                radioTwo.setText("B: " + datas.get(k - 1).getChina());
+            } else {
+                radioTwo.setText("B: " + datas.get(k + 2).getChina());
+            }
+            if (k + 1 < 20) {
+                radioThree.setText("C: " + datas.get(k + 1).getChina());
+            } else {
+                radioThree.setText("C: " + datas.get(k - 1).getChina());
+            }
+        } else if (listInt.get(0) < 14) {
+            radioTwo.setText("B: " + datas.get(k).getChina());
+            if (k - 1 >= 0) {
+                radioOne.setText("A: " + datas.get(k - 1).getChina());
+            } else {
+                radioOne.setText("A: " + datas.get(k + 2).getChina());
+            }
+            if (k + 1 < 20) {
+                radioThree.setText("C: " + datas.get(k + 1).getChina());
+            } else {
+                radioThree.setText("C: " + datas.get(k - 1).getChina());
+            }
+        } else {
+            radioThree.setText("C: " + datas.get(k).getChina());
+            if (k - 1 >= 0) {
+                radioTwo.setText("B: " + datas.get(k - 1).getChina());
+            } else {
+                radioTwo.setText("B: " + datas.get(k + 2).getChina());
+            }
+            if (k + 1 < 20) {
+                radioOne.setText("A: " + datas.get(k + 1).getChina());
+            } else {
+                radioOne.setText("A: " + datas.get(k - 1).getChina());
+            }
+        }
+    }

@@ -1,0 +1,6 @@
+
+
+<!--注册选择数字界面并设置全屏-->
+<activity
+    android:name=".SelectActivity"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>

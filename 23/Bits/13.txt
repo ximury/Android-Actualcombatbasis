@@ -1,0 +1,80 @@
+/**
+ * 测量-->设置大小
+ * @param widthMeasureSpec
+* @param heightMeasureSpec
+*/
+@Override
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//获取测量模式
+int width_mode = MeasureSpec.getMode(widthMeasureSpec);				//宽度的测量模式
+int height_mode = MeasureSpec.getMode(heightMeasureSpec);			//高度的测量模式
+//获取测量值
+int width_size = MeasureSpec.getSize(widthMeasureSpec);				//宽度的测量值
+int height_size = MeasureSpec.getSize(heightMeasureSpec);			//高度的测量值
+//根据测量结果设置最终的宽度和高度
+parentWidth = opinionWidthOrHeight(width_mode,width_size,WIDTH);		//宽度的最终结果
+parentHeight =opinionWidthOrHeight(height_mode,height_size,HEIGHT);	//高度的最终结果
+//设置子控件大小
+setChildLayoutParams();
+    setMeasuredDimension(parentWidth,parentHeight);						//设置该控件的大小
+}
+
+/**
+ * 返回当前的测量值（宽）
+ * @return
+*/
+public int plantWidth(){
+return parentWidth;												//返回该控件的宽度
+}
+
+/**
+ * 返回当前的测量值（高）
+ * @return
+*/
+public int plantHeight(){
+return parentHeight;												//返回该控件的高度
+}
+/**
+ * 设置子控件的大小
+ */
+private void setChildLayoutParams() {
+//获取子控件的个数
+int childCounts = getChildCount();									//获取子控件的个数
+//遍历所有子控件
+for (int i = 0;i < childCounts; i++){
+        View childView = getChildAt(i);						//根据索引获取对应的子控件
+        FrameLayout.LayoutParams params;						//用于设置子控件的大小
+if (i == 1){					//当i=1时代表的是根茎此处需要该子控件的高度填充父布局
+            params= new LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, 
+				ViewGroup.LayoutParams.MATCH_PARENT);	//设置子控件的大小
+        }else {											//除去i=1都这样去设置
+            params= new LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, 
+			ViewGroup.LayoutParams.WRAP_CONTENT);	//设置子控件的大小
+        }
+        childView.setLayoutParams(params);					//向对应的子控件设置参数
+    }
+}
+
+/**
+ * 根据模式判断宽度或者高度
+ * @param mMode
+* @param mSize
+* @param what
+* @return
+*/
+private int opinionWidthOrHeight(int mMode, int mSize , int what) {
+int result = 0;							//初始化返回值
+if (mMode == MeasureSpec.EXACTLY) {		//根据测量模式来设置最终的控件宽度或高度
+        result = mSize;						//返回测量的结果
+    } else {
+// 设置默认宽度
+intsize = what == WIDTH ? DEFAULT_WIDTH : DEFAULT_HEIGHT;
+if (mMode == MeasureSpec.AT_MOST) {
+            result = Math.min(mSize, size);		//获取默认的值与测量的值中的最小值作为返回值
+        }
+    }
+return result;							//返回最终的值
+}

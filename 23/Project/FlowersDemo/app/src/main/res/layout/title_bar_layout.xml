@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <!-- 默认不显示标题栏 -->
+    <!-- 左边三个:left1,left2,left3 -->
+    <!-- 中间一个:title -->
+    <!-- 右边三个:right1,right2,right3 -->
+    <!-- 标题栏 -->
+    <RelativeLayout
+        android:id="@+id/back_home"
+        android:visibility="gone"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/with_50dp"
+        android:paddingBottom="@dimen/with_2dp"
+        android:paddingTop="@dimen/with_2dp"
+        android:paddingLeft="@dimen/with_3dp"
+        android:paddingRight="@dimen/with_3dp">
+
+        <!-- 标题 -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="match_parent">
+            <!-- 标题栏图片 -->
+            <ImageView
+                android:id="@+id/title_image"
+                android:layout_width="@dimen/with_46dp"
+                android:layout_height="@dimen/with_46dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <!-- 标题栏名称 -->
+            <TextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_20sp"
+                android:text="title"
+                android:visibility="invisible"
+                android:gravity="center"/>
+        </FrameLayout>
+        <!-- 左侧按钮或者文字1 -->
+        <FrameLayout
+            android:id="@+id/left1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/with_5dp"
+            android:layout_alignParentLeft="true">
+            <!-- 左侧图片 -->
+            <ImageView
+                android:id="@+id/left_image1"
+                android:layout_width="@dimen/with_46dp"
+                android:layout_height="@dimen/with_46dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <!-- 左侧文字 -->
+            <TextView
+                android:id="@+id/left_name1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_20sp"
+                android:textStyle="bold"
+                android:text="left1"
+                android:visibility="gone"
+                android:gravity="center"/>
+        </FrameLayout>
+        <!-- 左侧按钮或者文字2 -->
+        <FrameLayout
+            android:id="@+id/left2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/with_3dp"
+            android:layout_toRightOf="@+id/left1">
+            <!-- 左侧图片 -->
+            <ImageView
+                android:id="@+id/left_image2"
+                android:layout_width="@dimen/with_46dp"
+                android:layout_height="@dimen/with_46dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <!-- 左侧文字 -->
+            <TextView
+                android:id="@+id/left_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_20sp"
+                android:textStyle="bold"
+                android:text="left2"
+                android:visibility="gone"
+                android:gravity="center"/>
+        </FrameLayout>
+        <!-- 左侧按钮或者文字2 -->
+        <FrameLayout
+            android:id="@+id/left3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/with_3dp"
+            android:layout_toRightOf="@+id/left2">
+            <!-- 左侧图片 -->
+            <ImageView
+                android:id="@+id/left_image3"
+                android:layout_width="@dimen/with_46dp"
+                android:layout_height="@dimen/with_46dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <!-- 左侧文字 -->
+            <TextView
+                android:id="@+id/left_name3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_20sp"
+                android:textStyle="bold"
+                android:text="left3"
+                android:visibility="gone"
+                android:gravity="center"/>
+        </FrameLayout>
+        <!-- 右侧按钮或者文字1 -->
+        <FrameLayout
+            android:id="@+id/right1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/with_5dp">
+            <!-- 右侧图片 -->
+            <ImageView
+                android:id="@+id/right_image1"
+                android:layout_width="@dimen/with_46dp"
+                android:layout_height="@dimen/with_46dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <!-- 右侧文字 -->
+            <TextView
+                android:id="@+id/right_name1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_20sp"
+                android:textStyle="bold"
+                android:text="right1"
+                android:visibility="gone"
+                android:gravity="center"/>
+        </FrameLayout>
+        <!-- 右侧按钮或者文字2 -->
+        <FrameLayout
+            android:id="@+id/right2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/with_3dp"
+            android:layout_toLeftOf="@+id/right1">
+            <!-- 右侧图片 -->
+            <ImageView
+                android:id="@+id/right_image2"
+                android:layout_width="@dimen/with_46dp"
+                android:layout_height="@dimen/with_46dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <!-- 右侧文字 -->
+            <TextView
+                android:id="@+id/right_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_20sp"
+                android:textStyle="bold"
+                android:text="right2"
+                android:visibility="gone"
+                android:gravity="center"/>
+        </FrameLayout>
+        <!-- 右侧按钮或者文字2 -->
+        <FrameLayout
+            android:id="@+id/right3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/with_3dp"
+            android:layout_toLeftOf="@+id/right2">
+            <!-- 右侧图片 -->
+            <ImageView
+                android:id="@+id/right_image3"
+                android:layout_width="@dimen/with_46dp"
+                android:layout_height="@dimen/with_46dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="center"
+                android:visibility="gone"/>
+            <!-- 右侧文字 -->
+            <TextView
+                android:id="@+id/right_name3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_20sp"
+                android:textStyle="bold"
+                android:text="right3"
+                android:visibility="gone"
+                android:gravity="center"/>
+        </FrameLayout>
+    </RelativeLayout>
+</LinearLayout>

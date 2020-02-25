@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfCommonMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfCommon" >
+    <id column="common_id" property="commonId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="common_content" property="commonContent" jdbcType="VARCHAR" />
+    <result column="common_spare1" property="commonSpare1" jdbcType="VARCHAR" />
+    <result column="common_spare2" property="commonSpare2" jdbcType="VARCHAR" />
+    <result column="common_spare3" property="commonSpare3" jdbcType="VARCHAR" />
+    <result column="common_spare4" property="commonSpare4" jdbcType="VARCHAR" />
+    <result column="common_spare5" property="commonSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    common_id, user_id, common_content, common_spare1, common_spare2, common_spare3, 
+    common_spare4, common_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_common
+    where common_id = #{commonId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_common
+    where common_id = #{commonId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfCommon" >
+    insert into tf_common (common_id, user_id, common_content, 
+      common_spare1, common_spare2, common_spare3, 
+      common_spare4, common_spare5)
+    values (#{commonId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{commonContent,jdbcType=VARCHAR}, 
+      #{commonSpare1,jdbcType=VARCHAR}, #{commonSpare2,jdbcType=VARCHAR}, #{commonSpare3,jdbcType=VARCHAR}, 
+      #{commonSpare4,jdbcType=VARCHAR}, #{commonSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfCommon" >
+    insert into tf_common
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commonId != null" >
+        common_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="commonContent != null" >
+        common_content,
+      </if>
+      <if test="commonSpare1 != null" >
+        common_spare1,
+      </if>
+      <if test="commonSpare2 != null" >
+        common_spare2,
+      </if>
+      <if test="commonSpare3 != null" >
+        common_spare3,
+      </if>
+      <if test="commonSpare4 != null" >
+        common_spare4,
+      </if>
+      <if test="commonSpare5 != null" >
+        common_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commonId != null" >
+        #{commonId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commonContent != null" >
+        #{commonContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare1 != null" >
+        #{commonSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare2 != null" >
+        #{commonSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare3 != null" >
+        #{commonSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare4 != null" >
+        #{commonSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare5 != null" >
+        #{commonSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfCommon" >
+    update tf_common
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commonContent != null" >
+        common_content = #{commonContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare1 != null" >
+        common_spare1 = #{commonSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare2 != null" >
+        common_spare2 = #{commonSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare3 != null" >
+        common_spare3 = #{commonSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare4 != null" >
+        common_spare4 = #{commonSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="commonSpare5 != null" >
+        common_spare5 = #{commonSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where common_id = #{commonId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfCommon" >
+    update tf_common
+    set user_id = #{userId,jdbcType=VARCHAR},
+      common_content = #{commonContent,jdbcType=VARCHAR},
+      common_spare1 = #{commonSpare1,jdbcType=VARCHAR},
+      common_spare2 = #{commonSpare2,jdbcType=VARCHAR},
+      common_spare3 = #{commonSpare3,jdbcType=VARCHAR},
+      common_spare4 = #{commonSpare4,jdbcType=VARCHAR},
+      common_spare5 = #{commonSpare5,jdbcType=VARCHAR}
+    where common_id = #{commonId,jdbcType=VARCHAR}
+  </update>
+  
+   <select id="queryTempList" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfCommon">
+		select
+		<include refid="Base_Column_List" />
+		from tf_common
+		<where>
+		 (1=1) 
+
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+
+		</where>
+		order by common_id desc
+	</select>
+</mapper>

@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+/*左侧*/
+html,body{height:100%;}
+body{font-size:12px;margin:0px;background:url(../images/leftbg.jpg) no-repeat left bottom;font-family:"宋体";}
+a{color:#fff;text-decoration:none;}
+a:hover{color:#fff;}
+img{border:none;}
+.operations{background:url(../images/left_topbg.jpg) no-repeat left top;min-height:220px;_height:220px;padding:0px 1px;}
+.title{padding-left:32px;height:32px;line-height:36px;font-size:14px;font-weight:bold;color:#FFF;overflow:hidden; background:url(../images/left_titbig.jpg) no-repeat -1px 0px;}
+.menu{overflow:hidden;padding:15px;}
+
+/*非树形三级伸缩单菜*/
+.titbig{line-height:50px;text-align:center;color:#FFF;padding-bottom:5px;font-size:14px;font-weight:bold;border-bottom:1px solid #7ac8ec;}
+.menulist{font-size:12px;}
+.menulist ul{margin:0px;padding:0px;list-style:none;}
+.menulist ul li a{display:block;line-height:12px;height:12px;padding:6px 10px 6px 29px;overflow:hidden; background:url(../images/left_menu.gif) no-repeat 0px 0px;font-weight:bold;}
+.menulist ul li a:hover{background-position:0px -24px;}
+.menulist ul li a.open{background-position:0px -48px;}
+.menulist ul li ul li a{background-position:0px -72px;color:#000;font-weight:normal;padding-left:42px;}
+.menulist ul li ul li a:hover{background-position:0px -96px;color:#000;}
+.menulist ul li ul li a.op{background-position:0px -120px;}
+.menulist ul li ul li ul{padding:8px;border:1px solid #73ceeb;}
+.menulist ul li ul li ul li a{background:none;color:#FFF;padding-left:18px;}
+.menulist ul li ul li ul li a:hover{color:#000;}
+.menulist ul li ul li ul li a.domw{background:url(../images/left_menu.gif) no-repeat 0px -144px;color:#000;}
+

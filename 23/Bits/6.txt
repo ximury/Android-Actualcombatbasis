@@ -1,0 +1,17 @@
+public class DandelionView extends SurfaceView
+implements SurfaceHolder.Callback, Runnable {
+
+private SurfaceHolder mHolder;					//纹理控制器
+private Thread mThread;						//线程
+private Canvas mCanvas;						//画布
+private boolean isRunning;						//线程开关
+private Bitmap[] bitmaps = new Bitmap[5];		//图片数组
+private Random random = new Random();			//用于获取随机数
+private int drawCounts = 3;					//绘制的个数
+   //以下5个集合用于存放想要绘制图片的相关参数，如绘制的X坐标与Y坐标
+private ArrayList<DandelionModel>dandelionModels_S = new ArrayList<DandelionModel>();
+private ArrayList<DandelionModel>dandelionModels_M = new ArrayList<DandelionModel>();
+private ArrayList<DandelionModel>dandelionModels_L = new ArrayList<DandelionModel>();
+private ArrayList<DandelionModel>dandelionModels_X = new ArrayList<DandelionModel>();
+private ArrayList<DandelionModel>dandelionModels_XX = new ArrayList<DandelionModel>();
+private int screenWidth, screenHeight;			//屏幕宽高

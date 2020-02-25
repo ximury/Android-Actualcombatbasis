@@ -1,0 +1,5 @@
+
+    //获取布局文件中控制背景音乐按钮
+    music_btn= (Button) findViewById(R.id.btn_music);   
+    PlayMusic();     //调用播放音乐的方法
+

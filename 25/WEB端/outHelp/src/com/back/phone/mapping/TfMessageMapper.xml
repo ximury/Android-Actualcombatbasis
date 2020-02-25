@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfMessage" >
+    <id column="message_id" property="messageId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="message_name" property="messageName" jdbcType="VARCHAR" />
+    <result column="message_content" property="messageContent" jdbcType="VARCHAR" />
+    <result column="message_time" property="messageTime" jdbcType="VARCHAR" />
+    <result column="message_read" property="messageRead" jdbcType="VARCHAR" />
+    <result column="message_spare1" property="messageSpare1" jdbcType="VARCHAR" />
+    <result column="message_spare2" property="messageSpare2" jdbcType="VARCHAR" />
+    <result column="message_spare3" property="messageSpare3" jdbcType="VARCHAR" />
+    <result column="message_spare4" property="messageSpare4" jdbcType="VARCHAR" />
+    <result column="message_spare5" property="messageSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    message_id, user_id, message_name, message_content, message_time, message_read, message_spare1, 
+    message_spare2, message_spare3, message_spare4, message_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_message
+    where message_id = #{messageId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_message
+    where message_id = #{messageId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfMessage" >
+    insert into tf_message (message_id, user_id, message_name, 
+      message_content, message_time, message_read, 
+      message_spare1, message_spare2, message_spare3, 
+      message_spare4, message_spare5)
+    values (#{messageId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{messageName,jdbcType=VARCHAR}, 
+      #{messageContent,jdbcType=VARCHAR}, #{messageTime,jdbcType=VARCHAR}, #{messageRead,jdbcType=VARCHAR}, 
+      #{messageSpare1,jdbcType=VARCHAR}, #{messageSpare2,jdbcType=VARCHAR}, #{messageSpare3,jdbcType=VARCHAR}, 
+      #{messageSpare4,jdbcType=VARCHAR}, #{messageSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfMessage" >
+    insert into tf_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        message_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="messageName != null" >
+        message_name,
+      </if>
+      <if test="messageContent != null" >
+        message_content,
+      </if>
+      <if test="messageTime != null" >
+        message_time,
+      </if>
+      <if test="messageRead != null" >
+        message_read,
+      </if>
+      <if test="messageSpare1 != null" >
+        message_spare1,
+      </if>
+      <if test="messageSpare2 != null" >
+        message_spare2,
+      </if>
+      <if test="messageSpare3 != null" >
+        message_spare3,
+      </if>
+      <if test="messageSpare4 != null" >
+        message_spare4,
+      </if>
+      <if test="messageSpare5 != null" >
+        message_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        #{messageId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageName != null" >
+        #{messageName,jdbcType=VARCHAR},
+      </if>
+      <if test="messageContent != null" >
+        #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTime != null" >
+        #{messageTime,jdbcType=VARCHAR},
+      </if>
+      <if test="messageRead != null" >
+        #{messageRead,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare1 != null" >
+        #{messageSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare2 != null" >
+        #{messageSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare3 != null" >
+        #{messageSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare4 != null" >
+        #{messageSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare5 != null" >
+        #{messageSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfMessage" >
+    update tf_message
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageName != null" >
+        message_name = #{messageName,jdbcType=VARCHAR},
+      </if>
+      <if test="messageContent != null" >
+        message_content = #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTime != null" >
+        message_time = #{messageTime,jdbcType=VARCHAR},
+      </if>
+      <if test="messageRead != null" >
+        message_read = #{messageRead,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare1 != null" >
+        message_spare1 = #{messageSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare2 != null" >
+        message_spare2 = #{messageSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare3 != null" >
+        message_spare3 = #{messageSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare4 != null" >
+        message_spare4 = #{messageSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="messageSpare5 != null" >
+        message_spare5 = #{messageSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where message_id = #{messageId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfMessage" >
+    update tf_message
+    set user_id = #{userId,jdbcType=VARCHAR},
+      message_name = #{messageName,jdbcType=VARCHAR},
+      message_content = #{messageContent,jdbcType=VARCHAR},
+      message_time = #{messageTime,jdbcType=VARCHAR},
+      message_read = #{messageRead,jdbcType=VARCHAR},
+      message_spare1 = #{messageSpare1,jdbcType=VARCHAR},
+      message_spare2 = #{messageSpare2,jdbcType=VARCHAR},
+      message_spare3 = #{messageSpare3,jdbcType=VARCHAR},
+      message_spare4 = #{messageSpare4,jdbcType=VARCHAR},
+      message_spare5 = #{messageSpare5,jdbcType=VARCHAR}
+    where message_id = #{messageId,jdbcType=VARCHAR}
+  </update>
+</mapper>

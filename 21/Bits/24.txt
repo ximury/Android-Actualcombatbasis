@@ -1,0 +1,24 @@
+ <!--显示第三行7至9数字-->
+ <TableRow android:layout_weight="1">
+     <!--显示数字7图片-->
+     <ImageView
+         android:layout_width="0dp"
+         android:layout_margin="10dp"
+         android:layout_weight="1"
+         android:onClick="OnSeven"
+         android:src="@drawable/on7_24"/>
+     <!--显示数字8图片-->
+     <ImageView
+         android:layout_width="0dp"
+         android:layout_margin="10dp"
+         android:layout_weight="1"
+         android:onClick="OnEight"
+         android:src="@drawable/on8_24"/>
+     <!--显示数字9图片-->
+     <ImageView
+         android:layout_width="0dp"
+         android:layout_margin="10dp"
+         android:layout_weight="1"
+         android:onClick="OnNine"
+         android:src="@drawable/on9_24"/>
+ </TableRow>

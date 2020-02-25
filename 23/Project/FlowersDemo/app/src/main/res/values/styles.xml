@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="MyCheckBoxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
+    <item name="android:textColor">@drawable/check_text_style</item>
+    </style>
+    <style name="MySelectFlowerTextColor" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@drawable/select_btn_text_style</item>
+    </style>
+    <!-- 自定义样式 -->
+    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFrame">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/my_theme_background2</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Theme.BackgroundTranslucent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@mipmap/mrkj_splash</item>
+    </style>
+</resources>

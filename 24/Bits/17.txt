@@ -1,0 +1,27 @@
+01	public class FoodHotListActivity extends BaseActivity {
+02	private int sign= - 1 ; 				//控制列表的展开
+03	private String[] food_type_array;		//食物类型数组
+04	private List<FoodType>food_list;		//数据集合
+05	private ExpandableListView data_list;	//折叠listview
+06	private Bitmap[] bitmaps;				//图片资源
+07	private int[] ids;					//图片资源ID数组
+08	
+09	/**
+10	     * 设置标题栏
+11	     */
+12	@Override
+13	protected void setActivityTitle() {
+14	        initTitle();
+15	        setTitle("食物热量对照表", this);
+16	        setMyBackGround(R.color.watm_background_gray);
+17	        setTitleTextColor(R.color.theme_blue_two);
+18	        setTitleLeftImage(R.mipmap.mrkj_back_blue);
+19	    }
+20	
+21	/**
+22	     * 设置界面布局
+23	     */
+24	@Override
+25	protected void getLayoutToView() {
+26	        setContentView(R.layout.activity_food_hot_list);
+27	    }

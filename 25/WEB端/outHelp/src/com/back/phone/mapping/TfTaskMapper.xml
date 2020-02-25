@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfTask" >
+    <id column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="task_title" property="taskTitle" jdbcType="VARCHAR" />
+    <result column="task_date" property="taskDate" jdbcType="VARCHAR" />
+    <result column="task_month" property="taskMonth" jdbcType="VARCHAR" />
+    <result column="task_money" property="taskMoney" jdbcType="VARCHAR" />
+    <result column="task_door" property="taskDoor" jdbcType="VARCHAR" />
+    <result column="task_remark" property="taskRemark" jdbcType="VARCHAR" />
+    <result column="task_part" property="taskPart" jdbcType="VARCHAR" />
+    <result column="task_person" property="taskPerson" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="task_addtime" property="taskAddtime" jdbcType="VARCHAR" />
+    <result column="task_spare1" property="taskSpare1" jdbcType="VARCHAR" />
+    <result column="task_spare2" property="taskSpare2" jdbcType="VARCHAR" />
+    <result column="task_spare3" property="taskSpare3" jdbcType="VARCHAR" />
+    <result column="task_spare4" property="taskSpare4" jdbcType="VARCHAR" />
+    <result column="task_spare5" property="taskSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    task_id, task_title, task_date, task_month, task_money, task_door, task_remark, task_part, 
+    task_person, user_id, task_addtime, task_spare1, task_spare2, task_spare3, task_spare4, 
+    task_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_task
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_task
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfTask" >
+    insert into tf_task (task_id, task_title, task_date, 
+      task_month, task_money, task_door, 
+      task_remark, task_part, task_person, 
+      user_id, task_addtime, task_spare1, 
+      task_spare2, task_spare3, task_spare4, 
+      task_spare5)
+    values (#{taskId,jdbcType=VARCHAR}, #{taskTitle,jdbcType=VARCHAR}, #{taskDate,jdbcType=VARCHAR}, 
+      #{taskMonth,jdbcType=VARCHAR}, #{taskMoney,jdbcType=VARCHAR}, #{taskDoor,jdbcType=VARCHAR}, 
+      #{taskRemark,jdbcType=VARCHAR}, #{taskPart,jdbcType=VARCHAR}, #{taskPerson,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{taskAddtime,jdbcType=VARCHAR}, #{taskSpare1,jdbcType=VARCHAR}, 
+      #{taskSpare2,jdbcType=VARCHAR}, #{taskSpare3,jdbcType=VARCHAR}, #{taskSpare4,jdbcType=VARCHAR}, 
+      #{taskSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfTask" >
+    insert into tf_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="taskTitle != null" >
+        task_title,
+      </if>
+      <if test="taskDate != null" >
+        task_date,
+      </if>
+      <if test="taskMonth != null" >
+        task_month,
+      </if>
+      <if test="taskMoney != null" >
+        task_money,
+      </if>
+      <if test="taskDoor != null" >
+        task_door,
+      </if>
+      <if test="taskRemark != null" >
+        task_remark,
+      </if>
+      <if test="taskPart != null" >
+        task_part,
+      </if>
+      <if test="taskPerson != null" >
+        task_person,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="taskAddtime != null" >
+        task_addtime,
+      </if>
+      <if test="taskSpare1 != null" >
+        task_spare1,
+      </if>
+      <if test="taskSpare2 != null" >
+        task_spare2,
+      </if>
+      <if test="taskSpare3 != null" >
+        task_spare3,
+      </if>
+      <if test="taskSpare4 != null" >
+        task_spare4,
+      </if>
+      <if test="taskSpare5 != null" >
+        task_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null" >
+        #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDate != null" >
+        #{taskDate,jdbcType=VARCHAR},
+      </if>
+      <if test="taskMonth != null" >
+        #{taskMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="taskMoney != null" >
+        #{taskMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDoor != null" >
+        #{taskDoor,jdbcType=VARCHAR},
+      </if>
+      <if test="taskRemark != null" >
+        #{taskRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPart != null" >
+        #{taskPart,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPerson != null" >
+        #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskAddtime != null" >
+        #{taskAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare1 != null" >
+        #{taskSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare2 != null" >
+        #{taskSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare3 != null" >
+        #{taskSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare4 != null" >
+        #{taskSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare5 != null" >
+        #{taskSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfTask" >
+    update tf_task
+    <set >
+      <if test="taskTitle != null" >
+        task_title = #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDate != null" >
+        task_date = #{taskDate,jdbcType=VARCHAR},
+      </if>
+      <if test="taskMonth != null" >
+        task_month = #{taskMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="taskMoney != null" >
+        task_money = #{taskMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDoor != null" >
+        task_door = #{taskDoor,jdbcType=VARCHAR},
+      </if>
+      <if test="taskRemark != null" >
+        task_remark = #{taskRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPart != null" >
+        task_part = #{taskPart,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPerson != null" >
+        task_person = #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskAddtime != null" >
+        task_addtime = #{taskAddtime,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare1 != null" >
+        task_spare1 = #{taskSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare2 != null" >
+        task_spare2 = #{taskSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare3 != null" >
+        task_spare3 = #{taskSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare4 != null" >
+        task_spare4 = #{taskSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSpare5 != null" >
+        task_spare5 = #{taskSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfTask" >
+    update tf_task
+    set task_title = #{taskTitle,jdbcType=VARCHAR},
+      task_date = #{taskDate,jdbcType=VARCHAR},
+      task_month = #{taskMonth,jdbcType=VARCHAR},
+      task_money = #{taskMoney,jdbcType=VARCHAR},
+      task_door = #{taskDoor,jdbcType=VARCHAR},
+      task_remark = #{taskRemark,jdbcType=VARCHAR},
+      task_part = #{taskPart,jdbcType=VARCHAR},
+      task_person = #{taskPerson,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      task_addtime = #{taskAddtime,jdbcType=VARCHAR},
+      task_spare1 = #{taskSpare1,jdbcType=VARCHAR},
+      task_spare2 = #{taskSpare2,jdbcType=VARCHAR},
+      task_spare3 = #{taskSpare3,jdbcType=VARCHAR},
+      task_spare4 = #{taskSpare4,jdbcType=VARCHAR},
+      task_spare5 = #{taskSpare5,jdbcType=VARCHAR}
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </update>
+</mapper>

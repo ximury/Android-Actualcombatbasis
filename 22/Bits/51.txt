@@ -1,0 +1,59 @@
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	        setContentView(R.layout.home_layout);         //绑定布局文件
+	        init();									    //初始化控件
+	    }
+	    /**
+	     * 初始化控件的方法
+	     * */
+	    private void init() {
+	        sharedPreferences = getSharedPreferences("share", 
+	                            	Context.MODE_PRIVATE); //初始化数据库
+	        wrongBtn = (Button) findViewById(R.id.wrong_btn); //绑定id
+	        wrongBtn.setOnClickListener(this);        	  //对按钮设置监听事件
+	        //设置editer用于网数据库里面添加数据和修改数据
+	        final SharedPreferences.Editor editor = sharedPreferences.edit();   
+	        screenListener = new ScreenListener(this); //屏幕状态进行监听
+	        screenListener.begin(new ScreenListener.ScreenStateListener() {
+	            @Override
+	            public void onScreenOn() {   			//手机已点亮屏幕的操作
+	               //判断是否在设置界面开启了锁屏按钮
+	               if (sharedPreferences.getBoolean("btnTf",false)){         
+	                       //判断屏幕是否解锁
+	                       if (sharedPreferences.getBoolean("tf", false)) {    
+	                        Intent intent = new Intent(HomeActivity.this,
+	                        MainActivity.class);     		//启动锁屏页面
+	                        startActivity(intent);        //开始跳转
+	                    }
+	                }
+	            }
+	
+	            @Override
+	            public void onScreenOff() {         		//手机已锁屏的操作
+	                /**
+	                 * 如果手机已经锁了
+	                 * 就把数据库面的tf字段改成true
+	                 * */
+	                editor.putBoolean("tf", true);
+	                editor.commit();
+	              //销毁锁屏界面
+	                BaseApplication.destroyActivity("mainActivity");    
+	
+	            }
+	
+	            @Override
+	            public void onUserPresent() {       		//手机已解锁的操作
+	                /**
+	                 * 如果手机已经解锁了
+	                 * 就把数据库面的tf字段改成false
+	                 * */
+	                editor.putBoolean("tf", false);
+	                editor.commit();
+	            }
+	        });
+			//当此页面加载的时候  显示复习界面的fragment
+	        studyFragment = new StudyFragment();   
+	 	   setFragment(studyFragment);			//设置不同的fragment
+	    }

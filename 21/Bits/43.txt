@@ -1,0 +1,26 @@
+        
+                case MotionEvent.ACTION_UP:					// 手势抬起判断
+                    type = 0; 								// 手势关闭
+                    // 当手指离开的时候
+                    if (touchTimer != null) { 				// 判断计时器是否为空
+                        touchTimer.cancel(); 				// 中断计时器
+                        touchTimer = null; 					// 设置计时器为空
+                    }
+                    touchTimer = new Timer(); 				// 初始化计时器
+                    touchTimer.schedule(new TimerTask() { 	// 开启时间计时器
+                        @Override
+                        public void run() {
+                            Thread thread = new Thread(new Runnable() { //创建子线程
+                                @Override
+                                public void run() {
+                                    // 创建Message用于发送消息
+                                    Message message = new Message();
+                                    message.what = 2; 			// message消息为2
+                                    // 发送消息给handler实现倒退显示图片
+                                    mHandler.sendMessage(message);
+                                }
+                            });
+                            thread.start();					// 开启线程
+                        }
+                    }, 300, 200);
+

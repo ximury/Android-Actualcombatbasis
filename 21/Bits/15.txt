@@ -1,0 +1,4 @@
+
+    static boolean isPlay=true;		//设置音乐播放状态变量
+    MediaPlayer mediaPlayer;			//定义音乐播放器对象
+    Button music_btn;					//定义控制音乐播放按钮

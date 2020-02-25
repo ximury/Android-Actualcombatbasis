@@ -1,0 +1,5 @@
+
+<!--注册游戏主界面并设置全屏-->
+<activity 
+    android:name=".MainActivity"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>

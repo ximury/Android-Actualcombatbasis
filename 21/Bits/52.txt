@@ -1,0 +1,3 @@
+
+public mCustomProgressDialog mdialog;    	//定义自定义对话框对象
+

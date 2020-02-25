@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/bt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_light"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back_im_btn"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/fanhui" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="输入跟进信息"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/send_btn"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/btn_kuang"
+            android:text="提交"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/send_follow_connect"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+
+        android:layout_margin="15dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/enter_kuang"
+        android:hint="请输入跟单内容（输入内容不超过60字）"
+        android:maxLength="60"
+        android:padding="5dp">
+
+    </EditText>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="位置："
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/send_follow_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="70dp"
+            android:drawableLeft="@mipmap/llocation"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="17sp" />
+    </RelativeLayout>
+    <RadioGroup
+        android:id="@+id/send_task_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/send_follow_radio_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跟进中" />
+
+        <RadioButton
+            android:id="@+id/send_follow_radio_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="赢单" />
+
+        <RadioButton
+            android:id="@+id/send_follow_radio_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="订单失败" />
+    </RadioGroup>
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/send_task_all_money_rl"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="最终订单额："
+            android:textSize="17sp" />
+
+        <EditText
+            android:hint="单位/元"
+            android:id="@+id/send_follow_money_all"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/enter_kuang"
+            android:padding="5dp">
+
+        </EditText>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/send_task_set_back_time"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="回访时间："
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/send_follow_back_year"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/enter_kuang"
+            android:maxLength="4"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="年"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/send_follow_back_month"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/enter_kuang"
+            android:maxLength="2"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="月"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/send_follow_back_day"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/enter_kuang"
+            android:maxLength="2"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="日"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/send_follow_back_time"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/enter_kuang"
+            android:maxLength="2"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="时"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/send_follow_back_remind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="回访时间到时提醒"
+        />
+
+</LinearLayout>

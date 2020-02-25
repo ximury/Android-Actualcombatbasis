@@ -1,0 +1,12 @@
+	switch (v.getId()) {
+            	    case R.id.switch_btn:       				//单击开关按钮
+               if (switchButton.isSwitchOpen()) { 		//如果开关按钮为打开状态
+                       switchButton.closeSwitch();        	//则关闭按钮
+                       editor.putBoolean("btnTf", false);  //写入数据库开关按钮状态
+                   } else {                    				//否则为关闭状态
+                       switchButton.openSwitch();      		//打开开关按钮
+                       editor.putBoolean("btnTf", true);   //写入数据库状态
+                   }
+               editor.commit();            			//进行保存
+               break;
+            	}

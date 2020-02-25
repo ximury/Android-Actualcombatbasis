@@ -1,0 +1,17 @@
+/**
+     * 获取下一题
+     */
+    private void getNextData() {
+        j++;                  //当前已做题的数目
+        int i = sharedPreferences.getInt("allNum", 2);   //默认解锁题数目为2道
+        if (i > j) {         //判断设定的解锁题数目与当前已做题的数目大小关系
+            getDBData();     //获取数据
+            setTextColor(); //设置颜色
+            //已经学习的单词量加一
+            int num = sharedPreferences.getInt("alreadyStudy", 0) + 1;
+            editor.putInt("alreadyStudy", num);
+            editor.commit(); //存到数据库里面
+        } else {
+            unlocked();       //解锁
+        }
+    }

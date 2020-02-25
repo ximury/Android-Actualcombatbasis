@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.TtaskMapper" >
+  <resultMap id="BaseResultMap" type="com.back.base.model.Ttask" >
+    <id column="pk_id" property="pkId" jdbcType="VARCHAR" />
+    <result column="col_dept" property="colDept" jdbcType="VARCHAR" />
+    <result column="col_role" property="colRole" jdbcType="VARCHAR" />
+    <result column="col_uid" property="colUid" jdbcType="VARCHAR" />
+    <result column="col_desc" property="colDesc" jdbcType="VARCHAR" />
+    <result column="col_type" property="colType" jdbcType="VARCHAR" />
+    <result column="col_url" property="colUrl" jdbcType="VARCHAR" />
+    <result column="col_state" property="colState" jdbcType="VARCHAR" />
+    <result column="col_finaldate" property="colFinaldate" jdbcType="VARCHAR" />
+    <result column="open_type" property="openType" jdbcType="VARCHAR" />
+    <result column="col_id" property="colId" jdbcType="VARCHAR" />
+    <result column="dept_code" property="deptCode" jdbcType="VARCHAR" />
+    <result column="send_name" property="sendName" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_id" property="updateId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_id, col_dept, col_role, col_uid, col_desc, col_type, col_url, col_state, col_finaldate, 
+    open_type, col_id, dept_code, send_name, create_id, create_time, update_id, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ttask
+    where pk_id = #{pkId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ttask
+    where pk_id = #{pkId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.base.model.Ttask" >
+    insert into ttask (pk_id, col_dept, col_role, 
+      col_uid, col_desc, col_type, 
+      col_url, col_state, col_finaldate, 
+      open_type, col_id, dept_code, 
+      send_name, create_id, create_time, 
+      update_id, update_time)
+    values (#{pkId,jdbcType=VARCHAR}, #{colDept,jdbcType=VARCHAR}, #{colRole,jdbcType=VARCHAR}, 
+      #{colUid,jdbcType=VARCHAR}, #{colDesc,jdbcType=VARCHAR}, #{colType,jdbcType=VARCHAR}, 
+      #{colUrl,jdbcType=VARCHAR}, #{colState,jdbcType=VARCHAR}, #{colFinaldate,jdbcType=VARCHAR}, 
+      #{openType,jdbcType=VARCHAR}, #{colId,jdbcType=VARCHAR}, #{deptCode,jdbcType=VARCHAR}, 
+      #{sendName,jdbcType=VARCHAR}, #{createId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{updateId,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.base.model.Ttask" >
+    insert into ttask
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkId != null" >
+        pk_id,
+      </if>
+      <if test="colDept != null" >
+        col_dept,
+      </if>
+      <if test="colRole != null" >
+        col_role,
+      </if>
+      <if test="colUid != null" >
+        col_uid,
+      </if>
+      <if test="colDesc != null" >
+        col_desc,
+      </if>
+      <if test="colType != null" >
+        col_type,
+      </if>
+      <if test="colUrl != null" >
+        col_url,
+      </if>
+      <if test="colState != null" >
+        col_state,
+      </if>
+      <if test="colFinaldate != null" >
+        col_finaldate,
+      </if>
+      <if test="openType != null" >
+        open_type,
+      </if>
+      <if test="colId != null" >
+        col_id,
+      </if>
+      <if test="deptCode != null" >
+        dept_code,
+      </if>
+      <if test="sendName != null" >
+        send_name,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateId != null" >
+        update_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkId != null" >
+        #{pkId,jdbcType=VARCHAR},
+      </if>
+      <if test="colDept != null" >
+        #{colDept,jdbcType=VARCHAR},
+      </if>
+      <if test="colRole != null" >
+        #{colRole,jdbcType=VARCHAR},
+      </if>
+      <if test="colUid != null" >
+        #{colUid,jdbcType=VARCHAR},
+      </if>
+      <if test="colDesc != null" >
+        #{colDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="colType != null" >
+        #{colType,jdbcType=VARCHAR},
+      </if>
+      <if test="colUrl != null" >
+        #{colUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="colState != null" >
+        #{colState,jdbcType=VARCHAR},
+      </if>
+      <if test="colFinaldate != null" >
+        #{colFinaldate,jdbcType=VARCHAR},
+      </if>
+      <if test="openType != null" >
+        #{openType,jdbcType=VARCHAR},
+      </if>
+      <if test="colId != null" >
+        #{colId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sendName != null" >
+        #{sendName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null" >
+        #{updateId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.Ttask" >
+    update ttask
+    <set >
+      <if test="colDept != null" >
+        col_dept = #{colDept,jdbcType=VARCHAR},
+      </if>
+      <if test="colRole != null" >
+        col_role = #{colRole,jdbcType=VARCHAR},
+      </if>
+      <if test="colUid != null" >
+        col_uid = #{colUid,jdbcType=VARCHAR},
+      </if>
+      <if test="colDesc != null" >
+        col_desc = #{colDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="colType != null" >
+        col_type = #{colType,jdbcType=VARCHAR},
+      </if>
+      <if test="colUrl != null" >
+        col_url = #{colUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="colState != null" >
+        col_state = #{colState,jdbcType=VARCHAR},
+      </if>
+      <if test="colFinaldate != null" >
+        col_finaldate = #{colFinaldate,jdbcType=VARCHAR},
+      </if>
+      <if test="openType != null" >
+        open_type = #{openType,jdbcType=VARCHAR},
+      </if>
+      <if test="colId != null" >
+        col_id = #{colId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        dept_code = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sendName != null" >
+        send_name = #{sendName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null" >
+        update_id = #{updateId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_id = #{pkId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <update id="updateTaskClient" parameterType="java.lang.String" >
+    update ttask set col_state='0' where col_dept != '36e2456d-603c-48d2-b366-e79cb3ccb4b5' and col_url like concat(concat('%',#{pkId,jdbcType=VARCHAR}),'%')
+  </update>
+  
+  <delete id="deleteTaskAdmin" parameterType="java.lang.String" >
+    delete from ttask  where col_dept ='36e2456d-603c-48d2-b366-e79cb3ccb4b5' and col_url  like concat(concat('%',#{pkId,jdbcType=VARCHAR}),'%')
+  </delete>
+  <update id="updateByPrimaryKey" parameterType="com.back.base.model.Ttask" >
+    update ttask
+    set col_dept = #{colDept,jdbcType=VARCHAR},
+      col_role = #{colRole,jdbcType=VARCHAR},
+      col_uid = #{colUid,jdbcType=VARCHAR},
+      col_desc = #{colDesc,jdbcType=VARCHAR},
+      col_type = #{colType,jdbcType=VARCHAR},
+      col_url = #{colUrl,jdbcType=VARCHAR},
+      col_state = #{colState,jdbcType=VARCHAR},
+      col_finaldate = #{colFinaldate,jdbcType=VARCHAR},
+      open_type = #{openType,jdbcType=VARCHAR},
+      col_id = #{colId,jdbcType=VARCHAR},
+      dept_code = #{deptCode,jdbcType=VARCHAR},
+      send_name = #{sendName,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_id = #{updateId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where pk_id = #{pkId,jdbcType=VARCHAR}
+  </update>
+  <select id="query" resultMap="BaseResultMap" parameterType="com.back.base.model.Ttask">
+  		 select d.* from ttask d 
+    	<where>
+			<if test="colRole != null and colRole !=''">
+				and col_role like concat(concat('%',#{colRole}),'%')
+			</if>
+			<if test="updateId != null and updateId !=''">
+				and (
+				<if test="colDept != null and colDept !=''">
+					 col_dept = #{colDept}
+				</if>
+				<if test="colUid != null and colUid !=''">
+					or  col_uid like concat(concat('%',#{colUid}),'%')
+				</if>	
+				)
+			</if> 			
+			
+			<choose>
+				<when test="colType!=null and colType!=''">
+					and col_type = ${colType}  				
+				</when>
+				<otherwise>
+				  and col_type in (select t1.fun_id from tloginrole t , troletask t1 where t.ROLEID=t1.role_id and t.LOGINID= #{createId})
+				</otherwise>
+			</choose>
+			
+			<if test="colState != null and colState !=''">
+				and col_state =#{colState}
+			</if>		
+			
+			<if test="deptCode != null and deptCode !=''">
+				and dept_code =#{deptCode}
+			</if>	
+			 order by create_time asc
+		</where>  
+  </select>
+</mapper>

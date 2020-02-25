@@ -1,0 +1,26 @@
+/**
+ * 纹理
+ */
+@Override
+public void surfaceCreated(SurfaceHolder holder) {			//创建纹理
+mThread = new Thread(this);							//实例化线程对象
+mThread.start();										//开启线程，该线程将会执行绘制图像
+}
+
+@Override
+public void surfaceChanged(SurfaceHolder holder, int format,
+			int width,int height) {						//改变纹理
+
+}
+
+@Override
+public void surfaceDestroyed(SurfaceHolder holder) {		//销毁纹理
+
+}
+
+// 显示发生改变
+@Override
+protected void onVisibilityChanged(View changedView, int visibility) {
+super.onVisibilityChanged(changedView, visibility);
+isRunning = (visibility == VISIBLE);					//通过判断来开启或关闭线程
+}

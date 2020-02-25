@@ -1,0 +1,18 @@
+    //该方法实现游戏主界面停止时，背景音乐停止
+    protected void onStop() {
+        super.onStop();
+        if (mediaPlayer != null) {		//音乐播放器不为空时
+            mediaPlayer.stop();		//停止音乐播放
+        }
+    }
+
+    // 该方法实现游戏主界面销毁时，背景音乐停止并释放音乐资源
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {		//音乐播放器不为空时
+            mediaPlayer.stop();		//停止音乐播放
+            mediaPlayer.release();		//释放音乐资源
+            mediaPlayer = null;		//设置音乐播放器为空
+        }
+    }
+    

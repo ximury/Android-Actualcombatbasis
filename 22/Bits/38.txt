@@ -1,0 +1,12 @@
+	@Override
+    	public void onStart() {
+       	    super.onStart();
+       	    /**
+       	     * 从数据库获取开关按钮的状态
+       	     * */
+       	    if (sharedPreferences.getBoolean("btnTf", false)) {
+              switchButton.openSwitch();
+          } else {
+              switchButton.closeSwitch();
+          }
+       	}

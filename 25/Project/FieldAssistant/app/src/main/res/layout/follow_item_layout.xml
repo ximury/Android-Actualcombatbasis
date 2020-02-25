@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:id="@+id/follow_item">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主题："
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/follow_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:text="乔布斯"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/follow_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="2016-06-29" />
+
+    <TextView
+        android:id="@+id/follow_item_connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:ellipsize="end"
+        android:maxEms="15"
+        android:singleLine="true"
+        android:text="在中国与马云谈成了一单非比寻常的一大单，价值300块钱的"
+        android:textColor="#CDCDCD"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/follow_item_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="65dp"
+        android:text="跟单失败" />
+</RelativeLayout>

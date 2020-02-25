@@ -1,0 +1,22 @@
+/**
+ * 回调函数
+ */
+private onPlantFlowerCountsListener onPlantFlowerCountsListener;
+public interface onPlantFlowerCountsListener{
+void thePlantFlowerCounts(int counts);				//花的个数
+void theFlowerIndex(int index ,int count);			//开出的花在数组中的索引值
+}
+public void setonPlantFlowerCountsListener(onPlantFlowerCountsListener listener){
+this.onPlantFlowerCountsListener = listener;
+}
+/**
+ * 回调
+ */
+private void bloomFlowers(){
+if (onPlantFlowerCountsListener != null){
+		//返回计数
+onPlantFlowerCountsListener.thePlantFlowerCounts(flowers_count);
+		//返回图片索引
+onPlantFlowerCountsListener.theFlowerIndex(plant_flower_index,1);
+}
+}

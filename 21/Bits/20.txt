@@ -1,0 +1,9 @@
+    //该方法实现从另一界面返回游戏主界面时，根据音乐播放状态播放音乐
+    protected void onRestart() {
+        super.onRestart();
+        if (isPlay == true) {		//如果音乐处于播放状态
+            PlayMusic();			//调用播放背景音乐方法，播放音乐
+        }
+    }
+
+

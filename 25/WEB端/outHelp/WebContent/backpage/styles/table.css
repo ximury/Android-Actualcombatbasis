@@ -1,0 +1,160 @@
+@charset "utf-8";
+/* 表格及表单样式 */
+.uiTable {
+	border-collapse: collapse;
+	border-top: 1px solid #d76666;
+	border-bottom: 1px solid #d76666;
+	width: 100%;
+	line-height: 2em;
+	background: #FFF;
+}
+
+.uiTable th {
+	border: 1px solid #c6d4db;
+	background: #e8f5fc url(../images/thbg.gif) repeat-x top;
+	text-align: left;
+	padding-left: 10px;
+	color: ##a6030f;
+}
+
+.uiTable td {
+	border: 1px solid #c6d4db;
+	height:30px;
+	padding-left: 10px;
+}
+
+.uiTable tr.jg {
+	background: #f4eced;
+}
+
+.uiTable tr.green {
+	background: #FFFF00;
+}
+
+.uiTable tr:hover {
+	background: #fdf3f4;
+}
+
+.uiTable td input,.uiTable td select,.uiTable td textarea {
+	font-size: 12px;
+}
+
+.uiTable th.textcen,.uiTable td.textcen {
+	text-align: center;
+	padding-left: 0px;
+}
+
+
+.uiTableSum {
+	border-collapse: collapse;
+	border-top: 1px solid #d76666;
+	border-bottom: 1px solid #d76666;
+	width: 100%;
+	line-height: 2em;
+	background: #FFF;
+}
+
+.uiTableSum th {
+	border: 1px solid #c6d4db;
+	background: #e8f5fc url(../images/thbg.gif) repeat-x top;
+	text-align: left;
+	padding-left: 10px;
+	color: ##a6030f;
+}
+
+.uiTableSum td {
+	border: 1px solid #c6d4db;
+	height:30px;
+}
+
+.uiTableSum tr.jg {
+	background: #f4eced;
+}
+
+.uiTableSum tr.green {
+	background: #FFFF00;
+}
+
+.uiTableSum tr:hover {
+	background: #fdf3f4;
+}
+
+.uiTableSum td input,.uiTableSum td select,.uiTableSum td textarea {
+	font-size: 12px;
+}
+
+.uiTableSum th.textcen,.uiTableSum td.textcen {
+	text-align: center;
+	padding-left: 0px;
+}
+
+
+.mains{
+	text-align: right;
+}
+
+.page {
+/*	border: 1px solid #d76666;*/
+	border-top-width: 0px;
+	background: #fbdede;
+	padding: 3px 12px;
+	text-align: center;
+}
+
+
+
+.page .pageinput {
+	font-size: 11px;
+	height: 15px;
+	width: 24px;
+	border: 1px solid #cccccc;
+	font-family: Arial;
+}
+.uiTable input[type="text"]{
+	width: 160px;
+	height: 20px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	border: 1px solid #cecece;
+}
+
+.uiTable textarea{
+	width: 560px;
+	height: 35px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	border: 1px solid #cecece;
+}
+.uiTable select{
+	width: 163px;
+	height: 23px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	border: 1px solid #cecece;
+}
+
+.uiListTable {
+	border-collapse: collapse;
+	border: 1px solid #c6d4db;
+	width: 100%;
+	line-height: 2em;
+	background: #FFF;
+}
+
+.uiListTable th {
+	border: 1px solid #c6d4db;
+	background: #e8f5fc url(../images/thbg.gif) repeat-x top;
+	text-align: left;
+	padding-left: 10px;
+	color: #005eac;
+}
+
+.uiListTable td {
+	border: 1px solid #c6d4db;
+	height:30px;
+	padding-left: 10px;
+}
+
+.uiListTable input{
+	width: 60px;
+	height: 20px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	border: 1px solid #cecece;
+}

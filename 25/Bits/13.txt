@@ -1,0 +1,33 @@
+//访问的接口后面加上需要上传的参数
+String path = url + "tfAttence_view.do?" + "id=" +
+                              sharedPreferences.getString("userid", "")+ "&date=" + date;
+StringRequest request = new StringRequest(path, new Response.Listener<String>() {
+    //获取成功后的操作在此方法里编写
+@Override
+    public void onResponse(String response) {
+       //初始化Gson数据 
+       Gson gson = new Gson();
+       // 从服务器获取出来的数据用Gson进行解析
+       ChooseDateEntity chooseDateEntity = gson.fromJson(response, ChooseDateEntity.class);
+        //把解析的数据显示出来
+        if (chooseDateEntity.getTfAttenceMain() != null 
+                                  && chooseDateEntity.getTfAttenceMain().size() > 0) {
+            setOtherData(chooseDateEntity);
+        } else {
+       /**如果数据为空，设置相应的文本显示空*/
+            otherUpText.setText("");
+            otherDownText.setText("");
+            upTextArd.setText("");
+            downTextArd.setText("");
+            upImageArd.setImageUrl(null, null);
+            downImageArd.setImageUrl(null, null);
+        }
+    }
+}, new Response.ErrorListener() {
+//获取失败后的操作在此方法里编写
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        //弹出“网络错误”的提示
+        Toast.makeText(SignedActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+    }
+});

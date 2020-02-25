@@ -1,0 +1,29 @@
+  <!--用于显示标题栏的父布局-->
+	 <RelativeLayout				
+	        android:layout_width="match_parent"			
+	        android:layout_height="50dp"				
+	        android:background="@android:color/holo_blue_light">		
+		<!--用于显示标题栏中的“锁屏背单词”的文本控件-->
+	        <TextView				
+	            android:layout_width="wrap_content"		
+	            android:layout_height="wrap_content"		
+	            android:layout_centerHorizontal="true"	
+	            android:layout_centerVertical="true"		
+	            android:text="锁屏背单词"				
+	            android:textColor="@android:color/white"		
+	            android:textSize="20sp" />				
+	
+	    <!--用于显示标题栏中的“错词本”的按钮控件-->
+	    <Button					
+	            android:id="@+id/wrong_btn"					
+	            android:layout_width="60dp"				
+	            android:layout_height="30dp"				
+	            android:layout_alignParentRight="true"	
+	            android:layout_centerVertical="true"		
+	            android:layout_marginRight="10dp"			
+	            android:padding="3dp"					
+	            android:text="错词本"							
+	            android:textColor="@android:color/white"		
+	            android:textSize="15sp"					
+	            android:background="@drawable/btn_kuang"/>		
+	   </RelativeLayout>		

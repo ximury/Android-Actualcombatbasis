@@ -1,0 +1,6 @@
+
+    //如果游戏主界面设置背景音乐为播放音乐状态
+    if (MainActivity.isPlay == true) { 
+        PlayMusic();   							//调用播放音乐的方法
+    }
+

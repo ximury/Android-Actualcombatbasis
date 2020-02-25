@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.TLoginMapper">
+	<resultMap id="BaseResultMap" type="com.back.base.model.TLogin">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="USERNAME" property="username" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="LOGINIP" property="loginip" jdbcType="VARCHAR" />
+		<result column="ENABLESTATE" property="enablestate" jdbcType="CHAR" />
+		<result column="ENABLETIME" property="enabletime" jdbcType="VARCHAR" />
+		<result column="LOGINTIME" property="logintime" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+		<result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, USERNAME, PASSWORD, LOGINIP, ENABLESTATE,
+		ENABLETIME,
+		LOGINTIME, CREATETIME,
+		UPDATETIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TLOGIN
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from TLOGIN
+		where ID = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.back.base.model.TLogin">
+		insert into TLOGIN (ID,USERNAME,
+		PASSWORD, LOGINIP, ENABLESTATE,
+		ENABLETIME,
+		LOGINTIME, CREATETIME,
+		UPDATETIME)
+		values (#{id,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{loginip,jdbcType=VARCHAR},
+		#{enablestate,jdbcType=CHAR},
+		#{enabletime,jdbcType=VARCHAR},
+		#{logintime,jdbcType=VARCHAR},
+		#{createtime,jdbcType=VARCHAR},
+		#{updatetime,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.back.base.model.TLogin">
+		insert into TLOGIN
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="username != null">
+				USERNAME,
+			</if>
+			<if test="password != null">
+				PASSWORD,
+			</if>
+			<if test="loginip != null">
+				LOGINIP,
+			</if>
+			<if test="enablestate != null">
+				ENABLESTATE,
+			</if>
+			<if test="enabletime != null">
+				ENABLETIME,
+			</if>
+			<if test="logintime != null">
+				LOGINTIME,
+			</if>
+			<if test="createtime != null">
+				CREATETIME,
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="loginip != null">
+				#{loginip,jdbcType=VARCHAR},
+			</if>
+			<if test="enablestate != null">
+				#{enablestate,jdbcType=CHAR},
+			</if>
+			<if test="enabletime != null">
+				#{enabletime,jdbcType=VARCHAR},
+			</if>
+			<if test="logintime != null">
+				#{logintime,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.TLogin">
+		update TLOGIN
+		<set>
+			<if test="username != null">
+				USERNAME = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="loginip != null">
+				LOGINIP = #{loginip,jdbcType=VARCHAR},
+			</if>
+			<if test="enablestate != null">
+				ENABLESTATE = #{enablestate,jdbcType=CHAR},
+			</if>
+			<if test="enabletime != null">
+				ENABLETIME = #{enabletime,jdbcType=VARCHAR},
+			</if>
+			<if test="logintime != null">
+				LOGINTIME = #{logintime,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				CREATETIME = #{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.back.base.model.TLogin">
+		update TLOGIN
+		set
+		USERNAME =
+		#{username,jdbcType=VARCHAR},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		LOGINIP = #{loginip,jdbcType=VARCHAR},
+		ENABLESTATE =
+		#{enablestate,jdbcType=CHAR},
+		ENABLETIME =
+		#{enabletime,jdbcType=VARCHAR},
+		LOGINTIME =
+		#{logintime,jdbcType=VARCHAR},
+		CREATETIME =
+		#{createtime,jdbcType=VARCHAR},
+		UPDATETIME =
+		#{updatetime,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+
+
+	<resultMap id="ResultMap" type="com.back.base.pageModel.Login">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="USERNAME" property="username" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="LOGINIP" property="loginip" jdbcType="VARCHAR" />
+		<result column="ENABLESTATE" property="enablestate" jdbcType="CHAR" />
+		<result column="ENABLETIME" property="enabletime" jdbcType="VARCHAR" />
+		<result column="LOGINTIME" property="logintime" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+		<result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="VARCHAR" />
+		<result column="ENGNAME" property="engname" jdbcType="VARCHAR" />
+		<result column="TYPE" property="type" jdbcType="VARCHAR" />
+		<result column="PHONE" property="phone" jdbcType="VARCHAR" />
+		<result column="TEL" property="tel" jdbcType="VARCHAR" />
+		<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+		<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+		<result column="ZIPCODE" property="zipcode" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Column_List">
+		TLOGIN.ID, USERNAME, PASSWORD, LOGINIP,
+		ENABLESTATE,
+		ENABLETIME,
+		LOGINTIME, TLOGIN.CREATETIME,
+		TLOGIN.UPDATETIME, TPERSON.NAME, TPERSON.SEX,TPERSON.ENGNAME,TPERSON.TYPE,TPERSON.PHONE,TPERSON.TEL,TPERSON.EMAIL,TPERSON.ADDRESS,TPERSON.ZIPCODE
+
+	</sql>
+
+	<select id="query" resultMap="ResultMap" parameterType="com.back.base.pageModel.Login">
+		select
+		<include refid="Column_List" />
+		,tparty.id as departmentId,
+		tparty.name as departmentName,
+		tdepartment.mark as departmentCode,
+		tparty.id as roleId,
+		tparty.id as roleName
+		from TLOGIN tlogin
+		left join TPERSON tperson on tlogin.ID = tperson.ID
+		left join TPARTY tparty on tparty.id = tperson.departmentid
+		left join TDEPARTMENT tdepartment on tdepartment.ID = tparty.id
+		<where>
+			<if test="username != null and username != '' ">
+				USERNAME like concat(concat('%',#{username}),'%')
+			</if>
+			<if test="name != null and name != '' ">
+				and tperson.NAME like concat(concat('%',#{name}),'%')
+			</if>
+			<if test="sex != null and sex != '' ">
+				and tperson.SEX = #{sex,jdbcType=VARCHAR}
+			</if>
+			<if test="enablestate != null and enablestate != '' ">
+				and ENABLESTATE = #{enablestate,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByPrimaryKeys">
+		delete from tlogin
+		where ID in
+		<foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<select id="find" resultMap="ResultMap" parameterType="com.back.base.pageModel.Login">
+		<!-- select <include refid="Column_List" /> from tlogin left join tperson on tlogin.PERSONID = tperson.ID where USERNAME = #{username,jdbcType=VARCHAR} and PASSWORD = #{password,jdbcType=VARCHAR} -->
+		<!-- select tlogin.*,tparty.id as positionId,tparty.name as positionName,tp.id as departmentId,tp.name as departmentName,tdepartment.mark as departmentCode from TLOGIN tlogin left join TPERSON tperson on tlogin.PERSONID = tperson.ID left join TPARTY tparty on tparty.id = tperson.POSITIONID left join TPARTY tp on tparty.pid = tp.id left join TDEPARTMENT tdepartment on tdepartment.ID = tparty.pid where USERNAME = #{username,jdbcType=VARCHAR} and PASSWORD = #{password,jdbcType=VARCHAR} and enablestate ='1' -->
+		select
+		<include refid="Column_List" />
+		,tparty.id as departmentId,
+		tparty.name as departmentName,
+		tdepartment.mark as departmentCode
+		from TLOGIN tlogin
+		left join TPERSON tperson on tlogin.ID = tperson.ID
+		left join TPARTY tparty on tparty.id = tperson.departmentid
+		left join TDEPARTMENT tdepartment on tdepartment.ID = tparty.id
+		where USERNAME
+		= #{username,jdbcType=VARCHAR} and PASSWORD =
+		#{password,jdbcType=VARCHAR} and enablestate ='1'
+
+	</select>
+
+	<select id="selectById" resultMap="ResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Column_List" />
+		,tparty.id as departmentId,tparty.name as departmentName
+		from tlogin left join tperson on tlogin.ID = tperson.ID left join tparty on tparty.id = tperson.departmentid
+		where
+		tlogin.ID = #{id,jdbcType=VARCHAR}
+	</select>
+
+
+	<select id="selectByRoleId" resultMap="ResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Column_List" />
+		,LOGINID,ROLEID,
+		tparty.id as departmentId,
+		tparty.name as departmentName,
+		tdepartment.mark as departmentCode
+		from TLOGIN tlogin
+		left join TPERSON tperson on tlogin.ID = tperson.ID
+		left join TPARTY tparty on tparty.id = tperson.departmentid
+		left join TDEPARTMENT tdepartment on tdepartment.ID = tparty.id
+		left join TLOGINROLE tloginrole on tlogin.ID = tloginrole.LOGINID
+		where ROLEID = #{roleId,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

@@ -1,0 +1,10 @@
+@Override
+protected void onRestart() {
+super.onRestart();
+if (isStart){
+openBack = true;						//退出该界面的开关
+mChronometer.stop();					//停止计时器
+plant.setVisibility(View.INVISIBLE);	//隐藏长花的控件
+Toast.makeText(this,"花儿枯萎了，点击返回键返回主界面！",Toast.LENGTH_SHORT).show();
+    }
+}

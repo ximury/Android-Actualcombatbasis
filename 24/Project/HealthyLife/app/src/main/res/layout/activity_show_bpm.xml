@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="mrkj.healthylife.activity.ShowBPMActivity">
+    <include layout="@layout/title_layout"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_size_0"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <mrkj.library.wheelview.circlebar.ColorArcProgressBar
+            android:id="@+id/heat_bpm_values"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:back_color="@color/btn_gray"
+            app:back_width="10dp"
+            app:front_color1="@color/theme_blue_two"
+            app:front_width="10dp"
+            app:is_need_content="true"
+            app:is_need_title="true"
+            app:is_need_unit="true"
+            app:string_title="您的心率值为"
+            app:string_unit="BPM"
+            app:total_engle="270" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_size_0"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="心率过慢:小于60BPM"
+            android:layout_marginLeft="@dimen/width_size_30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_18"/>
+        <TextView
+            android:id="@+id/two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="心率正常:大于60BPM小于100BPM"
+            android:layout_marginTop="@dimen/width_size_10"
+            android:layout_marginLeft="@dimen/width_size_30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_18"/>
+        <TextView
+            android:id="@+id/three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="心率过快:大于100BPM"
+            android:layout_marginTop="@dimen/width_size_10"
+            android:layout_marginLeft="@dimen/width_size_30"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_18"/>
+        
+    </LinearLayout>
+</LinearLayout>

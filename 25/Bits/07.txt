@@ -1,0 +1,12 @@
+/**
+ * 构造广播监听类，监听 SDK 密钥 验证以及网络异常广播
+ */
+public class SDKReceiver extends BroadcastReceiver {
+    public void onReceive(Context context, Intent intent) {
+        TextView text = (TextView) findViewById(R.id.text_Info);
+        text.setTextColor(Color.RED);
+        if (s.equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
+            text.setText("网络出错");
+        }
+    }
+}

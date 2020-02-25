@@ -1,0 +1,28 @@
+/**
+ * 绘制显示饼状图的方法
+ * */
+private void generateData(AnalysisCustomerEntity find) {
+    /**
+     * 将数据提取出来设置到饼状图上
+     * */
+    int numValues = 4;
+    int one = Integer.parseInt(find.getNum1());
+    int two = Integer.parseInt(find.getNum2());
+    int three = Integer.parseInt(find.getNum3());
+    int four = Integer.parseInt(find.getNum4());
+    int [] num ={one,two,three,four};            //定义一个数组 把从服务器上获取到的数据加进来
+    List<SliceValue> values = new ArrayList<SliceValue>();  //定义一个list，用于显示订单的状态
+    String [] name = {"拜访单","赢单","失败单","进行单"};
+    /**
+     * 进行循环 把订单状态和数据联系起来
+     * */
+    for (int i = 0; i < numValues; ++i) {
+        SliceValue sliceValue = new SliceValue(num[i], ChartUtils.pickColor());
+        sliceValue.setLabel(name[i]);
+        values.add(sliceValue);
+    }
+    data = new PieChartData(values);        //将处理好的数据添加到饼状图上
+    data.setHasLabels(true);                //是否在饼状图上显示标签
+    chart.setPieChartData(data);            //绘制饼状图
+
+}

@@ -1,0 +1,48 @@
+01	/**
+02	 * 数据模型
+03	 * @author Administrator
+04	 *
+05	 */
+06	public class DandelionModel {
+07	
+08	private int pointX;						//绘制图片的横坐标
+09	private int pointY;						//绘制图片的纵坐标
+10	
+11	private int portOffset;						//降落的偏移量
+12	private int landOffset;						//水平的偏移量
+13	   /**
+14	   * 构造方法
+15	   */
+16	
+17	public DandelionModel(int pointX, int pointY, int portOffset, int landOffset) {
+18	super();
+19	this.pointX = pointX;						//给声明的pointX属性赋值
+20	this.pointY = pointY;						//给声明的pointY属性赋值
+21	this.portOffset = portOffset;				//给声明的portOffset属性赋值
+22	this.landOffset = landOffset;				//给声明的landOffset属性赋值
+23	   }
+24	public int getPointX() {						//获取pointX值
+25	return pointX;								//返回pointX值
+26	   }
+27	public void setPointX(int pointX) {				//设置pointX值
+28	this.pointX = pointX;
+29	   }
+30	public int getPointY() {						//获取pointY值
+31	return pointY;								//返回pointY值
+32	   }
+33	public void setPointY(int pointY) {				//设置pointY值
+34	this.pointY = pointY;
+35	   }
+36	public int getPortOffset() {					//获取portOffset值
+37	return portOffset;						     //返回portOffset值
+38	   }
+39	public void setPortOffset(int portOffset) {		//设置portOffset值
+40	this.portOffset = portOffset;
+41	   }
+42	public int getLandOffset() {					//获取landOffset值
+43	return landOffset;						     //返回landOffset值
+44	   }
+45	public void setLandOffset(int landOffset) {		//设置landOffset值
+46	this.landOffset = landOffset;
+47	   }
+48	}

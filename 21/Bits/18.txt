@@ -1,0 +1,19 @@
+
+    //单击事件  音乐播放时单击按钮停止音乐播放，音乐停止时单击按钮播放音乐
+    public void OnMusic(View v) {
+        if (isPlay == true) {			//如果音乐处于播放状态
+            if (mediaPlayer != null) {	//音乐播放器不为空时
+                mediaPlayer.stop();		//停止音乐播放
+                //设置按钮为停止状态背景
+                music_btn.setBackgroundResource(R.drawable.btn_music2);
+                isPlay = false;			//设置音乐处于停止状态
+            }
+
+        } else {						//如果音乐处于停止状态
+            PlayMusic();				//调用播放背景音乐方法，播放音乐
+            //设置按钮为播放状态背景
+            music_btn.setBackgroundResource(R.drawable.btn_music1);
+            isPlay = true;				//设置音乐处于播放状态
+        }
+    }
+

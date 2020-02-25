@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.TAclMapper" >
+  <resultMap id="BaseResultMap" type="com.back.base.model.TAcl" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="PRINCIPALTYPE" property="principaltype" jdbcType="VARCHAR" />
+    <result column="PRINCIPALID" property="principalid" jdbcType="VARCHAR" />
+    <result column="RESOURCETYPE" property="resourcetype" jdbcType="VARCHAR" />
+    <result column="RESOURCEID" property="resourceid" jdbcType="VARCHAR" />
+    <result column="ACLSTATE" property="aclstate" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PRINCIPALTYPE, PRINCIPALID, RESOURCETYPE, RESOURCEID, ACLSTATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TACL
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TACL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.base.model.TAcl" >
+    insert into TACL (ID, PRINCIPALTYPE, PRINCIPALID, 
+      RESOURCETYPE, RESOURCEID, ACLSTATE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{principaltype,jdbcType=VARCHAR}, #{principalid,jdbcType=VARCHAR}, 
+      #{resourcetype,jdbcType=VARCHAR}, #{resourceid,jdbcType=VARCHAR}, #{aclstate,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.base.model.TAcl" >
+    insert into TACL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="principaltype != null" >
+        PRINCIPALTYPE,
+      </if>
+      <if test="principalid != null" >
+        PRINCIPALID,
+      </if>
+      <if test="resourcetype != null" >
+        RESOURCETYPE,
+      </if>
+      <if test="resourceid != null" >
+        RESOURCEID,
+      </if>
+      <if test="aclstate != null" >
+        ACLSTATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="principaltype != null" >
+        #{principaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="principalid != null" >
+        #{principalid,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcetype != null" >
+        #{resourcetype,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceid != null" >
+        #{resourceid,jdbcType=VARCHAR},
+      </if>
+      <if test="aclstate != null" >
+        #{aclstate,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.TAcl" >
+    update TACL
+    <set >
+      <if test="principaltype != null" >
+        PRINCIPALTYPE = #{principaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="principalid != null" >
+        PRINCIPALID = #{principalid,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcetype != null" >
+        RESOURCETYPE = #{resourcetype,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceid != null" >
+        RESOURCEID = #{resourceid,jdbcType=VARCHAR},
+      </if>
+      <if test="aclstate != null" >
+        ACLSTATE = #{aclstate,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.base.model.TAcl" >
+    update TACL
+    set PRINCIPALTYPE = #{principaltype,jdbcType=VARCHAR},
+      PRINCIPALID = #{principalid,jdbcType=VARCHAR},
+      RESOURCETYPE = #{resourcetype,jdbcType=VARCHAR},
+      RESOURCEID = #{resourceid,jdbcType=VARCHAR},
+      ACLSTATE = #{aclstate,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+	<select id="query" resultMap="BaseResultMap" parameterType="com.back.base.model.TAcl">
+		select
+		<include refid="Base_Column_List" />
+		from TACL
+		<where>
+			<if test="principaltype != null">
+				PRINCIPALTYPE = #{principaltype,jdbcType=VARCHAR}
+			</if>
+			<if test="principalid != null">
+				and PRINCIPALID = #{principalid,jdbcType=VARCHAR}
+			</if>
+			<if test="resourcetype != null">
+				and RESOURCETYPE = #{resourcetype,jdbcType=VARCHAR}
+			</if>
+			<if test="resourceid != null">
+				and RESOURCEID = #{resourceid,jdbcType=VARCHAR}
+			</if>									
+		</where>
+	</select> 
+	
+	
+	<select id="select" resultMap="BaseResultMap" parameterType="com.back.base.model.TAcl">
+		select
+		<include refid="Base_Column_List" />
+		from TACL
+		<where>
+			<if test="principaltype != null">
+				PRINCIPALTYPE = #{principaltype,jdbcType=VARCHAR}
+			</if>
+			<if test="principalid != null">
+				and PRINCIPALID = #{principalid,jdbcType=VARCHAR}
+			</if>
+			<if test="resourcetype != null">
+				and RESOURCETYPE = #{resourcetype,jdbcType=VARCHAR}
+			</if>
+			<if test="resourceid != null">
+				and RESOURCEID = #{resourceid,jdbcType=VARCHAR}
+			</if>									
+		</where>
+	</select> 	 
+	
+  <delete id="deleteByPrincipalIdAndResourceType" parameterType="com.back.base.model.TAcl">
+    delete from TACL
+    where PRINCIPALID = #{principalid,jdbcType=VARCHAR} and RESOURCETYPE = #{resourcetype,jdbcType=VARCHAR}
+  </delete>	
+  
+  	<select id="selectResourceIdByPrincipalIds" resultType="java.lang.String">
+		select
+			DISTINCT(RESOURCEID)
+		from TACL
+		where 
+		RESOURCETYPE = 'menu' and
+		PRINCIPALID in
+		<foreach collection="list" item="item" index="index" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>		
+	</select>
+  
+	
+</mapper>

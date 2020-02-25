@@ -1,0 +1,15 @@
+    /**
+     * 还原单词与选项的颜色
+     */
+    private void setTextColor() {
+        //还原单词选项的颜色
+        radioOne.setChecked(false);        //默认不被选中
+        radioTwo.setChecked(false);        //默认不被选中
+        radioThree.setChecked(false);        //默认不被选中
+        /**将选项的按钮设置为白色*/
+        radioOne.setTextColor(Color.parseColor("#FFFFFF"));
+        radioTwo.setTextColor(Color.parseColor("#FFFFFF"));
+        radioThree.setTextColor(Color.parseColor("#FFFFFF"));
+        wordText.setTextColor(Color.parseColor("#FFFFFF"));  //将单词设置为白色
+        englishText.setTextColor(Color.parseColor("#FFFFFF"));//将音标设置为白色
+    }

@@ -1,0 +1,75 @@
+  /**
+     * 初始化控件
+     */
+    public void init() {
+        //初始化轻量级数据库
+        sharedPreferences = getSharedPreferences("share", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();          //初始化轻量级数据库编辑器
+        //给播放单词语音的设置个appid（这个是要到讯飞平台申请的，详情请参考讯飞官网）
+        list = new ArrayList<Integer>();            //初始化list
+        /**
+         * 添加十个20以内随机数
+         * */
+        Random r = new Random();
+        int i;
+        while (list.size() < 10) {
+            i = r.nextInt(20);
+            if (!list.contains(i)) {
+                list.add(i);
+            }
+        }
+        /**
+         * 得到键盘锁管理对象
+         * */
+        km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+        kl = km.newKeyguardLock("unLock");
+        // 初始化，只需要调用一次
+        AssetsDatabaseManager.initManager(this);
+        // 获取管理对象，因为数据库需要通过管理对象才能够获取
+        AssetsDatabaseManager mg = AssetsDatabaseManager.getManager();
+        // 通过管理对象获取数据库
+        SQLiteDatabase db1 = mg.getDatabase("word.db");
+        // 对数据库进行操作
+        mDaoMaster = new DaoMaster(db1);
+        mDaoSession = mDaoMaster.newSession();
+        questionDao = mDaoSession.getCET4EntityDao();
+        /**此DevOpenHelper类继承自SQLiteOpenHelper,
+         *第一个参数Context,第二个参数数据库名字,第三个参数CursorFactory
+         */
+        DaoMaster.DevOpenHelper helper = new DaoMaster.
+                DevOpenHelper(this, "wrong.db", null);
+        /**
+         * 初始化数据库
+         * */
+        db = helper.getWritableDatabase();
+        dbMaster = new DaoMaster(db);
+        dbSession = dbMaster.newSession();
+        dbDao = dbSession.getCET4EntityDao();
+        /**
+         * 控件初始化
+         * */
+        //用于显示分钟绑定id
+        timeText = (TextView) findViewById(R.id.time_text);
+        //用于显示日期绑定id
+        dateText = (TextView) findViewById(R.id.date_text);
+        //用于显示单词绑定id
+        wordText = (TextView) findViewById(R.id.word_text);
+        //显示音标绑定id
+        englishText = (TextView) findViewById(R.id.english_text);
+        //用于播放单词的按钮绑定id
+        playVioce = (ImageView) findViewById(R.id.play_vioce);
+        //给播放单词按钮进行监听
+        playVioce.setOnClickListener(this);
+        //给加载单词三个选项绑定id
+        radioGroup = (RadioGroup) findViewById(R.id.choose_group);
+        //给第一个选项绑定id
+        radioOne = (RadioButton) findViewById(R.id.choose_btn_one);
+        //给第二个选项绑定id
+        radioTwo = (RadioButton) findViewById(R.id.choose_btn_two);
+        //给第三个选项绑定id
+        radioThree = (RadioButton) findViewById(R.id.choose_btn_three);
+        //给加载单词三个选项设置监听事件
+        radioGroup.setOnCheckedChangeListener(this);
+      
+
+    }

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfJobPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfJobPlan" >
+    <id column="jp_id" property="jpId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="jp_data" property="jpData" jdbcType="VARCHAR" />
+    <result column="jp_time" property="jpTime" jdbcType="VARCHAR" />
+    <result column="jp_time1" property="jpTime1" jdbcType="VARCHAR" />
+    <result column="jp_time2" property="jpTime2" jdbcType="VARCHAR" />
+    <result column="jp_title" property="jpTitle" jdbcType="VARCHAR" />
+    <result column="jp_remark" property="jpRemark" jdbcType="VARCHAR" />
+    <result column="jp_spare1" property="jpSpare1" jdbcType="VARCHAR" />
+    <result column="jp_spare2" property="jpSpare2" jdbcType="VARCHAR" />
+    <result column="jp_spare3" property="jpSpare3" jdbcType="VARCHAR" />
+    <result column="jp_spare4" property="jpSpare4" jdbcType="VARCHAR" />
+    <result column="jp_spare5" property="jpSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    jp_id, user_id, jp_data, jp_time, jp_time1, jp_time2, jp_title, jp_remark, jp_spare1, 
+    jp_spare2, jp_spare3, jp_spare4, jp_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_jobplan
+    where jp_id = #{jpId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_jobplan
+    where jp_id = #{jpId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfJobPlan" >
+    insert into tf_jobplan (jp_id, user_id, jp_data, 
+      jp_time, jp_time1, jp_time2, 
+      jp_title, jp_remark, jp_spare1, 
+      jp_spare2, jp_spare3, jp_spare4, 
+      jp_spare5)
+    values (#{jpId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{jpData,jdbcType=VARCHAR}, 
+      #{jpTime,jdbcType=VARCHAR}, #{jpTime1,jdbcType=VARCHAR}, #{jpTime2,jdbcType=VARCHAR}, 
+      #{jpTitle,jdbcType=VARCHAR}, #{jpRemark,jdbcType=VARCHAR}, #{jpSpare1,jdbcType=VARCHAR}, 
+      #{jpSpare2,jdbcType=VARCHAR}, #{jpSpare3,jdbcType=VARCHAR}, #{jpSpare4,jdbcType=VARCHAR}, 
+      #{jpSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfJobPlan" >
+    insert into tf_jobplan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jpId != null" >
+        jp_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="jpData != null" >
+        jp_data,
+      </if>
+      <if test="jpTime != null" >
+        jp_time,
+      </if>
+      <if test="jpTime1 != null" >
+        jp_time1,
+      </if>
+      <if test="jpTime2 != null" >
+        jp_time2,
+      </if>
+      <if test="jpTitle != null" >
+        jp_title,
+      </if>
+      <if test="jpRemark != null" >
+        jp_remark,
+      </if>
+      <if test="jpSpare1 != null" >
+        jp_spare1,
+      </if>
+      <if test="jpSpare2 != null" >
+        jp_spare2,
+      </if>
+      <if test="jpSpare3 != null" >
+        jp_spare3,
+      </if>
+      <if test="jpSpare4 != null" >
+        jp_spare4,
+      </if>
+      <if test="jpSpare5 != null" >
+        jp_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jpId != null" >
+        #{jpId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="jpData != null" >
+        #{jpData,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTime != null" >
+        #{jpTime,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTime1 != null" >
+        #{jpTime1,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTime2 != null" >
+        #{jpTime2,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTitle != null" >
+        #{jpTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="jpRemark != null" >
+        #{jpRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare1 != null" >
+        #{jpSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare2 != null" >
+        #{jpSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare3 != null" >
+        #{jpSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare4 != null" >
+        #{jpSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare5 != null" >
+        #{jpSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfJobPlan" >
+    update tf_jobplan
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="jpData != null" >
+        jp_data = #{jpData,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTime != null" >
+        jp_time = #{jpTime,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTime1 != null" >
+        jp_time1 = #{jpTime1,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTime2 != null" >
+        jp_time2 = #{jpTime2,jdbcType=VARCHAR},
+      </if>
+      <if test="jpTitle != null" >
+        jp_title = #{jpTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="jpRemark != null" >
+        jp_remark = #{jpRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare1 != null" >
+        jp_spare1 = #{jpSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare2 != null" >
+        jp_spare2 = #{jpSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare3 != null" >
+        jp_spare3 = #{jpSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare4 != null" >
+        jp_spare4 = #{jpSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="jpSpare5 != null" >
+        jp_spare5 = #{jpSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jp_id = #{jpId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfJobPlan" >
+    update tf_jobplan
+    set user_id = #{userId,jdbcType=VARCHAR},
+      jp_data = #{jpData,jdbcType=VARCHAR},
+      jp_time = #{jpTime,jdbcType=VARCHAR},
+      jp_time1 = #{jpTime1,jdbcType=VARCHAR},
+      jp_time2 = #{jpTime2,jdbcType=VARCHAR},
+      jp_title = #{jpTitle,jdbcType=VARCHAR},
+      jp_remark = #{jpRemark,jdbcType=VARCHAR},
+      jp_spare1 = #{jpSpare1,jdbcType=VARCHAR},
+      jp_spare2 = #{jpSpare2,jdbcType=VARCHAR},
+      jp_spare3 = #{jpSpare3,jdbcType=VARCHAR},
+      jp_spare4 = #{jpSpare4,jdbcType=VARCHAR},
+      jp_spare5 = #{jpSpare5,jdbcType=VARCHAR}
+    where jp_id = #{jpId,jdbcType=VARCHAR}
+  </update>
+  
+      <select id="queryTempList" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfJobPlan">
+		select
+		<include refid="Base_Column_List" />
+		from tf_jobplan
+		<where>
+		 (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+		</where>
+		order by jp_data desc ,jp_time desc
+	</select>
+</mapper>

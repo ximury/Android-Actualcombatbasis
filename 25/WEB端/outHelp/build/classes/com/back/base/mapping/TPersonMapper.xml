@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.TPersonMapper">
+	<resultMap id="BaseResultMap" type="com.back.base.model.TPerson">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="DEPARTMENTID" property="departmentid" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="ENGNAME" property="engname" jdbcType="VARCHAR" />
+		<result column="TYPE" property="type" jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="CHAR" />
+		<result column="PHONE" property="phone" jdbcType="VARCHAR" />
+		<result column="TEL" property="tel" jdbcType="VARCHAR" />
+		<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+		<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+		<result column="ZIPCODE" property="zipcode" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+		<result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		TPERSON.ID, TPERSON.DEPARTMENTID, TPERSON.NAME, TPERSON.ENGNAME, TPERSON.TYPE, TPERSON.SEX, TPERSON.PHONE, TPERSON.TEL, TPERSON.EMAIL, TPERSON.ADDRESS,
+		TPERSON.ZIPCODE, TPERSON.CREATETIME,
+		TPERSON.UPDATETIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TPERSON
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from TPERSON
+		where ID = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.back.base.model.TPerson">
+		insert into TPERSON (ID, DEPARTMENTID, NAME,
+		ENGNAME, TYPE, SEX, PHONE,
+		TEL, EMAIL, ADDRESS,
+		ZIPCODE, CREATETIME, UPDATETIME
+		)
+		values (#{id,jdbcType=VARCHAR}, #{departmentid,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{engname,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR},
+		#{phone,jdbcType=VARCHAR},
+		#{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+		#{zipcode,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR},
+		#{updatetime,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.back.base.model.TPerson">
+		insert into TPERSON
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="departmentid != null">
+				DEPARTMENTID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="engname != null">
+				ENGNAME,
+			</if>
+			<if test="type != null">
+				TYPE,
+			</if>
+			<if test="sex != null">
+				SEX,
+			</if>
+			<if test="phone != null">
+				PHONE,
+			</if>
+			<if test="tel != null">
+				TEL,
+			</if>
+			<if test="email != null">
+				EMAIL,
+			</if>
+			<if test="address != null">
+				ADDRESS,
+			</if>
+			<if test="zipcode != null">
+				ZIPCODE,
+			</if>
+			<if test="createtime != null">
+				CREATETIME,
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="departmentid != null">
+				#{departmentid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="engname != null">
+				#{engname,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=CHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="zipcode != null">
+				#{zipcode,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.TPerson">
+		update TPERSON
+		<set>
+			<if test="departmentid != null">
+				DEPARTMENTID = #{departmentid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="engname != null">
+				ENGNAME = #{engname,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				TYPE = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				SEX = #{sex,jdbcType=CHAR},
+			</if>
+			<if test="phone != null">
+				PHONE = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				TEL = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				ADDRESS = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="zipcode != null">
+				ZIPCODE = #{zipcode,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				CREATETIME = #{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.back.base.model.TPerson">
+		update TPERSON
+		set DEPARTMENTID = #{departmentid,jdbcType=VARCHAR},
+		NAME = #{name,jdbcType=VARCHAR},
+		ENGNAME = #{engname,jdbcType=VARCHAR},
+		TYPE = #{type,jdbcType=VARCHAR},
+		SEX = #{sex,jdbcType=CHAR},
+		PHONE = #{phone,jdbcType=VARCHAR},
+		TEL = #{tel,jdbcType=VARCHAR},
+		EMAIL = #{email,jdbcType=VARCHAR},
+		ADDRESS = #{address,jdbcType=VARCHAR},
+		ZIPCODE = #{zipcode,jdbcType=VARCHAR},
+		CREATETIME = #{createtime,jdbcType=VARCHAR},
+		UPDATETIME = #{updatetime,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+
+	<select id="query" resultMap="BaseResultMap" parameterType="com.back.base.model.TPerson">
+		select
+		<include refid="Base_Column_List" />
+		
+		from TPERSON
+		
+		<where>
+			<if test="departmentid != null">
+				DEPARTMENTID = #{departmentid,jdbcType=VARCHAR}
+			</if>		
+			<if test="name != null">
+				AND NAME like concat(concat('%',#{name}),'%')
+			</if>
+			<if test="address != null">
+				AND ADDRESS like concat(concat('%',#{address}),'%')
+			</if>
+		</where>		
+	</select>
+</mapper>

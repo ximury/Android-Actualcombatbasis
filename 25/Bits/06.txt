@@ -1,0 +1,10 @@
+/**
+ * 地图相关，使用继承MapView的MyRouteMapView目的是重写touch事件
+ *如果不处理touch事件，则无需继承，直接使用MapView即可
+ */
+MapView mMapView = null;            // 地图View
+BaiduMap mBaidumap = null;
+// 路线搜索
+RoutePlanSearch mSearch = null;    // 搜索模块，也可去掉地图模块独立使用
+// 定位相关
+LocationClient mLocClient;

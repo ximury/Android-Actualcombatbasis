@@ -1,0 +1,6 @@
+	private ScreenListener screenListener;     //绑定此页面与手机屏幕状态的监听
+	    private SharedPreferences sharedPreferences;    //定义一个轻量级数据库
+	    private FragmentTransaction transaction;		//定义用于加载复习与设置的界面
+	    private StudyFragment studyFragment;     		//绑定复习界面
+	    private SetFragment setFragment;				//绑定设置界面
+	    private Button wrongBtn;						//定义错词本按钮

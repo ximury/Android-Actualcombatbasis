@@ -1,0 +1,122 @@
+//填充日历(包含日期、标记、背景)
+private void setCalendarDate() {
+ // 根据日历的日子获取这一天是星期几
+int weekday = calendarday.getDay();
+ // 每个月第一天
+int firstDay = 1;
+ // 每个月中间号,根据循环会自动+1
+int day = firstDay;
+// 每个月的最后一天
+int lastDay = getDateNum(calendarday.getYear(), calendarday.getMonth());
+// 下个月第一天
+int nextMonthDay = 1;
+int lastMonthDay = 1;
+
+  // 填充每一个空格
+for (int i = 0; i <ROWS_CALENDAR; i++) {
+for (int j = 0; j <COLS_CALENDAR; j++) {
+ //这个月第一天不是周日,则需要绘制上个月的剩余几天
+if (i == 0 && j == 0 && weekday != 0) {
+int year = 0;
+int month = 0;
+int lastMonthDays = 0;
+// 如果这个月是1月，上一个月就是去年的12月
+if (calendarday.getMonth() == 0) {
+                  year = calendarday.getYear() - 1;				//年份减一
+                  month = Calendar.DECEMBER;						//设置月份
+               } else {
+                  year = calendarday.getYear();					//设置年份
+                  month = calendarday.getMonth() - 1;			//月份减一
+               }
+lastMonthDays = getDateNum(year, month);						//上个月的最后一天是几号
+int firstShowDay = lastMonthDays - weekday + 1;				 // 第一个格子展示的是几号
+//上月
+for (int k = 0; k < weekday; k++) {
+                  lastMonthDay = firstShowDay + k;
+                  RelativeLayout group = getDateView(0, k);
+                  group.setGravity(Gravity.CENTER);				//设置布局居中
+                  TextView view = null;
+if (group.getChildCount() >0) {
+                     view = (TextView) group.getChildAt(0);
+                  } else {
+                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -1);
+                     view = new TextView(getContext());
+                     view.setLayoutParams(params);				//设置布局
+                     view.setGravity(Gravity.CENTER);			//居中
+                     group.addView(view);
+                  }
+                  view.setText(Integer.toString(lastMonthDay));
+                  view.setTextColor(COLOR_TX_OTHER_MONTH_DAY);	//设置文字颜色
+           dates[0][k] = format(new Date(year, month, lastMonthDay));
+ // 设置日期背景色
+if (dayBgColorMap.get(dates[0][k]) = = null) {
+                     view.setBackgroundColor(Color.TRANSPARENT);	//设置背景颜色
+                  }
+setMarker(group, 0, k);										//设置标记
+               }
+               j = weekday - 1;
+   // 这个月第一天是礼拜天，不用绘制上个月的日期，直接绘制这个月的日期
+} else {
+               RelativeLayout group = getDateView(i, j);
+               group.setGravity(Gravity.CENTER);						//布局居中
+               TextView view = null;
+if (group.getChildCount() >0) {
+                  view = (TextView) group.getChildAt(0);				//获取子布局
+               } else {
+                  LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -1);
+                  view = new TextView(getContext());
+                  view.setLayoutParams(params);						//动态添加布局
+                  view.setGravity(Gravity.CENTER);					//布局居中
+                  group.addView(view);
+               }
+
+   // 本月
+if (day <= lastDay) {
+dates[i][j] = format(new Date(calendarday.getYear(),
+								calendarday.getMonth(), day));
+                  view.setText(Integer.toString(day));
+ // 当天
+if (thisday.getDate() == day
+				&&thisday.getMonth() == calendarday.getMonth()
+					&&thisday.getYear() == calendarday.getYear()) {
+                     view.setText("今天");							//将文字设置为今天
+                     view.setTextColor(COLOR_TX_WEEK);				//设置文字的颜色
+                     view.setBackgroundColor(Color.TRANSPARENT);		//设置背景颜色
+                  } else {
+                     view.setTextColor(COLOR_TX_THIS_MONTH_DAY);		//设置文字颜色
+                     view.setBackgroundColor(Color.TRANSPARENT);		//设置背景颜色
+                  }
+  // 上面首先设置了一下默认的"当天"背景色，当有特殊需求时，才给当日填充背景色
+                  // 设置日期背景色
+if (dayBgColorMap.get(dates[i][j]) != null) {
+                     view.setTextColor(Color.WHITE);					//文字设置为白色
+                     view.setBackgroundResource(dayBgColorMap.get(dates[i][j]));
+                  }
+   // 设置标记
+setMarker(group, i, j);
+                  day++;
+          // 下个月
+} else {
+if (calendarday.getMonth() == Calendar.DECEMBER) {
+dates[i][j] = format(new Date(calendarday.getYear() + 1,
+		 Calendar.JANUARY, nextMonthDay));
+                  } else {
+dates[i][j] = format(new Date(
+calendarday.getYear(),			
+calendarday.getMonth() + 1, nextMonthDay));
+                  }
+                  view.setText(Integer.toString(nextMonthDay));  //设置日期
+                  view.setTextColor(COLOR_TX_OTHER_MONTH_DAY);	//设置日期的颜色
+ // 设置日期背景色
+if (dayBgColorMap.get(dates[i][j]) = = null) {
+                     view.setBackgroundColor(Color.TRANSPARENT);	//设置背景颜色
+                  }
+  // 设置标记
+setMarker(group, i, j);
+                  nextMonthDay++;
+               }
+            }
+         }
+      }
+   }
+

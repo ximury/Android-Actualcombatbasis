@@ -1,0 +1,61 @@
+/**
+ * 构造方法
+ * @param context
+ */
+public Plant(Context context) {
+this(context,null);
+}
+
+public Plant(Context context, AttributeSet attrs) {
+super(context, attrs);
+//添加控件
+addPlantChildView(context);		//向Plant中添加子控件，Plant相当于控件的容器
+//默认
+onlyShowGapImg();					//设置Plant最开始显示的效果
+}
+
+/**
+ * 添加控件
+ */
+private void addPlantChildView(Context context) {
+//种子-->ImageView
+seedImg = new ImageView(context);						//创建代表种子的ImageView
+seedImg.setImageResource(R.mipmap.mrkj_grow_seed);		//向控件中添加图片
+//左侧叶子-->ImageView
+leftLeafImg = new ImageView(context);					//创建代表左侧叶子的ImageView
+leftLeafImg.setImageResource(R.mipmap.mrkj_plantflower_leaf_01);	//向控件中添加图片
+//右侧叶子-->ImageView
+rightLeafImg = new ImageView(context);				//创建代表右侧叶子的ImageView
+rightLeafImg.setImageResource(R.mipmap.mrkj_plantflower_leaf_02);//向控件中添加图片
+//花朵-->ImageView
+budImg = new ImageView(context);						//创建代表花朵的ImageView
+budImg.setImageResource(R.mipmap.mrkj_grow_bud_1);		//向控件中添加图片
+//根茎-->ImageView
+branchImg = new ImageView(context);					//创建代表根茎的ImageView
+branchImg.setScaleType(ImageView.ScaleType.FIT_XY);		//设置图片的显示样式
+branchImg.setImageResource(R.mipmap.mrkj_plantflower_branch);	//向控件中添加图片
+//地缝-->ImageView
+gapImg = new ImageView(context);						//创建代表地缝的ImageView
+gapImg.setImageResource(R.mipmap.mrkj_flowerplant_gap);	//向控件中添加图片
+//添加子控件
+addView(gapImg);										//地缝在容器中的索引值为0
+addView(branchImg);									//根茎在容器中的索引值为1
+addView(leftLeafImg);									//左侧叶子在容器中的索引值为2
+addView(rightLeafImg);								//右侧叶子在容器中的索引值为3
+addView(budImg);										//花朵在容器中的索引值为4
+addView(seedImg);										//种子在容器中的索引值为5
+}
+/**
+ * 初始化后的显示效果
+ * 默认只显示地缝
+ */
+private void onlyShowGapImg(){
+branchImg.setVisibility(INVISIBLE);							//隐藏代表根茎的控件
+leftLeafImg.setVisibility(INVISIBLE);							//隐藏代表左侧叶子的控件
+rightLeafImg.setVisibility(INVISIBLE);							//隐藏代表右侧叶子的控件
+budImg.setVisibility(INVISIBLE);								//隐藏代表花朵的控件
+seedImg.setVisibility(INVISIBLE);								//隐藏代表种子的控件
+budImg.setImageResource(R.mipmap.mrkj_grow_bud_1);				//设置初始显示的图片
+leftLeafImg.setImageResource(R.mipmap.mrkj_plantflower_leaf_01);	//设置初始显示的图片
+rightLeafImg.setImageResource(R.mipmap.mrkj_plantflower_leaf_02);//设置初始显示的图片
+}

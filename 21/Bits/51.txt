@@ -1,0 +1,26 @@
+   @Override
+    protected void onCreate(Bundle savedInstanceState) { //创建的onCreate方法头
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.progress_dialog);   //设置自定义对话框布局
+        //获取布局文件中TextView组件
+        mLoadingTv = (TextView) findViewById(R.id.loadingTv);
+        //获取布局文件中ImageView组件
+        mImageView = (ImageView) findViewById(R.id.loadingIv);
+        if (mResid == 0) {    	//当动画资源id为0时
+            mImageView.setBackgroundDrawable(null);   //设置背景为空
+        } else {
+            mImageView.setBackgroundResource(mResid);   //否则设置指定动画资源id
+        }
+        // 通过ImageView对象拿到背景显示的动画资源文件
+        mAnimation = (AnimationDrawable) mImageView.getBackground();
+        // 为了防止在onCreate方法中只显示第一帧的解决方案之一
+        mImageView.post(new Runnable() {
+            @Override
+            public void run() {
+                // 动画开始
+                mAnimation.start();
+            }
+        });
+        // 设置显示文字
+        mLoadingTv.setText(mLoadingTip);
+    }   //创建的onCreate方法尾部

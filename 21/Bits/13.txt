@@ -1,0 +1,7 @@
+
+    public void OnPlay(View v){  //单击事件 进入选择数字界面
+        //当前界面跳转至选择数字界面
+       startActivity(new Intent(MainActivity.this,SelectActivity.class));
+    }
+
+

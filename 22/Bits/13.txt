@@ -1,0 +1,11 @@
+ /**
+     * 解锁
+     */
+    private void unlocked() {
+        Intent intent1 = new Intent(Intent.ACTION_MAIN);   //界面跳转
+        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent1.addCategory(Intent.CATEGORY_HOME);         //进入到手机桌面
+        startActivity(intent1);                               //启动
+        kl.disableKeyguard();                               //解锁
+        finish();                                           //销毁当前activity
+    }

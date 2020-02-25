@@ -1,0 +1,36 @@
+/**
+ * 让大雁飞翔
+ */
+public class FlyActivity extends AppCompatActivity {
+private int screenWidth;				//获取屏幕宽度
+private ImageView bird;				//代表大雁的控件
+private AnimationDrawable birdAnimation;			//帧动画
+private AnimatorSet birdAnimatorset;				//属性动画
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fly);
+        getWindowWidth();								//获取屏幕宽
+bird = (ImageView) findViewById(R.id.bird);		//实例化控件
+bird.setTranslationX(-screenWidth);				//设置大雁摆放位置向左平移一个屏幕的宽
+birdAnimation = (AnimationDrawable) bird.getDrawable();//获取帧动画
+//设置bird的动画
+birdAnimatorset = new AnimatorSet();			//设置逐帧动画
+        ObjectAnimator birdAnimatorR =
+                ObjectAnimator.ofFloat(bird,"translationX",screenWidth);//设置位移动画
+        birdAnimatorR.setDuration(30*1000);				//设置运行时间
+birdAnimatorR.setInterpolator(new LinearInterpolator());//设置插值器
+        birdAnimatorR.setRepeatCount(-1);				//设置从头开始循环
+birdAnimatorset.play(birdAnimatorR);			//播放逐帧动画
+birdAnimation.start();							//开启逐帧动画
+birdAnimatorset.start();						//开启属性动画
+}
+/**
+     * 获取屏幕的宽度和高度
+     */
+private void getWindowWidth(){
+DisplayMetrics dm = new DisplayMetrics();        //通过它来获取屏幕的宽度与高度
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+screenWidth = dm.widthPixels;					//获取屏幕的宽度
+    }
+}

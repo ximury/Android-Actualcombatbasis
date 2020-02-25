@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/customer_all_rl">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+    <ImageButton
+        android:id="@+id/customer_all_phone"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@mipmap/phone"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:text="客户："
+        android:layout_marginLeft="5dp"
+        android:textSize="17sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/customer_all_name"
+        android:text="乔布斯"
+        android:textSize="19sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_light"/>
+    <TextView
+        android:id="@+id/customer_all_type"
+        android:text="初次合作"
+        android:layout_marginLeft="100dp"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+    <TextView
+        android:id="@+id/customer_all_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:ellipsize="end"
+        android:maxEms="15"
+        android:singleLine="true"
+        android:text="订单详情打发阿发打算阿斯蒂芬阿道夫阿斯蒂芬阿道夫阿斯蒂芬"
+        android:textSize="17sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/customer_all_time"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:text="2016-06-30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

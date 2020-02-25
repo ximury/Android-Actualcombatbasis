@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfBusinessListDealMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfBusinessListDeal" >
+    <id column="bld_id" property="bldId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="bl_id" property="blId" jdbcType="VARCHAR" />
+    <result column="bld_data" property="bldData" jdbcType="VARCHAR" />
+    <result column="bld_time" property="bldTime" jdbcType="VARCHAR" />
+    <result column="bld_content" property="bldContent" jdbcType="VARCHAR" />
+    <result column="bld_status" property="bldStatus" jdbcType="VARCHAR" />
+    <result column="bld_place" property="bldPlace" jdbcType="VARCHAR" />
+    <result column="bld_money" property="bldMoney" jdbcType="VARCHAR" />
+    <result column="bld_visitData" property="bldVisitdata" jdbcType="VARCHAR" />
+    <result column="bld_visit" property="bldVisit" jdbcType="VARCHAR" />
+    <result column="bld_spare1" property="bldSpare1" jdbcType="VARCHAR" />
+    <result column="bld_spare2" property="bldSpare2" jdbcType="VARCHAR" />
+    <result column="bld_spare3" property="bldSpare3" jdbcType="VARCHAR" />
+    <result column="bld_spare4" property="bldSpare4" jdbcType="VARCHAR" />
+    <result column="bld_spare5" property="bldSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bld_id, user_id, bl_id, bld_data, bld_time, bld_content, bld_status, bld_place, bld_money, 
+    bld_visitData, bld_visit, bld_spare1, bld_spare2, bld_spare3, bld_spare4, bld_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_businesslist_deal
+    where bld_id = #{bldId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_businesslist_deal
+    where bld_id = #{bldId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfBusinessListDeal" >
+    insert into tf_businesslist_deal (bld_id, user_id, bl_id, 
+      bld_data, bld_time, bld_content, 
+      bld_status, bld_place, bld_money, 
+      bld_visitData, bld_visit, bld_spare1, 
+      bld_spare2, bld_spare3, bld_spare4, 
+      bld_spare5)
+    values (#{bldId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{blId,jdbcType=VARCHAR}, 
+      #{bldData,jdbcType=VARCHAR}, #{bldTime,jdbcType=VARCHAR}, #{bldContent,jdbcType=VARCHAR}, 
+      #{bldStatus,jdbcType=VARCHAR}, #{bldPlace,jdbcType=VARCHAR}, #{bldMoney,jdbcType=VARCHAR}, 
+      #{bldVisitdata,jdbcType=VARCHAR}, #{bldVisit,jdbcType=VARCHAR}, #{bldSpare1,jdbcType=VARCHAR}, 
+      #{bldSpare2,jdbcType=VARCHAR}, #{bldSpare3,jdbcType=VARCHAR}, #{bldSpare4,jdbcType=VARCHAR}, 
+      #{bldSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfBusinessListDeal" >
+    insert into tf_businesslist_deal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bldId != null" >
+        bld_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="blId != null" >
+        bl_id,
+      </if>
+      <if test="bldData != null" >
+        bld_data,
+      </if>
+      <if test="bldTime != null" >
+        bld_time,
+      </if>
+      <if test="bldContent != null" >
+        bld_content,
+      </if>
+      <if test="bldStatus != null" >
+        bld_status,
+      </if>
+      <if test="bldPlace != null" >
+        bld_place,
+      </if>
+      <if test="bldMoney != null" >
+        bld_money,
+      </if>
+      <if test="bldVisitdata != null" >
+        bld_visitData,
+      </if>
+      <if test="bldVisit != null" >
+        bld_visit,
+      </if>
+      <if test="bldSpare1 != null" >
+        bld_spare1,
+      </if>
+      <if test="bldSpare2 != null" >
+        bld_spare2,
+      </if>
+      <if test="bldSpare3 != null" >
+        bld_spare3,
+      </if>
+      <if test="bldSpare4 != null" >
+        bld_spare4,
+      </if>
+      <if test="bldSpare5 != null" >
+        bld_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bldId != null" >
+        #{bldId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="blId != null" >
+        #{blId,jdbcType=VARCHAR},
+      </if>
+      <if test="bldData != null" >
+        #{bldData,jdbcType=VARCHAR},
+      </if>
+      <if test="bldTime != null" >
+        #{bldTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bldContent != null" >
+        #{bldContent,jdbcType=VARCHAR},
+      </if>
+      <if test="bldStatus != null" >
+        #{bldStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bldPlace != null" >
+        #{bldPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="bldMoney != null" >
+        #{bldMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="bldVisitdata != null" >
+        #{bldVisitdata,jdbcType=VARCHAR},
+      </if>
+      <if test="bldVisit != null" >
+        #{bldVisit,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare1 != null" >
+        #{bldSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare2 != null" >
+        #{bldSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare3 != null" >
+        #{bldSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare4 != null" >
+        #{bldSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare5 != null" >
+        #{bldSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfBusinessListDeal" >
+    update tf_businesslist_deal
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="blId != null" >
+        bl_id = #{blId,jdbcType=VARCHAR},
+      </if>
+      <if test="bldData != null" >
+        bld_data = #{bldData,jdbcType=VARCHAR},
+      </if>
+      <if test="bldTime != null" >
+        bld_time = #{bldTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bldContent != null" >
+        bld_content = #{bldContent,jdbcType=VARCHAR},
+      </if>
+      <if test="bldStatus != null" >
+        bld_status = #{bldStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bldPlace != null" >
+        bld_place = #{bldPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="bldMoney != null" >
+        bld_money = #{bldMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="bldVisitdata != null" >
+        bld_visitData = #{bldVisitdata,jdbcType=VARCHAR},
+      </if>
+      <if test="bldVisit != null" >
+        bld_visit = #{bldVisit,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare1 != null" >
+        bld_spare1 = #{bldSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare2 != null" >
+        bld_spare2 = #{bldSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare3 != null" >
+        bld_spare3 = #{bldSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare4 != null" >
+        bld_spare4 = #{bldSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="bldSpare5 != null" >
+        bld_spare5 = #{bldSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bld_id = #{bldId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfBusinessListDeal" >
+    update tf_businesslist_deal
+    set user_id = #{userId,jdbcType=VARCHAR},
+      bl_id = #{blId,jdbcType=VARCHAR},
+      bld_data = #{bldData,jdbcType=VARCHAR},
+      bld_time = #{bldTime,jdbcType=VARCHAR},
+      bld_content = #{bldContent,jdbcType=VARCHAR},
+      bld_status = #{bldStatus,jdbcType=VARCHAR},
+      bld_place = #{bldPlace,jdbcType=VARCHAR},
+      bld_money = #{bldMoney,jdbcType=VARCHAR},
+      bld_visitData = #{bldVisitdata,jdbcType=VARCHAR},
+      bld_visit = #{bldVisit,jdbcType=VARCHAR},
+      bld_spare1 = #{bldSpare1,jdbcType=VARCHAR},
+      bld_spare2 = #{bldSpare2,jdbcType=VARCHAR},
+      bld_spare3 = #{bldSpare3,jdbcType=VARCHAR},
+      bld_spare4 = #{bldSpare4,jdbcType=VARCHAR},
+      bld_spare5 = #{bldSpare5,jdbcType=VARCHAR}
+    where bld_id = #{bldId,jdbcType=VARCHAR}
+  </update>
+  
+      <select id="queryTempList" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfBusinessListDeal">
+		select
+		<include refid="Base_Column_List" />
+		from tf_businesslist_deal
+		<where>
+		 (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+			<if test="blId!=null and blId!=''">
+				and bl_id like concat(concat(#{blId}))
+			</if>
+		</where>
+		order by bld_data desc ,bld_time desc
+	</select>
+</mapper>

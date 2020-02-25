@@ -1,0 +1,5 @@
+protected void onCreate(Bundle savedInstanceState) {		//创建的onCreate()方法头部
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_number);			//设置数字1功能界面的布局文件
+    initView();									//创建并调用initView()方法
+}   //创建的onCreate()方法尾部

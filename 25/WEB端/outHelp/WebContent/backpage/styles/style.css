@@ -1,0 +1,350 @@
+/* reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline; font-family:"΢���ź�";}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* start editing from here */
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*end reset*/
+/****-----start-body----****/
+body{
+	background:url("../images/loginImages/bg3.jpg") repeat 0px 0px;
+  font-family: 'Open Sans', sans-serif;
+  background-size: cover;
+
+}
+body a{
+	transition: 0.1s all;
+	-webkit-transition: 0.1s all;
+	-moz-transition: 0.1s all;
+	-o-transition: 0.1s all;
+}
+body h1 {
+  color:#fff;
+  text-align: center;
+  padding: 1em 0;
+  font-size: 2.9em;
+}
+.nature {
+  background: #fff;
+}
+.app-nature{
+  width:25%;
+  margin:0 auto;
+  text-align: center;
+  background:url("../images/loginImages/bg.jpg")0px 0px no-repeat;
+}
+form {
+  padding: 8% 13% 14% 13%;
+  background: #fff;
+}
+/*-----*/
+.app-nature input[type="text"],.app-nature input[type="password"]{
+  width: 80.2%;
+  padding: 1.25em 1em 1.25em 4em;
+  color: #A1A5A8;
+  font-size: 16px;
+  outline: none;
+  font-weight: 600;
+  border: none;
+  border-bottom:1px solid #DFDFDF;
+  font-family: 'Open Sans', sans-serif;
+  background: url("../images/loginImages/icons.png") no-repeat 2px 20px #ffffff;
+  }
+.yanz{ padding-left:4px;}
+.app-nature #ma{
+  background: url("../images/loginImages/ma.png") no-repeat 2px 20px #ffffff;
+  margin-bottom: 20px;
+  float:left;
+  }
+.yanz .matu{float:right;margin-top:-78px; width:40%; height: 40%; cursor:pointer; }
+.app-nature input[type="password"]{
+   background: url("../images/loginImages/icons.png") no-repeat 2px -53px #ffffff;
+  }
+  .submit {
+  margin: 1em 0;
+  }
+.app-nature input[type="submit"]{
+  font-size: 20px;
+  font-weight: 300;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  padding: 17px 15px;
+  width:100%;
+  border:none;
+  border-left:6px solid #f9671e;
+  border-right:6px solid #f9671e;
+  moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #f9671e;
+  border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+}
+input[type="submit"]:hover{
+  border-left:6px solid #3b5998;
+  border-right:6px solid #3b5998;
+  color: #fff;
+
+}
+
+/* Bounce To Bottom */
+a.hvr-bounce-to-bottom {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  width:89%;
+  padding: 1em 1em;
+  font-size: 1.1em;
+  color: #fff;
+  background:#1499c8;
+  border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+   background:#3b5998;
+}
+a.hvr-bounce-to-bottom:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #4f76c8;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+
+}
+a.hvr-bounce-to-bottom:hover, a.hvr-bounce-to-bottom:focus, a.hvr-bounce-to-bottom:active {
+  color: white;
+}
+a.hvr-bounce-to-bottom:hover:before, a.hvr-bounce-to-bottom:focus:before, a.hvr-bounce-to-bottom:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+.copy-right {
+  padding: 3em 1em;
+}
+.copy-right p {
+	color: #fff;
+	font-size: 1em;
+	font-weight:400;
+  margin: 0 auto;
+  text-align: center;
+}
+.copy-right p a {
+	  color:#f9671e;
+}
+.copy-right p a:hover {
+	text-decoration: underline;
+}
+/*-----start-responsive-design------*/
+@media (max-width:1440px){
+  .app-nature{
+    width:33%;
+  }
+  .app-nature input[type="text"],.app-nature input[type="password"]{
+    width: 80.2%;
+  	
+  }
+
+}
+@media (max-width:1366px){
+  .app-nature{
+    width: 35%;
+  }
+.app-nature input[type="text"], .app-nature input[type="password"] {
+    width: 72.7%;
+  }
+body h1 {
+  font-size: 2.6em;
+}
+}
+@media (max-width:1280px){
+  .app-nature {
+  width: 35%;
+  }
+  .app-nature input[type="text"], .app-nature input[type="password"] {
+  width:74.7%;
+  }
+  
+}
+@media (max-width:1024px){
+  .app-nature {
+  width: 47%;
+  }
+  .app-nature input[type="text"], .app-nature input[type="password"] {
+    width: 75.7%;
+  }
+ 
+}
+@media (max-width:768px){
+  body h1 {
+  font-size: 2.4em;
+  }
+  .cam img {
+  margin: 2em 0;
+}
+.app-nature {
+    width: 61%;
+  margin: 0 auto 0 19%;
+}
+.copy-right {
+  padding: 1em 1em;
+}
+.app-nature input[type="text"], .app-nature input[type="password"] {
+    width: 74.7%;
+  }
+ 
+}
+@media (max-width:640px){
+  body h1 {
+  font-size: 2.1em;
+}
+.app-nature input[type="text"], .app-nature input[type="password"] {
+    width: 73.8%;
+}
+.app-nature {
+  width: 73%;
+  margin: 0 auto 0 13%;
+}
+}
+@media (max-width:480px){
+  .copy-right p {
+    font-size: 0.9em;
+  }
+   body h1 {
+  font-size: 20px;
+}
+.app-nature {
+  width: 81%;
+  margin: 0 auto 0 9%;
+}
+ .app-nature input[type="text"], .app-nature input[type="password"] {
+  width: 72.8%;
+  background: url("../images/loginImages/icons.png") no-repeat 16px 18px #ffffff;
+  background-size: 7%;
+  padding: 1.1em 1em 1.1em 4em;
+  margin-top: 1px;
+  font-size: 14px;
+}
+
+.app-nature #ma{
+  background: url("../images/loginImages/ma.png") no-repeat 2px 13px #ffffff;
+  margin-bottom: 20px;
+  float:left;
+  }
+.yanz .matu{float:right;margin-top:-65px; width:40%; height: 40%;  cursor:pointer; }
+.app-nature input[type="password"] {
+  background: url("../images/loginImages/icons.png") no-repeat 16px -28px #ffffff;
+  background-size: 7%;
+  }
+.app-nature input[type="submit"] {
+  font-size:20px;
+  padding: 15px 15px;
+}
+a.hvr-bounce-to-bottom {
+  width: 89%;
+  padding: 1em 1em;
+  font-size: 1em;
+  background:#3b5998;
+  background-size: 8%;
+}
+}
+@media (max-width:320px){
+ .app-nature {
+  width: 96%;
+  margin: 0 auto 0 2%;
+}
+  body h1 {
+  font-size:18px;
+}
+.copy-right p {
+  font-size: 0.8em;
+  line-height: 1.7em;
+}
+.submit {
+  margin: 0.5em 0;
+}
+.app-nature input[type="text"], .app-nature input[type="password"] {
+    width: 72.8%;
+  background: url("../images/loginImages/icons.png") no-repeat 15px 16px #ffffff;
+  background-size: 8%;
+  padding: 1em 1em 1em 4em;
+  margin-top: 1px;
+  font-size: 13px;
+}
+
+.app-nature #ma{
+  background: url("../images/loginImages/ma.png") no-repeat 2px 10px #ffffff;
+  margin-bottom: 20px;
+  float:left;
+  }
+.yanz .matu{float:right;margin-top:-60px; width:40%; height: 40%;  cursor:pointer; }
+.app-nature input[type="password"] {
+  background: url("../images/loginImages/icons.png") no-repeat 16px -28px #ffffff;
+  background-size: 8%;
+  }
+form {
+  width: 86%;
+  margin: 0 auto;
+    padding: 3% 8% 10% 6%;
+}
+.app-nature input[type="submit"] {
+  font-size: 16px;
+  padding: 13px 13px;
+}
+a.hvr-bounce-to-bottom {
+  width: 89%;
+  padding: 0.9em 0.9em;
+  font-size: 0.9em;
+  background:#3b5998;
+  background-size: 8%;
+}
+}

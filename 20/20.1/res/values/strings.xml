@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GET方式发表微博</string>
+    <string name="button">发表</string>
+    <string name="edit_hint">输入想要发表的内容~~~~</string>
+</resources>

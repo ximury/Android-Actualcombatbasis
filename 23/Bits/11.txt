@@ -1,0 +1,25 @@
+public class Plant extends FrameLayout{
+
+//常量
+private final int DEFAULT_HEIGHT = DensityUtil.dip2px(getContext(),200);//设置默认的高
+private final int DEFAULT_WIDTH = DensityUtil.dip2px(getContext(),100);//设置默认的宽
+private final int WIDTH = 1;								//宽
+private final int HEIGHT = 2;								//高
+private Map<String,Integer>childViewValues = null;			//存储一些宽度、高度值
+//变量
+private int parentWidth = 0;								//控件的宽
+private int parentHeight = 0;								//控件的高
+private int flowers_count;									//种出的花的个数
+//控件
+private ImageView seedImg = null;							//该控件代表种子
+private ImageView leftLeafImg = null;						//该控件代表左侧叶子
+private ImageView rightLeafImg = null;						//该控件代表右侧叶子
+private ImageView budImg = null;							//该控件代表花朵
+private ImageView branchImg = null;						//该控件代表根茎
+private ImageView gapImg = null;							//该控件代表地缝
+//动画
+private AnimatorSet animatorSetGroup;						//动画集合
+private boolean isCirculation;								//是否循环
+private ArrayList<Integer>flower_list;					//花朵的集合
+private int plant_flower_index;							//种的花的标记
+private boolean getIndex = true;							//获取标记

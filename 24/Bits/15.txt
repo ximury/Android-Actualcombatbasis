@@ -1,0 +1,20 @@
+/**
+ * 测试界面
+ */
+public class TestActivity extends AppCompatActivity {
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
+//添加SportFragment
+Bundle bundle = new Bundle();						//创建Bundle对象
+        bundle.putBoolean("is_launch", false);				//向Bundle中插入要传的值
+        SportFragment sportFragment = new SportFragment();	//创建SportFragment对象
+        sportFragment.setArguments(bundle);					//对SportFragment设置参数
+getSupportFragmentManager().
+beginTransaction().
+add(R.id.frag,sportFragment).
+                commit();			//提交事务，通过事务去向TestActivity中加载SportFragment
+    }
+}

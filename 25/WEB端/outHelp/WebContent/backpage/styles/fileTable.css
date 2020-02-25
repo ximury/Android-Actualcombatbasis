@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* 表格及表单样式 */
+.fileTable {
+	border-collapse: collapse;
+	border-top: 1px solid #d76666;
+	border-bottom: 1px solid #d76666;
+	width: 100%;
+	line-height: 2em;
+	background: #FFF;
+}
+
+.fileTable th {
+	border: 1px solid #c6d4db;
+	background: #e8f5fc url(../images/thbg.gif) repeat-x top;
+	text-align: left;
+	padding-left: 10px;
+	color: ##a6030f;
+}
+
+.fileTable td {
+	border: 1px solid #c6d4db;
+	height:30px;
+	padding-left: 10px;
+}
+
+

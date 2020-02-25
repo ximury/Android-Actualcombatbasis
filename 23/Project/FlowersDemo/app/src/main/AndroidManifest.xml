@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mrkj.flowersdemo">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 开启启动的广播接收 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!-- 主界面 -->
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.BackgroundTranslucent">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 选择花的界面 -->
+        <activity
+            android:name=".ui.activity.SelectedFlowerActivity"
+            android:screenOrientation="portrait" />
+        <!-- 种花的界面 -->
+        <activity
+            android:name=".ui.activity.PlantActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait" />
+        <!-- 种花小屋 -->
+        <activity
+            android:name=".ui.activity.PlantFlowerBoxActivity"
+            android:screenOrientation="portrait" />
+        <!-- 签到说明界面（纯展示） -->
+        <activity
+            android:name=".ui.activity.IllustrateActivity"
+            android:screenOrientation="portrait" />
+        <!-- 分享界面 -->
+        <activity
+            android:name=".ui.activity.ShareActivity"
+            android:screenOrientation="portrait" />
+        <!-- 历史记录 -->
+        <activity
+            android:name=".ui.activity.HistoryActivity"
+            android:screenOrientation="portrait" />
+        <!-- 定时服务 -->
+        <service android:name=".service.AlarmService" />
+        <!-- 开机启动 -->
+        <receiver android:name=".receiver.BootFlowerBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+        <!-- 接受定时的广播 -->
+        <receiver android:name=".receiver.AlarmReceiver" />
+        <!-- 名人名言 -->
+        <activity
+            android:name=".ui.activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <!-- 关于我们 -->
+        <activity
+            android:name=".ui.activity.ShowQuotesActivity"
+            android:screenOrientation="portrait" />
+        <!-- 选择分享的花 -->
+        <activity
+            android:name=".ui.activity.SelectorShareFlowerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <!-- 测试界面 -->
+        <activity
+            android:name=".TestActivity"
+            android:hardwareAccelerated="true">
+
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".MyProgressActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".FlyActivity">
+
+        </activity>
+        <activity android:name=".DownActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+    </application>
+
+</manifest>

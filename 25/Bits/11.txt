@@ -1,0 +1,13 @@
+private String date = null;// 设置默认选中的日期  格式为 “2016-06-06” 标准DATE格式
+private TextView popupwindow_calendar_month, prompt;    //显示日历的日期与下方红色的提示
+private KCalendar calendar;             			     //定义日历控件
+private List<String> list = new ArrayList<String>(); 	//设置标记列表
+private RequestParams params;							//上传服务器的参数
+private HttpUtils httpUitil;							//http请求协议
+private String url = BaseApplication.getUrl();			//数据接口
+private SignedEntity signedEntity;					//考勤界面的实体类
+private ImageButton backBtn;							//返回按钮
+String today;										//用于上传服务器的日期（当天）
+String year; 										//用于上传服务器的日期（年）
+String month; 										//用于上传服务器的日期（月）
+String day; 			                                                    	//用于上传服务器的日期（日）

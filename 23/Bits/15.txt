@@ -1,0 +1,169 @@
+/**
+ * 设置动画
+ */
+private void startShowPlantFlower(){
+final Bitmap[] bitmaps = MyDataHelper.getInstance().getBitmapArray(getContext());
+animatorSetGroup = new AnimatorSet();		//动画集合
+//1.种子平移动画		
+ObjectAnimator seedTranslation = ObjectAnimator.ofFloat(seedImg,"translationY",
+0,childViewValues.get("seedMoveLength"));	//设置位移动画
+    seedTranslation.setDuration(5*1000);			//设置动画的时长
+    seedTranslation.addListener(new AnimatorListenerAdapter() {//添加动画的接口回调
+@Override
+public void onAnimationEnd(Animator animation) {//当动画运行结束后调用该方法
+super.onAnimationEnd(animation);
+            otherView();								//显示代表根茎叶的控件
+seedImg.setVisibility(INVISIBLE);			//隐藏代表种子的控件
+        }
+    });
+    seedTranslation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override
+public void onAnimationUpdate(ValueAnimator animation) {
+seedImg.setVisibility(VISIBLE);				//显示代表种子的控件
+seedImg.setPivotY(0);						//设置它的旋转中心Y坐标
+seedImg.invalidate();						//重新绘制该子控件
+        }
+    });
+//2.根茎缩放动画
+ObjectAnimator branchAnimator = ObjectAnimator.ofFloat(branchImg,"scaleY",0f,1.0f);
+    branchAnimator.setDuration(10*1000);				//设置动画的持续时间为10s
+branchImg.setPivotY(childViewValues.get("BranchHeight"));//设置缩放中心
+branchImg.invalidate();							//重新绘制该控件
+//3.叶子缩放和位移动画
+    //3.1左叶
+    //设置缩放动画
+PropertyValuesHolder leftLeafScaleX = PropertyValuesHolder.ofFloat("scaleX",0f,0.5f);
+    PropertyValuesHolder leftLeafScaleY = PropertyValuesHolder.ofFloat("scaleY",0f,0.5f);
+//设置平移动画
+leftLeafImg.setPivotX(childViewValues.get("LeftLeafWidth"));	//设置该子控件的中心X坐标
+leftLeafImg.setPivotY(childViewValues.get("LeftLeafHeight"));//设置该子控件的中心Y坐标
+    PropertyValuesHolder leftLeafTranslation = PropertyValuesHolder.ofFloat("translationY",
+0,- childViewValues.get("BranchHeightHalf")*2/3);
+    ObjectAnimator leftAnimator = ObjectAnimator.ofPropertyValuesHolder(leftLeafImg,
+            leftLeafScaleX,leftLeafScaleY,leftLeafTranslation);		//设置同步动画
+    leftAnimator.setDuration(8*1000);					//设置动画的持续时间为8s
+//3.2右叶
+PropertyValuesHolder rightLeafScaleX = PropertyValuesHolder.ofFloat("scaleX",0f,0.5f);
+    PropertyValuesHolder rightLeafScaleY = PropertyValuesHolder.ofFloat("scaleY",0f,0.5f);
+//设置平移动画
+rightLeafImg.setPivotX(0);										//设置动画中心
+rightLeafImg.setPivotY(childViewValues.get("LeftLeafHeight"));	//设置动画中心
+    PropertyValuesHolder rightLeafTranslation = PropertyValuesHolder.ofFloat("translationY",
+0,- childViewValues.get("BranchHeightHalf")*2/3);
+    ObjectAnimator rightAnimator = ObjectAnimator.ofPropertyValuesHolder(rightLeafImg,
+            rightLeafScaleX,rightLeafScaleY,rightLeafTranslation);	//设置同步动画
+    rightAnimator.setDuration(8*1000);				//设置动画的持续时间为8s
+//4.花朵的显示缩放动画
+PropertyValuesHolder budAnimatorScaleX = 
+							PropertyValuesHolder.ofFloat("scaleX",0.1f,1.0f);
+    PropertyValuesHolder budAnimatorScaleY = 
+							PropertyValuesHolder.ofFloat("scaleY",0.1f,1.0f);
+    ObjectAnimator budAnimator = ObjectAnimator.ofPropertyValuesHolder(budImg,
+            budAnimatorScaleX,budAnimatorScaleY);		//设置同步动画
+    budAnimator.setDuration(5*1000);					//设置动画的持续时间为5s
+    budAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override
+public void onAnimationUpdate(ValueAnimator animation) {
+budImg.setVisibility(VISIBLE);				//显示控件
+        }
+    });
+//5.叶子继续放大
+PropertyValuesHolder leftLeafScaleXMore = 
+							PropertyValuesHolder.ofFloat("scaleX",0.5f,1.0f);
+    PropertyValuesHolder leftLeafScaleYMore = 
+							PropertyValuesHolder.ofFloat("scaleY",0.5f,1.0f);
+    ObjectAnimator leftLeafAnimatorMore = ObjectAnimator.ofPropertyValuesHolder(leftLeafImg,
+            leftLeafScaleXMore,leftLeafScaleYMore);		//设置同步动画
+    leftLeafAnimatorMore.setDuration(5*1000);			//设置动画的持续时间为5s
+    leftLeafAnimatorMore.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override
+public void onAnimationUpdate(ValueAnimator animation) {
+leftLeafImg.setImageResource(R.mipmap.mrkj_grow_leaf_2);//更新显示的图片
+        }
+    });
+    PropertyValuesHolder rightLeafScaleXMore = 
+							PropertyValuesHolder.ofFloat("scaleX",0.5f,1.0f);
+    PropertyValuesHolder rightLeafScaleYMore = 
+							PropertyValuesHolder.ofFloat("scaleY",0.5f,1.0f);
+    ObjectAnimator rightLeafAnimatorMore = 
+							ObjectAnimator.ofPropertyValuesHolder(rightLeafImg,
+            rightLeafScaleXMore,rightLeafScaleYMore);	//设置同步缩放动画
+    rightLeafAnimatorMore.setDuration(5*1000);			//设置动画的持续时间为5s
+    rightLeafAnimatorMore.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override
+public void onAnimationUpdate(ValueAnimator animation) {
+rightLeafImg.setImageResource(R.mipmap.mrkj_grow_leaf_1);	//更新显示的图片
+        }
+    });
+//开始长花缩放动画
+PropertyValuesHolder budGroupToFlowerX = PropertyValuesHolder.ofFloat(
+"scaleX",0.5f,1.0f);
+    PropertyValuesHolder budGroupToFlowerY = PropertyValuesHolder.ofFloat(
+"scaleY",0.5f,1.0f);
+    ObjectAnimator budGroupAnimator = ObjectAnimator.ofPropertyValuesHolder(budImg,
+            budGroupToFlowerX,budGroupToFlowerY );		//设置同步动画
+    budGroupAnimator.setDuration(5*1000);				//设置动画的持续时间为5s
+    budGroupAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override
+public void onAnimationUpdate(ValueAnimator animation) {
+budImg.setImageResource(R.mipmap.mrkj_grow_bud_2);			//更新显示的图片
+        }
+    });
+//最后开花
+PropertyValuesHolder budGroupToFlowerXMore = PropertyValuesHolder.ofFloat(
+"scaleX",0.5f,1.0f);
+    PropertyValuesHolder budGroupToFlowerYMore = PropertyValuesHolder.ofFloat(
+"scaleY",0.5f,1.0f);
+    ObjectAnimator openFlowerAnimator = ObjectAnimator.ofPropertyValuesHolder(budImg,
+            budGroupToFlowerXMore,budGroupToFlowerYMore );
+    openFlowerAnimator.setDuration(5*1000);			//设置动画的持续时间为5s
+    openFlowerAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override
+public void onAnimationUpdate(ValueAnimator animation) {
+if (getIndex){
+if (flower_list != null){
+                    L.e("length",flower_list.size()+"");
+int length = flower_list.size();						//获取数据的长度
+plant_flower_index = flower_list.get(getIndex(length));//获取索引值
+budImg.setImageBitmap(bitmaps[plant_flower_index]);//根据索引值设置图片
+}else {
+plant_flower_index = 0;								//默认索引值
+budImg.setImageResource(R.mipmap.mrkj_flower_01);		//设置默认图片
+}
+getIndex = false;
+            }
+        }
+    });
+    //播放动画集合
+animatorSetGroup.play(branchAnimator).with(leftAnimator)		
+					.with(rightAnimator).after(seedTranslation);		//播放动画
+animatorSetGroup.play(rightLeafAnimatorMore)						
+					.with(leftLeafAnimatorMore).after(leftAnimator);	//播放动画
+animatorSetGroup.play(budAnimator).after(branchAnimator);			//播放动画
+animatorSetGroup.play(budGroupAnimator).after(budAnimator);			//播放动画
+animatorSetGroup.play(openFlowerAnimator).after(budGroupAnimator);	//播放动画
+animatorSetGroup.addListener(new AnimatorListenerAdapter() {		//动画结束后的监听
+@Override
+public void onAnimationEnd(Animator animation) {
+super.onAnimationEnd(animation);
+if (isCirculation){								//是否开启循环动画
+                onlyShowGapImg();								//初始化子控件
+getIndex = true;								//开启获取索引值
+animatorSetGroup.start();						//开启动画
+flowers_count++;								//记数增加
+                bloomFlowers();
+            }
+        }
+    });
+}
+
+/**
+ * 获取随机数
+ * @param length
+* @return
+*/
+private int getIndex(int length){
+    Random random = new Random();						//用于获取随机数
+plant_flower_index = random.nextInt(length);		//获取随机数
+return plant_flower_index;							//返回随机数
+}

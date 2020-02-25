@@ -1,0 +1,19 @@
+@Override
+public int onStartCommand(Intent intent, int flags, int startId) {
+return START_STICKY;							//当内存空间足够时重启服务
+}
+
+@Override
+public void onDestroy() {
+super.onDestroy();
+FLAG = false;									// 服务停止
+Log.e(TAG, "后台服务停止");
+
+if (detector != null) {						//当detector不为空时
+mSensorManager.unregisterListener(detector);//取消对所有传感器的监听
+    }
+
+if (mWakeLock != null) {						//当mWakeLock不为空时
+mWakeLock.release();						//释放唤醒资源
+    }
+}

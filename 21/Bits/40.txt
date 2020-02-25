@@ -1,0 +1,10 @@
+
+    linearLayout.setOnTouchListener(new View.OnTouchListener() {//设置手势判断事件
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {//手势按下判断的onTouch()方法
+
+
+            return true;
+        }
+    });
+

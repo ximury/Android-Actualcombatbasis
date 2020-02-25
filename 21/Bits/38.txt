@@ -1,0 +1,15 @@
+private synchronized void lodimagep(int j) {		//lodimagep()方法头部
+    i = j;								// 当前图片位置
+    if (i < 25) {							// 如果当前图片位置小于25
+        String name = "on1_" + i;			// 当前图片名称
+        // 获取图片资源id
+        int imgid = getResources().getIdentifier(name, "drawable", "com.mingrisoft.
+        iv_frame.setBackgroundResource(imgid);	// 设置图片
+        i++;
+    }
+    if (j == 24) {							// 如果当前图片位置为24
+        if (typedialog) {          			// 没有对话框的情况下
+            dialog();       				// 调用书写完成对话框方法
+        }
+    }
+}  //lodimagep()方法尾部

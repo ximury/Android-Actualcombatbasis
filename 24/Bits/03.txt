@@ -1,0 +1,46 @@
+@Override
+public void onAttach(Context context) {
+super.onAttach(context);
+this.context = context;							//获取上下文
+}
+
+/**
+ * 创建视图
+ * @param inflater
+* @param container
+* @param savedInstanceState
+* @return
+*/
+@Nullable
+@Override
+public View onCreateView(LayoutInflater inflater,
+                         ViewGroup container,
+                         Bundle savedInstanceState) {
+view = inflater.inflate(R.layout.fragment_sport, null);
+    initView();										//初始化控件
+initValues();										//初始化数据
+setNature();										//设置功能
+//提示
+if (StepDetector.CURRENT_SETP >custom_steps){
+        Toast.makeText(getContext(),"您已达到目标步数,请适量运动！"
+,Toast.LENGTH_LONG).show();
+    }
+//提示弹窗
+if (SaveKeyValues.getIntValues("do_hint",0) == 1
+&& (System.currentTimeMillis() > (SaveKeyValues.
+getLongValues("show_hint",0)+Constant.DAY_FOR_24_HOURS))){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+        alertDialog.setTitle("提示");								//设置弹窗的标题
+        alertDialog.setMessage("你有计划没有完成!");					//设置弹窗的内容
+        alertDialog.setPositiveButton("点击确定不再提示！",			//设置弹窗的按钮	
+new DialogInterface.OnClickListener() {
+@Override
+public void onClick(DialogInterface dialog, int which) {
+                SaveKeyValues.putIntValues("do_hint" , 0);			//点击后存值
+            }
+        });
+        alertDialog.create();										//创建弹窗
+alertDialog.show();										//显示弹窗
+}
+return view;
+}

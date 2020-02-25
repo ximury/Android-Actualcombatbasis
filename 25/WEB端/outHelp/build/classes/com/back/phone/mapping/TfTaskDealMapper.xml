@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfTaskDealMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfTaskDeal" >
+    <id column="td_id" property="tdId" jdbcType="VARCHAR" />
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="td_spare1" property="tdSpare1" jdbcType="VARCHAR" />
+    <result column="td_spare2" property="tdSpare2" jdbcType="VARCHAR" />
+    <result column="td_spare3" property="tdSpare3" jdbcType="VARCHAR" />
+    <result column="td_spare4" property="tdSpare4" jdbcType="VARCHAR" />
+    <result column="td_spare5" property="tdSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    td_id, task_id, user_id, td_spare1, td_spare2, td_spare3, td_spare4, td_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_task_deal
+    where td_id = #{tdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_task_deal
+    where td_id = #{tdId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfTaskDeal" >
+    insert into tf_task_deal (td_id, task_id, user_id, 
+      td_spare1, td_spare2, td_spare3, 
+      td_spare4, td_spare5)
+    values (#{tdId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{tdSpare1,jdbcType=VARCHAR}, #{tdSpare2,jdbcType=VARCHAR}, #{tdSpare3,jdbcType=VARCHAR}, 
+      #{tdSpare4,jdbcType=VARCHAR}, #{tdSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfTaskDeal" >
+    insert into tf_task_deal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tdId != null" >
+        td_id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="tdSpare1 != null" >
+        td_spare1,
+      </if>
+      <if test="tdSpare2 != null" >
+        td_spare2,
+      </if>
+      <if test="tdSpare3 != null" >
+        td_spare3,
+      </if>
+      <if test="tdSpare4 != null" >
+        td_spare4,
+      </if>
+      <if test="tdSpare5 != null" >
+        td_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tdId != null" >
+        #{tdId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare1 != null" >
+        #{tdSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare2 != null" >
+        #{tdSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare3 != null" >
+        #{tdSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare4 != null" >
+        #{tdSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare5 != null" >
+        #{tdSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfTaskDeal" >
+    update tf_task_deal
+    <set >
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare1 != null" >
+        td_spare1 = #{tdSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare2 != null" >
+        td_spare2 = #{tdSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare3 != null" >
+        td_spare3 = #{tdSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare4 != null" >
+        td_spare4 = #{tdSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="tdSpare5 != null" >
+        td_spare5 = #{tdSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where td_id = #{tdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfTaskDeal" >
+    update tf_task_deal
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      td_spare1 = #{tdSpare1,jdbcType=VARCHAR},
+      td_spare2 = #{tdSpare2,jdbcType=VARCHAR},
+      td_spare3 = #{tdSpare3,jdbcType=VARCHAR},
+      td_spare4 = #{tdSpare4,jdbcType=VARCHAR},
+      td_spare5 = #{tdSpare5,jdbcType=VARCHAR}
+    where td_id = #{tdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

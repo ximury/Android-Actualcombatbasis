@@ -1,0 +1,64 @@
+/**
+ * 点击打卡按钮后
+ * 往服务器上传数据
+ **/
+private void upFileUseXUtills(final String num, final String location) {
+    String ul = url + "tfAttence_on.do";			//打卡界面的接口
+    File fl = new File(BaseApplication.getTempFile().getPath());		//读取图片的路径
+    params.addBodyParameter("filename", fl);		//将图片添加到上传数据的参数中
+    //将用户的ID添加到上传数据的参数中
+    params.addBodyParameter("id", sharedPreferences.getString("userid", ""));
+    //将当天的日期添加到上传数据的参数中
+    params.addBodyParameter("date", sharedPreferences.getString("clickdaty", today));
+    params.addBodyParameter("attenceStatus", num);	//将签到或是签退的类型添加到上传的参数中
+    params.addBodyParameter("attencePlace", location);	//将定位地点添加到上传数据的参数中
+    uploadMethod(num, params, ul);					//执行上传数据的方法
+}
+//将数据上传到服务器方法
+public void uploadMethod(final String num, final RequestParams params, 
+                                 						final String uploadHost) {
+    httpUitil.send(HttpMethod.POST, uploadHost, params, new RequestCallBack<String>() {
+        // 点击打卡按钮时页面弹出一个progressbar的动画
+        private boolean progressShow = true;
+        //初始化progressbar
+        final ProgressDialog pd = new ProgressDialog(SignedActivity.this); 
+        @Override
+        public void onStart() {
+            //数据上传开始
+        }
+        @Override
+        public void onLoading(long total, long current, boolean isUploading) {
+            //运行到数据上传中时开始显示等待的progressbar 
+            pd.setCanceledOnTouchOutside(false);
+            pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    progressShow = false;
+                }
+            });
+            pd.setMessage("正在打卡....");		//显示的进度条的文字
+            pd.show();							//界面开始显示进度条
+        }
+       //此方法为上传成功的回调。成功时所要进行的操作在此方法里编写
+        @Override
+        public void onSuccess(ResponseInfo<String> responseInfo) {
+            //上传成功，这里面的返回值，就是服务器返回的数据
+            String result = responseInfo.result.toString().substring(1, 2);
+            pd.dismiss();   						   //数据成功返回后进度条消失
+            if (result.equals("t")) {				    //如果返回的是“t”则说明打卡成功
+                Toast.makeText(SignedActivity.this, "打卡成功", Toast.LENGTH_SHORT).show();
+                showTF(num);
+                BaseApplication.getTempFile().delete();	//删除打开时的图片
+            } else {									//如果返回的不是是“t”则说明打卡失败
+                Toast.makeText(SignedActivity.this, "打卡失败", Toast.LENGTH_SHORT).show();
+            }
+        }
+       //此方法为上传失败的回调。失败时所要进行的操作在此方法里编写
+        @Override
+        public void onFailure(HttpException error, String msg) {
+            //数据上传失败时弹出“网络错误”的提示
+            Toast.makeText(SignedActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+            pd.dismiss();								//数据上传失败时progress消失
+        }
+    });
+}

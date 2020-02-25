@@ -1,0 +1,23 @@
+
+    private ImageView iv_frame;	// 定义显示写数字的ImageView控件
+    int i = 1;					// 图片展示到第几张标记
+    float x1;						// 屏幕按下时的X值
+    float y1;						// 屏幕按下时的y值
+    float x2;						// 屏幕离开时的X值
+    float y2;						// 屏幕离开时的y值
+    float x3;						// 移动中的坐标的X值
+    float y3;						// 移动中的坐标的y值
+    int igvx;						// 图片x坐标
+    int igvy;						// 图片y坐标
+    int type = 0;					// 是否可以书写标识 开关 1开启0关闭
+    int widthPixels;				// 屏幕宽度
+    int heightPixels;				// 屏幕高度
+    float scaleWidht;				// 宽度的缩放比例
+    float scaleHeight;			// 高度的缩放比例
+    Timer touchTimer = null;		// 点击在虚拟按钮上后用于连续动作的计时器.
+    Bitmap arrdown;				// Bitmap图像处理
+    boolean typedialog = true;		// dialog对话框状态
+    private LinearLayout linearLayout = null;	// LinearLayout线性布局
+
+
+

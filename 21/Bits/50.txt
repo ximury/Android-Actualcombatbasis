@@ -1,0 +1,19 @@
+public class mCustomProgressDialog extends ProgressDialog {   //自定义对话框类头部
+    private AnimationDrawable mAnimation;  	//设置对话框动画资源
+    private Context mContext;              	//设置对话框上下文
+    private ImageView mImageView;         	//设置对话框背景图片
+    private String mLoadingTip;            	//设置对话框文字
+    private TextView mLoadingTv;           	//显示对话框文字
+    private int mResid;                    	//设置动画资源的id
+
+    //自定义对话框构造方法头部
+    public mCustomProgressDialog(Context context,String content, int id) {   
+        super(context);
+        this.mContext=context;   		//为上下文赋值
+        this.mLoadingTip=content;   	//为对话框文字赋值
+        this.mResid=id;   			//为动画资源id赋值
+        //设置单击周边是否让dialog消失 设置为true 点击周边消失
+        setCanceledOnTouchOutside(true);
+    }   //自定义对话框构造方法尾部
+}   //自定义对话框类尾部
+

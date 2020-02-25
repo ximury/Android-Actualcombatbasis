@@ -1,0 +1,7 @@
+
+private void PlayMusic() {   //播放背景音乐方法
+    //创建音乐播放器对象并加载播放音乐文件
+    mediaPlayer=MediaPlayer.create(this,R.raw.main_music);
+    mediaPlayer.setLooping(true);		//设置音乐循环播放
+    mediaPlayer.start();				//启动播放音乐
+}

@@ -1,0 +1,32 @@
+public class TestActivity extends AppCompatActivity {
+
+private Plant plant;									//控件
+private View background;								//界面
+private ObjectAnimator parentAnimator;					//父布局动画
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+background = getLayoutInflater().inflate(R.layout.activity_test,null);
+        setContentView(background);
+plant = (Plant) findViewById(R.id.plant2);			//初始化控件
+plant.setCirculation(true);						//设置循环
+setParentViewAnimation();							//设置背景颜色渐变的动画
+}
+/**
+     * 设置背景颜色渐变动画
+     */
+private void setParentViewAnimation() {
+parentAnimator= (ObjectAnimator) AnimatorInflater.
+loadAnimator(this, R.animator.background);	//创建属性动画
+parentAnimator.setEvaluator(new ArgbEvaluator());	//颜色渐变
+parentAnimator.setTarget(background);				//添加要实现动画的控件
+    }
+/**
+     * 按钮
+     * @param view
+*/
+public void test2(View view){
+plant.plantAnimatorStart();						//播放开花的动画
+parentAnimator.start();							//播放背景颜色渐变动画
+    }
+}

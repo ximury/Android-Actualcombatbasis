@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.TPartyMapper">
+	<resultMap id="BaseResultMap" type="com.back.base.model.TParty">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="PID" property="pid" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+		<result column="DISCRIMINATE" property="discriminate" jdbcType="VARCHAR" />
+		<result column="ORDERNUM" property="ordernum" jdbcType="DECIMAL" />
+		<result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+		<result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, PID, NAME, DESCRIPTION, DISCRIMINATE, ORDERNUM, CREATETIME, UPDATETIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TPARTY
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from TPARTY
+		where ID = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.back.base.model.TParty">
+		insert into TPARTY (ID, PID, NAME,
+		DESCRIPTION, DISCRIMINATE, ORDERNUM,
+		CREATETIME, UPDATETIME)
+		values (#{id,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{description,jdbcType=VARCHAR}, #{discriminate,jdbcType=VARCHAR}, #{ordernum,jdbcType=DECIMAL},
+		#{createtime,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.back.base.model.TParty">
+		insert into TPARTY
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="pid != null">
+				PID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="description != null">
+				DESCRIPTION,
+			</if>
+			<if test="discriminate != null">
+				DISCRIMINATE,
+			</if>
+			<if test="ordernum != null">
+				ORDERNUM,
+			</if>
+			<if test="createtime != null">
+				CREATETIME,
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="pid != null">
+				#{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="discriminate != null">
+				#{discriminate,jdbcType=VARCHAR},
+			</if>
+			<if test="ordernum != null">
+				#{ordernum,jdbcType=DECIMAL},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.TParty">
+		update TPARTY
+		<set>
+			<if test="pid != null">
+				PID = #{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				DESCRIPTION = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="discriminate != null">
+				DISCRIMINATE = #{discriminate,jdbcType=VARCHAR},
+			</if>
+			<if test="ordernum != null">
+				ORDERNUM = #{ordernum,jdbcType=DECIMAL},
+			</if>
+			<if test="createtime != null">
+				CREATETIME = #{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.back.base.model.TParty">
+		update TPARTY
+		set PID = #{pid,jdbcType=VARCHAR},
+		NAME = #{name,jdbcType=VARCHAR},
+		DESCRIPTION = #{description,jdbcType=VARCHAR},
+		DISCRIMINATE = #{discriminate,jdbcType=VARCHAR},
+		ORDERNUM = #{ordernum,jdbcType=DECIMAL},
+		CREATETIME = #{createtime,jdbcType=VARCHAR},
+		UPDATETIME = #{updatetime,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+
+	<select id="query" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TPARTY where discriminate != 'position'
+		<where>
+			<if test="name != null">
+				NAME like concat(concat('%',#{name}),'%')
+			</if>
+			<if test="discriminate != null">
+				and DISCRIMINATE like concat(concat('%',#{discriminate}),'%')
+			</if>			
+		</where>
+		order by ORDERNUM asc
+	</select>
+
+	<select id="queryByPid" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TPARTY
+		where PID = #{pid,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="queryPid" resultType="java.lang.String" parameterType="java.lang.String">
+		select
+			PID
+		from TPARTY
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>	
+	
+	<select id="getAllMap"  resultMap="BaseResultMap" parameterType="com.back.base.MapParam">
+		select id , name from TPARTY		
+	</select>
+	
+	<select id="getOtherMap"  resultMap="BaseResultMap" parameterType="com.back.base.MapParam">
+	
+		select t1.id as mark, t.name as name from TPARTY t , tdepartment t1 where t.pid is not null  and t.id=t1.id order by t.ORDERNUM asc		
+	</select>
+	
+	<select id="getOther" resultMap="BaseResultMap" parameterType="com.back.base.model.TParty">
+		select t.id as id ,t.name as name	from TPARTY t , tdepartment t1 where t.pid is not null  and t.id=t1.id 
+		    <if test="id != null and id !=''">
+			 and t.ID = #{id}
+			</if>
+		   order by t.ORDERNUM asc	
+	</select>
+
+</mapper>

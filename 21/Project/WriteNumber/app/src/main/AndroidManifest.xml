@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mingrisoft.writenumber">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 启动界面 -->
+        <activity
+            android:name=".StartActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 注册游戏主界面并设置全屏 -->
+        <activity
+            android:name=".MainActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <!--注册选择数字界面并设置全屏-->
+        <activity
+            android:name=".SelectActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        	<!--注册关于界面并设置全屏-->
+        	<activity
+        	    android:name=".AboutActivity"
+        	    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+
+    <!--注册数字1书写界面并设置全屏-->
+        <activity
+            android:name=".OneActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字2书写界面并设置全屏-->
+        <activity
+            android:name=".TwoActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字3书写界面并设置全屏-->
+        <activity
+            android:name=".ThreeActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字4书写界面并设置全屏-->
+        <activity
+            android:name=".FourActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字5书写界面并设置全屏-->
+        <activity
+            android:name=".FiveActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字6书写界面并设置全屏-->
+        <activity
+            android:name=".SixActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字7书写界面并设置全屏-->
+        <activity
+            android:name=".SevenActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字8书写界面并设置全屏-->
+        <activity
+            android:name=".EightActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字9书写界面并设置全屏-->
+        <activity
+            android:name=".NineActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <!--注册数字0书写界面并设置全屏-->
+        <activity
+            android:name=".ZeroActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+    </application>
+
+</manifest>

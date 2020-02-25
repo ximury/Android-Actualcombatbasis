@@ -1,0 +1,23 @@
+	/**
+	 * 计算并格式化doubles数值，保留两位有效数字
+	 *
+	 * @param doubles
+	* @return 返回当前里程
+	 */
+	private String formatDouble(Double doubles) {
+	    DecimalFormat format = new DecimalFormat("####.##");
+	    String distanceStr = format.format(doubles);
+	returndistanceStr.equals("0") ? "0.00" : distanceStr;//格式化返回String类型
+	}
+	/**
+	 * 在当前Fragment结束之前，销毁一些不需要的变量
+	 */
+	@Override
+	public void onDestroy() {
+	super.onDestroy();
+	handler.removeCallbacks(get_step_thread);	//移除监听
+	isStop = true;							//设置线程开关可以关闭
+	get_step_thread = null;					//清空线程对象
+	steps_values = 0;							//设置初始步数为0
+	duration = 800;							//设置初始值动画时间800ms
+	}

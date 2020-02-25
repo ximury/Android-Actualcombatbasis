@@ -1,0 +1,6 @@
+   switch (v.getId()) {
+            case R.id.play_vioce:                                //播放单词声音
+                String text = wordText.getText().toString();    //把单词提取出来
+                speechSynthesizer.startSpeaking(text, this);    //讯飞 播放声音
+                break;
+        }

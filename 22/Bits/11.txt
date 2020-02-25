@@ -1,0 +1,21 @@
+        /**
+         * 选项的单击事件
+         */
+        radioGroup.setClickable(false);            //默认选项未被选中
+        switch (checkedId) {                        //选项的点击事件
+            case R.id.choose_btn_one:               //点击“A”选项
+                //截取字符串
+                String msg = radioOne.getText().toString().substring(3);
+                btnGetText(msg, radioOne);          //将参数传入到对应的方法里
+                break;
+            case R.id.choose_btn_two:               //点击“B”选项
+                //截取字符串
+                String msg1 = radioTwo.getText().toString().substring(3);
+                btnGetText(msg1, radioTwo);        //将参数传入到对应的方法里
+                break;
+            case R.id.choose_btn_three:             //点击“C”选项
+                //截取字符串
+                String msg2 = radioThree.getText().toString().substring(3);
+                btnGetText(msg2, radioThree);      //将参数传入到对应的方法里
+                break;
+        }

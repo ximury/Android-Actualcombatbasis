@@ -1,0 +1,17 @@
+   private SharedPreferences sharedPreferences;            //定义一个轻量级数据库
+    private SwitchButton switchButton;                      //开关按钮
+    private Spinner spinnerDifficulty;                      //定义选择难度的下拉框
+    private Spinner spinnerAllNum;                          //定义解锁题目的下拉框
+    private Spinner spinnerNewNum;                          //定义新题目的下拉框
+    private Spinner spinnerReviewNum;                       //定义复习题的下拉框
+    private ArrayAdapter<String> adapterDifficulty, adapterAllNum,
+            adapterNewNum, adapterReviewNUm; //定义下拉框的适配器
+    //选择难度下拉框里面的选项内容
+    String[] difficulty = new String[]{"小学", "初中", "高中", "四级", "六级"};
+    //解锁题目下拉框的选项内容
+    String[] allNum = new String[]{"2道", "4道", "6道", "8道"};
+    //新题目下拉框的选项内容
+    String[] newNum = new String[]{"10", "30", "50", "100"};
+    //复习题目下拉框的选项内容
+    String[] revicwNum = new String[]{"10", "30", "50", "100"};
+    SharedPreferences.Editor editor = null;                 //定义数据库的编辑器

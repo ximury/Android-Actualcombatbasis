@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mrkj.healthylife.activity.WarmUpActivity">
+    <include layout="@layout/title_layout"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/width_size_20"
+        android:layout_height="@dimen/width_size_0"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/font_size_20"
+            android:textStyle="bold"
+            android:text="跑前热身可以更好的启动全身肌肉，进入运动状态。"
+            android:layout_marginTop="@dimen/width_size_20"
+            android:layout_marginBottom="@dimen/width_size_30"
+            />
+        <include layout="@layout/list_item" />
+        <Button
+            android:id="@+id/start_warm"
+            android:layout_marginTop="@dimen/width_size_30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开始热身"
+            android:textSize="@dimen/font_size_18"
+            android:background="@drawable/btn_blue_selector"/>
+    </LinearLayout>
+
+</LinearLayout>

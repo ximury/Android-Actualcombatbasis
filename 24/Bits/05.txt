@@ -1,0 +1,32 @@
+/**
+     * 初始化控件
+     */
+private void initView() {
+circleBar = (CircleBar) view.findViewById(R.id.show_progress);
+city_name = (TextView) view.findViewById(R.id.city_name);
+city_temperature = (TextView) view.findViewById(R.id.temperature);
+city_air_quality = (TextView) view.findViewById(R.id.air_quality);
+warm_btn = (ImageButton) view.findViewById(R.id.warm_up);
+show_mileage = (TextView) view.findViewById(R.id.mileage_txt);
+show_heat = (TextView) view.findViewById(R.id.heat_txt);
+want_steps = (TextView) view.findViewById(R.id.want_steps);
+    }
+/**
+     * 设置相关属性
+     */
+private void setNature() {
+//设置初始的进度
+circleBar.setcolor(R.color.theme_blue_two);		//设置进度条的颜色
+circleBar.setMaxstepnumber(custom_steps);		//设置进度条的最大值
+getServiceValue();
+//跳转界面的按钮
+warm_btn.setOnClickListener(new View.OnClickListener() {//设置按钮的点击事件
+@Override
+public void onClick(View v) {
+                Toast.makeText(context, "跳转热身界面！", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), PlayActivity.class)
+                        .putExtra("play_type", 0).putExtra("what",0));//设置跳转界面
+}
+        });
+want_steps.setText("今日目标："+custom_steps+"步");
+    }

@@ -1,0 +1,100 @@
+public class LocationService {
+private LocationClient client = null;				//定位服务监听
+private LocationClientOption mOption,DIYoption;		//定位地点
+private Object  objLock = new Object();
+/***
+ * 初始化服务
+ */
+public LocationService(Context locationContext){
+   synchronized (objLock) {
+      if(client == null){
+         client = new LocationClient(locationContext);
+         client.setLocOption(getDefaultLocationClientOption());
+         }
+      }
+   }
+/***
+ * 设置监听
+ */
+public boolean registerListener(BDLocationListener listener){
+   boolean isSuccess = false;
+   if(listener != null){
+        client.registerLocationListener(listener);
+         isSuccess = true;
+      }
+   return  isSuccess;
+   }
+public void unregisterListener(BDLocationListener listener){
+    if(listener != null){
+       client.unRegisterLocationListener(listener);
+      }
+   }
+/***
+* 是否成功设置选项
+*/
+public boolean setLocationOption(LocationClientOption option){
+    boolean isSuccess = false;
+      if(option != null){
+         if(client.isStarted())
+         client.stop();
+         DIYoption = option;
+         client.setLocOption(option);
+         isSuccess = true;
+      }
+return isSuccess;
+   }
+/**
+*返回获取到的定位地点
+*/
+public LocationClientOption getOption(){
+     return DIYoption;
+   }
+/***
+ *默认位置客户端选项
+ */
+public LocationClientOption getDefaultLocationClientOption(){
+    if(mOption == null){
+        mOption = new LocationClientOption();
+        //可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
+        mOption.setLocationMode(LocationMode.Hight_Accuracy);
+        //可选，默认gcj02，设置返回的定位结果坐标系，如果配合百度地图使用，建议设置为bd09ll;
+        mOption.setCoorType("bd09ll");
+        //可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于5000ms才是有效的
+        mOption.setScanSpan(5000);
+        mOption.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
+        mOption.setIsNeedLocationDescribe(true);//可选，设置是否需要地址描述
+        mOption.setNeedDeviceDirect(false);//可选，设置是否需要设备方向结果
+        //可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果
+        mOption.setLocationNotify(false);
+         //可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop时
+         //杀死这个进程，默认不杀死
+        mOption.setIgnoreKillProcess(true);
+        //可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到
+        mOption.setIsNeedLocationDescribe(true);
+        //可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
+        mOption.setIsNeedLocationPoiList(true);
+        //可选，默认false，设置是否收集CRASH信息，默认收集
+        mOption.SetIgnoreCacheException(false);}
+        return mOption;
+   }
+/**
+*activity执行到开始的生命周期时打开监听
+*/
+public void start(){
+        synchronized (objLock) {
+             if(client != null && !client.isStarted()){
+                client.start();
+         }
+      }
+   }
+/**
+*activity执行到停止的生命周期时关闭监听
+*/
+public void stop(){
+    synchronized (objLock) {
+        if(client != null &&client.isStarted()){
+            client.stop();
+         }
+      }
+   }
+}

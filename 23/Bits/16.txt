@@ -1,0 +1,8 @@
+/**
+ * 显示其余控件
+ */
+private void otherView(){
+branchImg.setVisibility(VISIBLE);					//显示代表茎的控件
+leftLeafImg.setVisibility(VISIBLE);				//显示代表左叶的控件
+rightLeafImg.setVisibility(VISIBLE);				//显示代表右叶的控件
+}

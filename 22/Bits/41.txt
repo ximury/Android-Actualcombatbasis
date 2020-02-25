@@ -1,0 +1,8 @@
+	<?xml version="1.0" encoding="utf-8"?>
+	<!--最外层的父布局（此界面为相对布局）-->  
+	<RelativeLayout 			
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"					
+	    android:layout_height="match_parent">	
+	
+	</RelativeLayout>	

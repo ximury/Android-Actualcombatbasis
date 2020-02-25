@@ -1,0 +1,43 @@
+	/**
+	     * 写一个内部的广播
+	     * */
+	    private class ScreenBroadcastReceiver extends BroadcastReceiver{
+	        private String action = null;
+	        @Override
+	        public void onReceive(Context context, Intent intent) {
+	            action = intent.getAction();
+	            if (Intent.ACTION_SCREEN_ON.equals(action)){        //屏幕亮时操作
+	                    mScreenStateListener.onScreenOn();
+	         }else if (Intent.ACTION_SCREEN_OFF.equals(action)){   //屏幕关闭时操作
+	                    mScreenStateListener.onScreenOff();
+	         }else if (Intent.ACTION_USER_PRESENT.equals(action)) {//解锁时操作
+	                    mScreenStateListener.onUserPresent();
+	            }
+	        }
+	    }
+	    /**
+	     * 开始监听广播状态
+	     * */
+	    public void begin(ScreenStateListener listener){
+	        mScreenStateListener = listener;  
+	        registerListener();							//注册监听
+	        getScreenState();								//获取监听
+	    }
+	    /**
+	     * 启动广播接收器
+	     * */
+	    private void registerListener() {	
+	        IntentFilter filter = new IntentFilter();
+	        filter.addAction(Intent.ACTION_SCREEN_ON);		//屏幕亮起时开启的广播
+	        filter.addAction(Intent.ACTION_SCREEN_OFF);		//屏幕关闭时开启的广播
+	        filter.addAction(Intent.ACTION_USER_PRESENT);	//屏幕解锁时开启的广播
+	        context.registerReceiver(mScreenReceiver, filter);	//发送广播
+	
+		}
+	
+	    /**
+	     * 解除广播
+	     * */	
+	  public void unregisterListener(){
+	      context.unregisterReceiver(mScreenReceiver); //注销广播
+	  } 

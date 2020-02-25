@@ -1,0 +1,31 @@
+locationService = ((BaseApplication) getApplication()).locationService;  //初始化定位服务
+//获取locationservice实例，建议应用中只初始化1个location实例
+locationService.registerListener(mListener);                             //注册监听
+/*****
+ * 定位结果回调，重写onReceiveLocation方法，可以直接拷贝如下代码到自己工程中修改
+ */
+private BDLocationListener mListener = new BDLocationListener() {
+    @Override
+    public void onReceiveLocation(final BDLocation location) {
+        if (null != location && location.getLocType() != BDLocation.TypeServerError) {
+            StringBuffer buffer = new StringBuffer(256);
+            buffer.append("time : ");
+        /**
+        * 时间也可以使用systemClock.elapsedRealtime()方法 获取的是自从开机以来，每次回调的时间；
+        * location.getTime() 是指服务端出本次结果的时间，如果位置不发生变化，则时间不变
+       */
+            buffer.append("\nlatitude : ");
+            buffer.append(location.getLatitude());
+            buffer.append("\nlontitude : ");
+            buffer.append(location.getLongitude());
+            buffer.append("\ncity : ");
+            buffer.append(location.getAddress());
+            if (location.getPoiList() != null && !location.getPoiList().isEmpty()) {
+                for (int i = 0; i < location.getPoiList().size(); i++) {
+                     poi = (Poi) location.getPoiList().get(0);
+                    buffer.append(poi.getName() + ";");
+                }
+            }
+            if (location.getLocType() == BDLocation.TypeGpsLocation) {// GPS定位结果
+                buffer.append("gps定位成功");
+            }// 网络定位结果

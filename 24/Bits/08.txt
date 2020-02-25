@@ -1,0 +1,41 @@
+private Handler handler = new Handler(new Handler.Callback() {
+@Override
+public boolean handleMessage(Message msg) {
+switch (msg.what){
+case WEATHER_MESSAGE://天气信息网络请求结束后会跳到这里
+String jsonStr = (String) msg.obj;
+//获取Json数据
+if (jsonStr != null){
+//获取下载的Json数据并进行相应的设置
+setDownLoadMessageToView(jsonStr);
+                    }
+break;
+case STEP_PROGRESS://步数更新后会跳到这里
+//获取计步的步数
+steps_values = StepDetector.CURRENT_SETP;
+//把步数的进度显示在进度条上
+circleBar.update(steps_values,duration);
+duration = 0;
+//存储当前的步数
+SaveKeyValues.putIntValues("sport_steps", steps_values);
+//计算里程
+distance_values = steps_values *
+custom_step_length * 0.01 *0.001;//里程单位为km
+show_mileage.setText(formatDouble(distance_values)
+						 + context.getString(R.string.km));//显示里程数据
+//存值
+				SaveKeyValues.putStringValues("sport_distance",
+						formatDouble(distance_values));
+//消耗热量:跑步热量（kcal）＝体重（kg）×距离（km）×1.036
+heat_values = custom_weight * distance_values * 1.036;
+//显示信息
+show_heat.setText(formatDouble(heat_values)
+						 + context.getString(R.string.cal));
+//存值
+SaveKeyValues.putStringValues("sport_heat",
+                            formatDouble(heat_values));
+break;
+            }
+return false;
+        }
+    });

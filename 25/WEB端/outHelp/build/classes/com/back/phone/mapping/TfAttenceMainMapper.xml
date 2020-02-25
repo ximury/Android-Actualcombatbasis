@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfAttenceMainMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfAttenceMain" >
+    <id column="am_id" property="amId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="am_data" property="amData" jdbcType="VARCHAR" />
+    <result column="am_start" property="amStart" jdbcType="VARCHAR" />
+    <result column="am_startT" property="amStartt" jdbcType="VARCHAR" />
+    <result column="am_startR" property="amStartr" jdbcType="VARCHAR" />
+    <result column="am_splace" property="amSplace" jdbcType="VARCHAR" />
+    <result column="am_sphoto" property="amSphoto" jdbcType="VARCHAR" />
+    <result column="am_end" property="amEnd" jdbcType="VARCHAR" />
+    <result column="am_endT" property="amEndt" jdbcType="VARCHAR" />
+    <result column="am_endR" property="amEndr" jdbcType="VARCHAR" />
+    <result column="am_eplace" property="amEplace" jdbcType="VARCHAR" />
+    <result column="am_ephoto" property="amEphoto" jdbcType="VARCHAR" />
+    <result column="am_spare1" property="amSpare1" jdbcType="VARCHAR" />
+    <result column="am_spare2" property="amSpare2" jdbcType="VARCHAR" />
+    <result column="am_spare3" property="amSpare3" jdbcType="VARCHAR" />
+    <result column="am_spare4" property="amSpare4" jdbcType="VARCHAR" />
+    <result column="am_spare5" property="amSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    am_id, user_id, am_data, am_start, am_startT, am_startR, am_splace, am_sphoto, am_end, 
+    am_endT, am_endR, am_eplace, am_ephoto, am_spare1, am_spare2, am_spare3, am_spare4, 
+    am_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_attence_main
+    where am_id = #{amId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_attence_main
+    where am_id = #{amId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfAttenceMain" >
+    insert into tf_attence_main (am_id, user_id, am_data, 
+      am_start, am_startT, am_startR, 
+      am_splace, am_sphoto, am_end, 
+      am_endT, am_endR, am_eplace, 
+      am_ephoto, am_spare1, am_spare2, 
+      am_spare3, am_spare4, am_spare5
+      )
+    values (#{amId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{amData,jdbcType=VARCHAR}, 
+      #{amStart,jdbcType=VARCHAR}, #{amStartt,jdbcType=VARCHAR}, #{amStartr,jdbcType=VARCHAR}, 
+      #{amSplace,jdbcType=VARCHAR}, #{amSphoto,jdbcType=VARCHAR}, #{amEnd,jdbcType=VARCHAR}, 
+      #{amEndt,jdbcType=VARCHAR}, #{amEndr,jdbcType=VARCHAR}, #{amEplace,jdbcType=VARCHAR}, 
+      #{amEphoto,jdbcType=VARCHAR}, #{amSpare1,jdbcType=VARCHAR}, #{amSpare2,jdbcType=VARCHAR}, 
+      #{amSpare3,jdbcType=VARCHAR}, #{amSpare4,jdbcType=VARCHAR}, #{amSpare5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfAttenceMain" >
+    insert into tf_attence_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="amId != null" >
+        am_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="amData != null" >
+        am_data,
+      </if>
+      <if test="amStart != null" >
+        am_start,
+      </if>
+      <if test="amStartt != null" >
+        am_startT,
+      </if>
+      <if test="amStartr != null" >
+        am_startR,
+      </if>
+      <if test="amSplace != null" >
+        am_splace,
+      </if>
+      <if test="amSphoto != null" >
+        am_sphoto,
+      </if>
+      <if test="amEnd != null" >
+        am_end,
+      </if>
+      <if test="amEndt != null" >
+        am_endT,
+      </if>
+      <if test="amEndr != null" >
+        am_endR,
+      </if>
+      <if test="amEplace != null" >
+        am_eplace,
+      </if>
+      <if test="amEphoto != null" >
+        am_ephoto,
+      </if>
+      <if test="amSpare1 != null" >
+        am_spare1,
+      </if>
+      <if test="amSpare2 != null" >
+        am_spare2,
+      </if>
+      <if test="amSpare3 != null" >
+        am_spare3,
+      </if>
+      <if test="amSpare4 != null" >
+        am_spare4,
+      </if>
+      <if test="amSpare5 != null" >
+        am_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="amId != null" >
+        #{amId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="amData != null" >
+        #{amData,jdbcType=VARCHAR},
+      </if>
+      <if test="amStart != null" >
+        #{amStart,jdbcType=VARCHAR},
+      </if>
+      <if test="amStartt != null" >
+        #{amStartt,jdbcType=VARCHAR},
+      </if>
+      <if test="amStartr != null" >
+        #{amStartr,jdbcType=VARCHAR},
+      </if>
+      <if test="amSplace != null" >
+        #{amSplace,jdbcType=VARCHAR},
+      </if>
+      <if test="amSphoto != null" >
+        #{amSphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="amEnd != null" >
+        #{amEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="amEndt != null" >
+        #{amEndt,jdbcType=VARCHAR},
+      </if>
+      <if test="amEndr != null" >
+        #{amEndr,jdbcType=VARCHAR},
+      </if>
+      <if test="amEplace != null" >
+        #{amEplace,jdbcType=VARCHAR},
+      </if>
+      <if test="amEphoto != null" >
+        #{amEphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare1 != null" >
+        #{amSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare2 != null" >
+        #{amSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare3 != null" >
+        #{amSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare4 != null" >
+        #{amSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare5 != null" >
+        #{amSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfAttenceMain" >
+    update tf_attence_main
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="amData != null" >
+        am_data = #{amData,jdbcType=VARCHAR},
+      </if>
+      <if test="amStart != null" >
+        am_start = #{amStart,jdbcType=VARCHAR},
+      </if>
+      <if test="amStartt != null" >
+        am_startT = #{amStartt,jdbcType=VARCHAR},
+      </if>
+      <if test="amStartr != null" >
+        am_startR = #{amStartr,jdbcType=VARCHAR},
+      </if>
+      <if test="amSplace != null" >
+        am_splace = #{amSplace,jdbcType=VARCHAR},
+      </if>
+      <if test="amSphoto != null" >
+        am_sphoto = #{amSphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="amEnd != null" >
+        am_end = #{amEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="amEndt != null" >
+        am_endT = #{amEndt,jdbcType=VARCHAR},
+      </if>
+      <if test="amEndr != null" >
+        am_endR = #{amEndr,jdbcType=VARCHAR},
+      </if>
+      <if test="amEplace != null" >
+        am_eplace = #{amEplace,jdbcType=VARCHAR},
+      </if>
+      <if test="amEphoto != null" >
+        am_ephoto = #{amEphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare1 != null" >
+        am_spare1 = #{amSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare2 != null" >
+        am_spare2 = #{amSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare3 != null" >
+        am_spare3 = #{amSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare4 != null" >
+        am_spare4 = #{amSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="amSpare5 != null" >
+        am_spare5 = #{amSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where am_id = #{amId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfAttenceMain" >
+    update tf_attence_main
+    set user_id = #{userId,jdbcType=VARCHAR},
+      am_data = #{amData,jdbcType=VARCHAR},
+      am_start = #{amStart,jdbcType=VARCHAR},
+      am_startT = #{amStartt,jdbcType=VARCHAR},
+      am_startR = #{amStartr,jdbcType=VARCHAR},
+      am_splace = #{amSplace,jdbcType=VARCHAR},
+      am_sphoto = #{amSphoto,jdbcType=VARCHAR},
+      am_end = #{amEnd,jdbcType=VARCHAR},
+      am_endT = #{amEndt,jdbcType=VARCHAR},
+      am_endR = #{amEndr,jdbcType=VARCHAR},
+      am_eplace = #{amEplace,jdbcType=VARCHAR},
+      am_ephoto = #{amEphoto,jdbcType=VARCHAR},
+      am_spare1 = #{amSpare1,jdbcType=VARCHAR},
+      am_spare2 = #{amSpare2,jdbcType=VARCHAR},
+      am_spare3 = #{amSpare3,jdbcType=VARCHAR},
+      am_spare4 = #{amSpare4,jdbcType=VARCHAR},
+      am_spare5 = #{amSpare5,jdbcType=VARCHAR}
+    where am_id = #{amId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="queryTempList" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfAttenceMain">
+		select
+		<include refid="Base_Column_List" />
+		from tf_attence_main
+		<where>
+		 (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+			<if test="amData!=null and amData!=''">
+				and am_data like concat(concat(#{amData}),'%')
+			</if>
+		</where>
+		order by am_data asc 
+	</select>
+	
+	<select id="selectByIdDate" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfAttenceMain">
+		select
+		<include refid="Base_Column_List" />
+		from tf_attence_main
+		<where>
+		 (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+			<if test="amData!=null and amData!=''">
+				and am_data like concat(concat(#{amData}))
+			</if>
+		</where>
+		order by am_data asc 
+	</select>
+</mapper>

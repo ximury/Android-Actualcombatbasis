@@ -1,0 +1,33 @@
+ /**
+     * 重写activity的onTouch方法
+     * 监听滑动事件
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            //当手指按下的时候（x，y）坐标
+            x1 = event.getX();
+            y1 = event.getY();
+        }
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            //当手指离开的时候（x，y）坐标
+            x2 = event.getX();
+            y2 = event.getY();
+            if (y1 - y2 > 200) {                        //向上滑
+
+                // 已掌握单词数量加一
+                int num = sharedPreferences.getInt("alreadyMastered", 0) + 1;
+                editor.putInt("alreadyMastered", num);  //输入到数据库
+                editor.commit();            //保存
+                Toast.makeText(this, "已掌握", Toast.LENGTH_SHORT).show(); //弹出提示
+                getNextData();                            //获取下一条数据
+            } else if (y2 - y1 > 200) {                //向下滑
+                Toast.makeText(this, "待加功能......", Toast.LENGTH_SHORT).show();
+            } else if (x1 - x2 > 200) {                //向左滑
+                getNextData();                //获取下一条数据
+            } else if (x2 - x1 > 200) {    //向右滑
+                unlocked();                //解锁
+            }
+        }
+        return super.onTouchEvent(event);
+    }

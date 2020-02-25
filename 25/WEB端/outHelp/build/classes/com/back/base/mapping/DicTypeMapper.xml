@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.DicTypeMapper">
+	<resultMap id="BaseResultMap" type="com.back.base.model.DicType">
+		<result column="PK_ID" property="pkId" jdbcType="VARCHAR" />
+		<result column="DIC_NAME" property="dicName" jdbcType="VARCHAR" />
+		<result column="BUS_CODE" property="busCode" jdbcType="VARCHAR" />
+		<result column="DIC_CODE" property="dicCode" jdbcType="VARCHAR" />
+		<result column="DIC_ORIGIN" property="dicOrigin" jdbcType="VARCHAR" />
+		<result column="DIC_SQL" property="dicSql" jdbcType="VARCHAR" />
+		<result column="IS_TREE" property="isTree" jdbcType="CHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="CREATE_ID" property="createId" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="UPDATE_ID" property="updateId" jdbcType="VARCHAR" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		PK_ID ,DIC_NAME ,BUS_CODE , DIC_CODE,DIC_ORIGIN ,DIC_SQL ,
+		IS_TREE, REMARK ,STATUS , CREATE_ID ,CREATE_TIME,UPDATE_ID, UPDATE_TIME
+	</sql>
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from SYS_DIC_TYPE
+		where PK_ID = #{pkId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from SYS_DIC_TYPE
+		where PK_ID = #{pkId,jdbcType=VARCHAR}
+	</delete>
+	<select id="query" resultMap="BaseResultMap" parameterType="com.back.base.model.DicType">
+		select
+		<include refid="Base_Column_List" />
+		from SYS_DIC_TYPE
+		<where>
+			<if test="busCode != null and busCode!='' ">
+				BUS_CODE = #{busCode,jdbcType=VARCHAR}
+			</if>
+			<if test="dicName != null and dicName!=''">
+				and DIC_NAME like concat(concat('%',#{dicName}),'%')
+			</if>
+		</where>		
+		order by bus_Code asc
+	</select>
+
+	<select id="selectAll" resultMap="BaseResultMap" parameterType="com.back.base.model.DicType">
+		select
+		<include refid="Base_Column_List" />
+		from SYS_DIC_TYPE
+
+	</select>
+
+	<insert id="insert" parameterType="com.back.base.model.DicType">
+		insert into SYS_DIC_TYPE (PK_ID, DIC_NAME, BUS_CODE,
+		DIC_CODE, DIC_ORIGIN, DIC_SQL,
+		IS_TREE, REMARK, STATUS,
+		CREATE_ID, CREATE_TIME, UPDATE_ID,
+		UPDATE_TIME)
+		values (#{pkId,jdbcType=VARCHAR}, #{dicName,jdbcType=VARCHAR}, #{busCode,jdbcType=VARCHAR},
+		#{dicCode,jdbcType=VARCHAR}, #{dicOrigin,jdbcType=VARCHAR}, #{dicSql,jdbcType=VARCHAR},
+		#{isTree,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+		#{createId,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.back.base.model.DicType">
+		insert into SYS_DIC_TYPE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pkId != null">
+				PK_ID,
+			</if>
+			<if test="dicName != null">
+				DIC_NAME,
+			</if>
+			<if test="busCode != null">
+				BUS_CODE,
+			</if>
+			<if test="dicCode != null">
+				DIC_CODE,
+			</if>
+			<if test="dicOrigin != null">
+				DIC_ORIGIN,
+			</if>
+			<if test="dicSql != null">
+				DIC_SQL,
+			</if>
+			<if test="isTree != null">
+				IS_TREE,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createId != null">
+				CREATE_ID,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="updateId != null">
+				UPDATE_ID,
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pkId != null">
+				#{pkId,jdbcType=VARCHAR},
+			</if>
+			<if test="dicName != null">
+				#{dicName,jdbcType=VARCHAR},
+			</if>
+			<if test="busCode != null">
+				#{busCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dicCode != null">
+				#{dicCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dicOrigin != null">
+				#{dicOrigin,jdbcType=VARCHAR},
+			</if>
+			<if test="dicSql != null">
+				#{dicSql,jdbcType=VARCHAR},
+			</if>
+			<if test="isTree != null">
+				#{isTree,jdbcType=CHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createId != null">
+				#{createId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="updateId != null">
+				#{updateId,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.DicType">
+		update SYS_DIC_TYPE
+		<set>
+			<if test="busCode != null">
+				BUS_CODE = #{busCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dicName != null">
+				DIC_NAME = #{dicName,jdbcType=VARCHAR},
+			</if>
+			<if test="dicCode != null">
+				DIC_CODE = #{dicCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dicOrigin != null">
+				DIC_ORIGIN = #{dicOrigin,jdbcType=VARCHAR},
+			</if>
+			<if test="dicSql != null">
+				DIC_SQL = #{dicSql,jdbcType=VARCHAR},
+			</if>
+			<if test="isTree != null">
+				IS_TREE = #{isTree,jdbcType=CHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="updateId != null">
+				UPDATE_ID = #{updateId,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where PK_ID = #{pkId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.back.base.model.DicType">
+		update SYS_DIC_TYPE
+		set BUS_CODE = #{busCode,jdbcType=VARCHAR},
+		set DIC_NAME = #{dicName,jdbcType=VARCHAR},
+		set DIC_CODE = #{dicCode,jdbcType=VARCHAR},
+		set DIC_ORIGIN = #{dicOrigin,jdbcType=VARCHAR},
+		set DIC_SQL = #{dicSql,jdbcType=VARCHAR},
+		set IS_TREE = #{isTree,jdbcType=VARCHAR},
+		set REMARK = #{remark,jdbcType=VARCHAR},
+		set STATUS = #{status,jdbcType=VARCHAR},
+		set UPDATE_ID = #{updateId,jdbcType=VARCHAR},
+		set UPDATE_TIME = #{updateTime,jdbcType=VARCHAR}
+		where PK_ID = #{pkId,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

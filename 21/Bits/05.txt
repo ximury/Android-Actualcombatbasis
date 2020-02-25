@@ -1,0 +1,11 @@
+public class StartActivity extends Activity {    //StartActivity类头部
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {    // onCreate()方法头部
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
+        Timer timer=new Timer();   //创建Timer对象，用于设置启动界面显示的时间
+
+
+    }      //onCreate()方法尾部
+}     //StartActivity类尾部

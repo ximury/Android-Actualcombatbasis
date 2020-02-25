@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">POST方式登录QQ</string>
+    <string name="username_hint">QQ号/手机号/邮箱</string>
+    <string name="password_hint">密码</string>
+</resources>

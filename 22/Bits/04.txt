@@ -1,0 +1,30 @@
+    //用来显示单词和音标的
+    private TextView timeText, dateText, wordText, englishText;
+    private ImageView playVioce;                     //播放声音
+    private String mMonth, mDay, mWay, mHours, mMinute; // 用来显示时间
+    private SpeechSynthesizer speechSynthesizer;         // 合成对象
+    //锁屏
+    private KeyguardManager km;
+    private KeyguardManager.KeyguardLock kl;
+    private RadioGroup radioGroup;                      // 加载单词的三个选项
+    private RadioButton radioOne, radioTwo, radioThree; // 单词意思的三个选项
+    private SharedPreferences sharedPreferences;         // 定义轻量级数据库
+    SharedPreferences.Editor editor = null;              // 编辑数据库
+    int j = 0;                                     // 用于记录答了几道题
+    List<Integer> list;                             // 判断题的数目
+    List<CET4Entity> datas;                             // 用于从数据库读取相应的词库
+    int k;
+    /**
+     * 手指按下的点为（x1,y1）
+     * 手指离开屏幕的点为（x2,y2）
+     */
+    float x1 = 0;
+    float y1 = 0;
+    float x2 = 0;
+    float y2 = 0;
+
+    private SQLiteDatabase db;                        // 创建数据库
+    private DaoMaster mDaoMaster, dbMaster;            // 管理者
+    private DaoSession mDaoSession, dbSession;        // 和数据库进行会话
+    // 对应的表,由java代码生成的,对数据库内相应的表操作使用此对象
+    private CET4EntityDao questionDao, dbDao;

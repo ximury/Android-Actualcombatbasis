@@ -1,0 +1,10 @@
+	    private Context context;        //联系上下文
+	    private ScreenBroadcastReceiver mScreenReceiver;    //定义一个广播
+	    private ScreenStateListener mScreenStateListener;       //定义个内部接口
+	    /**
+	     * 初始化
+	     * */
+	    public ScreenListener(Context context) {
+	        this.context = context;
+	        mScreenReceiver =new ScreenBroadcastReceiver();//初始化广播
+	    }

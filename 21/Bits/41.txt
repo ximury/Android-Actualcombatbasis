@@ -1,0 +1,19 @@
+    switch (event.getAction()) {     		// 获取行动方式头部
+        case MotionEvent.ACTION_DOWN:     	// 手指按下事件
+            // 当手指按下的时候坐标
+            x1 = event.getX();      		// 获取手指按下的X坐标
+            y1 = event.getY();      		// 获取手指按下的Y坐标
+            igvx = iv_frame.getLeft();      // 获取手指按下图片的X坐标
+            igvy = iv_frame.getTop();       // 获取手指按下图片的Y坐标
+            // 判断当手指按下的坐标大于按下图片的坐标时，证明手指按住移动，此时开启书写
+            if (x1 >= igvx && x1 <= igvx + (int) (arrdown.getWidth() * scaleWidht)
+                    && y1 >= igvy & y1 <= igvy + (int) (arrdown.getWidth() * scaleWidht)
+                    ) {
+                type = 1; 					// 开启书写
+            } else {
+                type = 0; 					// 否则关闭书写
+            }
+            break;
+
+
+         }     // 获取行动方式尾部

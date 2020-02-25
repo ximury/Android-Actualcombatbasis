@@ -1,0 +1,6 @@
+
+<!--注册数字1书写界面并设置全屏-->
+    <activity
+        android:name=".OneActivity"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+

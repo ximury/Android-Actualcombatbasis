@@ -1,0 +1,25 @@
+    protected void dialog() { 		// 完成后提示对话框头部
+        typedialog = false;      					// 修改对话框状态
+        // 实例化对话框
+        AlertDialog.Builder builder=new AlertDialog.Builder(OneActivity.this);
+        builder.setMessage("太棒了！书写完成！");    	// 设置对话框文本信息
+        builder.setTitle("提示");           			// 设置对话框标题
+        //设置对话框完成按钮单击事件头部
+        builder.setPositiveButton("完成", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();          			// dialog消失
+                typedialog = true;             		// 修改对话框状态
+                finish();         					// 关闭当前页面
+            }
+        });       //对话框完成按钮单击事件尾部
+        //设置对话框再来一次按钮单击事件头部
+        builder.setNegativeButton("再来一次", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();          			// dialog消失
+                typedialog = true;           		// 修改对话框状态
+                i = 1;
+                lodimagep(i);        				// 调用加载图片方法中的第一张图片
+            }
+        });          //对话框再来一次按钮单击事件尾部
+        builder.create().show();        				// 创建并显示对话框
+    }    //完成后提示对话框尾部

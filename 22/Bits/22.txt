@@ -1,0 +1,24 @@
+    <!--用于显示英文名人名言的文本控件-->
+    <TextView
+	android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/wisdom_english"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="A watched pot never boils"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="17sp" />
+    <!--用于显示中文名人名言的文本控件-->
+    <TextView
+        android:id="@+id/wisdom_china"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="心急喝不了热粥"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="17sp" />

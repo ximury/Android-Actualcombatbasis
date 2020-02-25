@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/left_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/with_0dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/with_10dp"
+            android:layout_centerInParent="true"
+            android:drawableTop="@mipmap/mrkj_main_news"
+            android:text="名言"
+            android:textColor="@color/left_text_color"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="@dimen/with_0dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/with_10dp"
+            android:drawableTop="@mipmap/mrkj_main_notification"
+            android:text="活动"
+            android:layout_centerInParent="true"
+            android:textColor="@color/left_text_color"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/with_0dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/mrkj_main_aboutus"
+            android:text="我们"
+            android:drawablePadding="@dimen/with_10dp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/left_text_color"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

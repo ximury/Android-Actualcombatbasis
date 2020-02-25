@@ -1,0 +1,10 @@
+ <!--用于显示时间的文本框控件-->
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="09:42"
+        android:textColor="@android:color/white"
+        android:textSize="50dp" />

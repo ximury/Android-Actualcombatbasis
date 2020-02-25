@@ -1,0 +1,13 @@
+//递减显示帧图片的handler消息头部
+public Handler mHandler=new Handler(){
+    public void handleMessage(Message msg){
+        switch (msg.what){
+            case 2:  			// 当接收到手势抬起子线程消息时
+                jlodimage();  	// 调用资源图片倒退显示方法
+                break;
+            default:
+                break;
+        }
+        super.handleMessage(msg);
+    }
+};   //递减显示帧图片的handler消息尾部

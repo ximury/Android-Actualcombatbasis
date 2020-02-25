@@ -1,0 +1,24 @@
+/**
+     * 获取计步服务的信息
+     */
+private void getServiceValue() {
+if (get_step_thread == null) {
+get_step_thread = new Thread() {			// 子线程用于监听当前步数的变化
+@Override
+public void run() {
+super.run();
+while (!isStop) {					//线程未关闭
+try {
+Thread.sleep(1000);			//每隔一秒发送一条信息给UI线程
+if (StepCounterService.FLAG) {//如果服务开启
+handler.sendEmptyMessage(STEP_PROGRESS);// 通知主线程
+}
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            };
+get_step_thread.start();					//开启线程
+        }
+    }

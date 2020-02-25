@@ -1,0 +1,24 @@
+    private void PlayMusic() {   //播放背景音乐方法
+        //创建音乐播放器对象并加载播放音乐文件
+        mediaPlayer = MediaPlayer.create(this, R.raw.music1);
+        mediaPlayer.setLooping(true);   	//设置音乐循环播放
+        mediaPlayer.start();    			//启动播放音乐
+    }
+
+    //该方法实现数字1书写界面停止时，背景音乐停止
+    protected void onStop() {
+        super.onStop();
+        if (mediaPlayer != null) {   		//音乐播放器不为空时
+            mediaPlayer.stop();   			//停止音乐播放
+        }
+    }
+
+    // 该方法实现数字1书写界面销毁时，背景音乐停止并释放音乐资源
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {   		//音乐播放器不为空时
+            mediaPlayer.stop();    			//停止音乐播放
+            mediaPlayer.release();    		//释放音乐资源
+            mediaPlayer = null;    			//设置音乐播放器为空
+        }
+    }

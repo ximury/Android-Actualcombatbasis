@@ -1,0 +1,8 @@
+public class AboutActivity extends Activity {   //AboutActivity类头部
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {   // onCreate()方法头部
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about);
+    }   // onCreate()方法尾部
+}   //AboutActivity类尾部

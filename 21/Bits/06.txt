@@ -1,0 +1,10 @@
+ //创建TimerTask对象，用于实现启动界面与游戏主界面的跳转
+ TimerTask timerTask =new TimerTask() {
+     @Override
+     public void run() {
+         //从启动界面跳转到游戏主界面
+         startActivity(new Intent(StartActivity.this,MainActivity.class));
+         finish();                   //关闭启动界面
+     }
+ };
+ timer.schedule(timerTask,2000);   //设置显示启动界面2秒后，跳转游戏主界面

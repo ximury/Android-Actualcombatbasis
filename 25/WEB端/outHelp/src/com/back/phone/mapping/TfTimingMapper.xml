@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfTimingMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfTiming" >
+    <id column="timing_id" property="timingId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="br_id" property="brId" jdbcType="VARCHAR" />
+    <result column="timing_status" property="timingStatus" jdbcType="VARCHAR" />
+    <result column="timing_finish" property="timingFinish" jdbcType="VARCHAR" />
+    <result column="timing_begin" property="timingBegin" jdbcType="VARCHAR" />
+    <result column="timing_time" property="timingTime" jdbcType="VARCHAR" />
+    <result column="timing_content" property="timingContent" jdbcType="VARCHAR" />
+    <result column="timing_spare1" property="timingSpare1" jdbcType="VARCHAR" />
+    <result column="timing_spare2" property="timingSpare2" jdbcType="VARCHAR" />
+    <result column="timing_spare3" property="timingSpare3" jdbcType="VARCHAR" />
+    <result column="timing_spare4" property="timingSpare4" jdbcType="VARCHAR" />
+    <result column="timing_spare5" property="timingSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    timing_id, user_id, br_id, timing_status, timing_finish, timing_begin, timing_time, 
+    timing_content, timing_spare1, timing_spare2, timing_spare3, timing_spare4, timing_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_timing
+    where timing_id = #{timingId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_timing
+    where timing_id = #{timingId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfTiming" >
+    insert into tf_timing (timing_id, user_id, br_id, 
+      timing_status, timing_finish, timing_begin, 
+      timing_time, timing_content, timing_spare1, 
+      timing_spare2, timing_spare3, timing_spare4, 
+      timing_spare5)
+    values (#{timingId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{brId,jdbcType=VARCHAR}, 
+      #{timingStatus,jdbcType=VARCHAR}, #{timingFinish,jdbcType=VARCHAR}, #{timingBegin,jdbcType=VARCHAR}, 
+      #{timingTime,jdbcType=VARCHAR}, #{timingContent,jdbcType=VARCHAR}, #{timingSpare1,jdbcType=VARCHAR}, 
+      #{timingSpare2,jdbcType=VARCHAR}, #{timingSpare3,jdbcType=VARCHAR}, #{timingSpare4,jdbcType=VARCHAR}, 
+      #{timingSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfTiming" >
+    insert into tf_timing
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="timingId != null" >
+        timing_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="brId != null" >
+        br_id,
+      </if>
+      <if test="timingStatus != null" >
+        timing_status,
+      </if>
+      <if test="timingFinish != null" >
+        timing_finish,
+      </if>
+      <if test="timingBegin != null" >
+        timing_begin,
+      </if>
+      <if test="timingTime != null" >
+        timing_time,
+      </if>
+      <if test="timingContent != null" >
+        timing_content,
+      </if>
+      <if test="timingSpare1 != null" >
+        timing_spare1,
+      </if>
+      <if test="timingSpare2 != null" >
+        timing_spare2,
+      </if>
+      <if test="timingSpare3 != null" >
+        timing_spare3,
+      </if>
+      <if test="timingSpare4 != null" >
+        timing_spare4,
+      </if>
+      <if test="timingSpare5 != null" >
+        timing_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="timingId != null" >
+        #{timingId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        #{brId,jdbcType=VARCHAR},
+      </if>
+      <if test="timingStatus != null" >
+        #{timingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="timingFinish != null" >
+        #{timingFinish,jdbcType=VARCHAR},
+      </if>
+      <if test="timingBegin != null" >
+        #{timingBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="timingTime != null" >
+        #{timingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="timingContent != null" >
+        #{timingContent,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare1 != null" >
+        #{timingSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare2 != null" >
+        #{timingSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare3 != null" >
+        #{timingSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare4 != null" >
+        #{timingSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare5 != null" >
+        #{timingSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfTiming" >
+    update tf_timing
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="brId != null" >
+        br_id = #{brId,jdbcType=VARCHAR},
+      </if>
+      <if test="timingStatus != null" >
+        timing_status = #{timingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="timingFinish != null" >
+        timing_finish = #{timingFinish,jdbcType=VARCHAR},
+      </if>
+      <if test="timingBegin != null" >
+        timing_begin = #{timingBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="timingTime != null" >
+        timing_time = #{timingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="timingContent != null" >
+        timing_content = #{timingContent,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare1 != null" >
+        timing_spare1 = #{timingSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare2 != null" >
+        timing_spare2 = #{timingSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare3 != null" >
+        timing_spare3 = #{timingSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare4 != null" >
+        timing_spare4 = #{timingSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="timingSpare5 != null" >
+        timing_spare5 = #{timingSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where timing_id = #{timingId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfTiming" >
+    update tf_timing
+    set user_id = #{userId,jdbcType=VARCHAR},
+      br_id = #{brId,jdbcType=VARCHAR},
+      timing_status = #{timingStatus,jdbcType=VARCHAR},
+      timing_finish = #{timingFinish,jdbcType=VARCHAR},
+      timing_begin = #{timingBegin,jdbcType=VARCHAR},
+      timing_time = #{timingTime,jdbcType=VARCHAR},
+      timing_content = #{timingContent,jdbcType=VARCHAR},
+      timing_spare1 = #{timingSpare1,jdbcType=VARCHAR},
+      timing_spare2 = #{timingSpare2,jdbcType=VARCHAR},
+      timing_spare3 = #{timingSpare3,jdbcType=VARCHAR},
+      timing_spare4 = #{timingSpare4,jdbcType=VARCHAR},
+      timing_spare5 = #{timingSpare5,jdbcType=VARCHAR}
+    where timing_id = #{timingId,jdbcType=VARCHAR}
+  </update>
+</mapper>

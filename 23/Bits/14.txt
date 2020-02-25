@@ -1,0 +1,121 @@
+/**
+ * 布局-->摆放位置
+ * @param changed
+* @param left
+* @param top
+* @param right
+* @param bottom
+*/
+@Override
+protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+super.onLayout(changed, left, top, right, bottom);
+//储存子控件的宽度和高度信息
+childViewValues = new HashMap<>(); //动画参数集合
+//设置子控件的摆放位置
+setGapImgPlace();					//设置代表地缝的控件的摆放位置
+setBranchPlace();					//设置代表根茎的控件的摆放位置
+setLeftLeafPlace();				//设置代表左侧叶子的控件的摆放位置
+setRightLeafPlace();				//设置代表右侧叶子的控件的摆放位置
+setBudOrSeedPlace(4);				//设置代表花朵的控件的摆放位置
+setBudOrSeedPlace(5);				//设置代表种子的控件的摆放位置
+startShowPlantFlower();			//该方法是用来设置组合动画的，此处可以先忽略
+}
+/**
+ * 获取子控件的宽高属性
+ * @param child
+* @return
+*/
+private List<Integer> getChildValues(View child){
+    List<Integer> list = new ArrayList<>();//此处用于存放对应的子控件的高度和宽度
+    list.add(child.getWidth());			//宽度在集合中的索引值为0
+list.add(child.getHeight());			//高度在集合中的索引值为1
+return list;							//返回包含子控件宽度和高度集合
+}
+/**
+ * 地缝
+ */
+private void setGapImgPlace() {
+    View child = getChildAt(0);						//获取在Plant中索引值为0的子控件
+    List<Integer> childValues = getChildValues(child);	//获取该子控件对应的宽度和高度的集合
+    //设置子控件的摆放位置
+int l = parentWidth/2 - childValues.get(0)/2;		//设置该子控件的左侧边距的位置
+int r = parentWidth/2 + childValues.get(0)/2;		//设置该子控件的右侧边距的位置
+int t = parentHeight - childValues.get(1);			//设置该子控件的顶部边距的位置
+int b = parentHeight;								//设置该子控件的底部边距的位置
+    child.layout(l,t,r,b);							//设置该子控件最新的摆放位置
+//存放地缝的高度
+childViewValues.put("GapHeight",childValues.get(1));//存放该子控件高度
+}
+
+/**
+ * 根茎
+ */
+private void setBranchPlace() {
+    View child = getChildAt(1);						//获取在Plant中索引值为1的子控件
+    List<Integer> childValues = getChildValues(child);	//获取该子控件对应的宽度和高度的集合
+    //设置子控件的摆放位置
+int l = parentWidth/2 - childValues.get(0)/2;		//设置该子控件的左侧边距的位置
+int r = parentWidth/2 + childValues.get(0)/2;		//设置该子控件的右侧边距的位置
+int t = parentHeight/3;							//设置该子控件的顶部边距的位置
+int b = parentHeight - childViewValues.get("GapHeight")/2; //设置该子控件的底部边距的位置
+    child.layout(l,t,r,b);							//设置该子控件最新的摆放位置
+//存放根茎的高度
+childViewValues.put("BranchTopY",t);//距离顶部的高度
+childViewValues.put("BranchWidth",childValues.get(0));		//代表根茎控件的宽度
+childViewValues.put("BranchHeight",Math.abs(t - b));		//代表根茎控件的高度
+childViewValues.put("BranchHeightHalf",Math.abs(t - b)/2);	//存放该子控件高度的一半
+}
+
+/**
+ * 叶子(左)
+ */
+private void setLeftLeafPlace() {
+    View child = getChildAt(2);						//获取在Plant中索引值为2的子控件
+    List<Integer> childValues = getChildValues(child);	//获取该子控件对应的宽度和高度的集合
+    //设置子控件的摆放位置
+int l = parentWidth/2 - childValues.get(0)- childViewValues.get("BranchWidth");
+int r = parentWidth/2 - childViewValues.get("BranchWidth");
+int t = parentHeight - (childValues.get(1) + childViewValues.get("GapHeight")/2);
+int b = parentHeight - childViewValues.get("GapHeight")/2;
+    child.layout(l,t,r,b);									//设置该子控件最新的摆放位置
+childViewValues.put("LeftLeafWidth" ,childValues.get(0));	//存放该子控件的宽度
+childViewValues.put("LeftLeafHeight" ,childValues.get(1));	//存放该子控件的高度
+}
+
+/**
+ * 叶子(右)
+ */
+private void setRightLeafPlace() {
+    View child = getChildAt(3);						//获取在Plant中索引值为3的子控件
+    List<Integer> childValues = getChildValues(child);	//获取该子控件对应的宽度和高度的集合
+    //设置子控件的摆放位置
+int l = parentWidth/2 + childViewValues.get("BranchWidth");
+int r = parentWidth/2 + childValues.get(0) + childViewValues.get("BranchWidth");
+int t = parentHeight - (childValues.get(1) + childViewValues.get("GapHeight")/2);
+int b = parentHeight - childViewValues.get("GapHeight")/2;
+    child.layout(l,t,r,b);							//设置该子控件最新的摆放位置
+}
+
+/**
+ * 花朵或种子
+ */
+private void setBudOrSeedPlace(int index) {
+    View child = getChildAt(index);
+    List<Integer> childValues = getChildValues(child);
+    //设置子控件的摆放位置
+int l = parentWidth/2 - childValues.get(0)/2;			// 设置该子控件的左侧边距的位置
+int r = parentWidth/2 + childValues.get(0)/2;			// 设置该子控件的右侧边距的位置
+int t = childViewValues.get("BranchTopY") - childValues.get(1)/2;// 顶部边距的位置
+int b = childViewValues.get("BranchTopY") + childValues.get(1)/2;// 底部边距的位置
+    child.layout(l,t,r,b);								//设置该子控件最新的摆放位置
+switch (index){
+case 4:				//花朵不做任何处理
+break;
+case 5:				//获取种子控件高度
+childViewValues.put("seedMoveLength",
+                    Math.abs(parentHeight - t - childViewValues.get("GapHeight")));
+break;
+default:
+break;
+    }
+}

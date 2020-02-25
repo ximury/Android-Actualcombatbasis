@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfCustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfCustomer" >
+    <id column="customer_id" property="customerId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="customer_complete" property="customerComplete" jdbcType="VARCHAR" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="customer_phone" property="customerPhone" jdbcType="VARCHAR" />
+    <result column="customer_company" property="customerCompany" jdbcType="VARCHAR" />
+    <result column="customer_address" property="customerAddress" jdbcType="VARCHAR" />
+    <result column="customer_sex" property="customerSex" jdbcType="VARCHAR" />
+    <result column="customer_marry" property="customerMarry" jdbcType="VARCHAR" />
+    <result column="customer_photo" property="customerPhoto" jdbcType="VARCHAR" />
+    <result column="customer_mobile" property="customerMobile" jdbcType="VARCHAR" />
+    <result column="customer_birthday" property="customerBirthday" jdbcType="VARCHAR" />
+    <result column="customer_bir" property="customerBir" jdbcType="VARCHAR" />
+    <result column="customer_birdate" property="customerBirdate" jdbcType="VARCHAR" />
+    <result column="customer_like" property="customerLike" jdbcType="VARCHAR" />
+    <result column="customer_status" property="customerStatus" jdbcType="VARCHAR" />
+    <result column="customer_job" property="customerJob" jdbcType="VARCHAR" />
+    <result column="customer_remark" property="customerRemark" jdbcType="VARCHAR" />
+    <result column="customer_allmoney" property="customerAllmoney" jdbcType="VARCHAR" />
+    <result column="customer_spare1" property="customerSpare1" jdbcType="VARCHAR" />
+    <result column="customer_spare2" property="customerSpare2" jdbcType="VARCHAR" />
+    <result column="customer_spare3" property="customerSpare3" jdbcType="VARCHAR" />
+    <result column="customer_spare4" property="customerSpare4" jdbcType="VARCHAR" />
+    <result column="customer_spare5" property="customerSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    customer_id, user_id, customer_complete, customer_name, customer_phone, customer_company, 
+    customer_address, customer_sex, customer_marry, customer_photo, customer_mobile, 
+    customer_birthday, customer_bir, customer_birdate, customer_like, customer_status, 
+    customer_job, customer_remark, customer_allmoney, customer_spare1, customer_spare2, 
+    customer_spare3, customer_spare4, customer_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_customer
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_customer
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfCustomer" >
+    insert into tf_customer (customer_id, user_id, customer_complete, 
+      customer_name, customer_phone, customer_company, 
+      customer_address, customer_sex, customer_marry, 
+      customer_photo, customer_mobile, customer_birthday, 
+      customer_bir, customer_birdate, customer_like, 
+      customer_status, customer_job, customer_remark, 
+      customer_allmoney, customer_spare1, customer_spare2, 
+      customer_spare3, customer_spare4, customer_spare5
+      )
+    values (#{customerId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{customerComplete,jdbcType=VARCHAR}, 
+      #{customerName,jdbcType=VARCHAR}, #{customerPhone,jdbcType=VARCHAR}, #{customerCompany,jdbcType=VARCHAR}, 
+      #{customerAddress,jdbcType=VARCHAR}, #{customerSex,jdbcType=VARCHAR}, #{customerMarry,jdbcType=VARCHAR}, 
+      #{customerPhoto,jdbcType=VARCHAR}, #{customerMobile,jdbcType=VARCHAR}, #{customerBirthday,jdbcType=VARCHAR}, 
+      #{customerBir,jdbcType=VARCHAR}, #{customerBirdate,jdbcType=VARCHAR}, #{customerLike,jdbcType=VARCHAR}, 
+      #{customerStatus,jdbcType=VARCHAR}, #{customerJob,jdbcType=VARCHAR}, #{customerRemark,jdbcType=VARCHAR}, 
+      #{customerAllmoney,jdbcType=VARCHAR}, #{customerSpare1,jdbcType=VARCHAR}, #{customerSpare2,jdbcType=VARCHAR}, 
+      #{customerSpare3,jdbcType=VARCHAR}, #{customerSpare4,jdbcType=VARCHAR}, #{customerSpare5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfCustomer" >
+    insert into tf_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="customerComplete != null" >
+        customer_complete,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="customerPhone != null" >
+        customer_phone,
+      </if>
+      <if test="customerCompany != null" >
+        customer_company,
+      </if>
+      <if test="customerAddress != null" >
+        customer_address,
+      </if>
+      <if test="customerSex != null" >
+        customer_sex,
+      </if>
+      <if test="customerMarry != null" >
+        customer_marry,
+      </if>
+      <if test="customerPhoto != null" >
+        customer_photo,
+      </if>
+      <if test="customerMobile != null" >
+        customer_mobile,
+      </if>
+      <if test="customerBirthday != null" >
+        customer_birthday,
+      </if>
+      <if test="customerBir != null" >
+        customer_bir,
+      </if>
+      <if test="customerBirdate != null" >
+        customer_birdate,
+      </if>
+      <if test="customerLike != null" >
+        customer_like,
+      </if>
+      <if test="customerStatus != null" >
+        customer_status,
+      </if>
+      <if test="customerJob != null" >
+        customer_job,
+      </if>
+      <if test="customerRemark != null" >
+        customer_remark,
+      </if>
+      <if test="customerAllmoney != null" >
+        customer_allmoney,
+      </if>
+      <if test="customerSpare1 != null" >
+        customer_spare1,
+      </if>
+      <if test="customerSpare2 != null" >
+        customer_spare2,
+      </if>
+      <if test="customerSpare3 != null" >
+        customer_spare3,
+      </if>
+      <if test="customerSpare4 != null" >
+        customer_spare4,
+      </if>
+      <if test="customerSpare5 != null" >
+        customer_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerComplete != null" >
+        #{customerComplete,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCompany != null" >
+        #{customerCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null" >
+        #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null" >
+        #{customerSex,jdbcType=VARCHAR},
+      </if>
+      <if test="customerMarry != null" >
+        #{customerMarry,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhoto != null" >
+        #{customerPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="customerMobile != null" >
+        #{customerMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBirthday != null" >
+        #{customerBirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBir != null" >
+        #{customerBir,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBirdate != null" >
+        #{customerBirdate,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLike != null" >
+        #{customerLike,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStatus != null" >
+        #{customerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerJob != null" >
+        #{customerJob,jdbcType=VARCHAR},
+      </if>
+      <if test="customerRemark != null" >
+        #{customerRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAllmoney != null" >
+        #{customerAllmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare1 != null" >
+        #{customerSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare2 != null" >
+        #{customerSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare3 != null" >
+        #{customerSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare4 != null" >
+        #{customerSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare5 != null" >
+        #{customerSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfCustomer" >
+    update tf_customer
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerComplete != null" >
+        customer_complete = #{customerComplete,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null" >
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCompany != null" >
+        customer_company = #{customerCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null" >
+        customer_address = #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null" >
+        customer_sex = #{customerSex,jdbcType=VARCHAR},
+      </if>
+      <if test="customerMarry != null" >
+        customer_marry = #{customerMarry,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhoto != null" >
+        customer_photo = #{customerPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="customerMobile != null" >
+        customer_mobile = #{customerMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBirthday != null" >
+        customer_birthday = #{customerBirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBir != null" >
+        customer_bir = #{customerBir,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBirdate != null" >
+        customer_birdate = #{customerBirdate,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLike != null" >
+        customer_like = #{customerLike,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStatus != null" >
+        customer_status = #{customerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerJob != null" >
+        customer_job = #{customerJob,jdbcType=VARCHAR},
+      </if>
+      <if test="customerRemark != null" >
+        customer_remark = #{customerRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAllmoney != null" >
+        customer_allmoney = #{customerAllmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare1 != null" >
+        customer_spare1 = #{customerSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare2 != null" >
+        customer_spare2 = #{customerSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare3 != null" >
+        customer_spare3 = #{customerSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare4 != null" >
+        customer_spare4 = #{customerSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSpare5 != null" >
+        customer_spare5 = #{customerSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfCustomer" >
+    update tf_customer
+    set user_id = #{userId,jdbcType=VARCHAR},
+      customer_complete = #{customerComplete,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      customer_company = #{customerCompany,jdbcType=VARCHAR},
+      customer_address = #{customerAddress,jdbcType=VARCHAR},
+      customer_sex = #{customerSex,jdbcType=VARCHAR},
+      customer_marry = #{customerMarry,jdbcType=VARCHAR},
+      customer_photo = #{customerPhoto,jdbcType=VARCHAR},
+      customer_mobile = #{customerMobile,jdbcType=VARCHAR},
+      customer_birthday = #{customerBirthday,jdbcType=VARCHAR},
+      customer_bir = #{customerBir,jdbcType=VARCHAR},
+      customer_birdate = #{customerBirdate,jdbcType=VARCHAR},
+      customer_like = #{customerLike,jdbcType=VARCHAR},
+      customer_status = #{customerStatus,jdbcType=VARCHAR},
+      customer_job = #{customerJob,jdbcType=VARCHAR},
+      customer_remark = #{customerRemark,jdbcType=VARCHAR},
+      customer_allmoney = #{customerAllmoney,jdbcType=VARCHAR},
+      customer_spare1 = #{customerSpare1,jdbcType=VARCHAR},
+      customer_spare2 = #{customerSpare2,jdbcType=VARCHAR},
+      customer_spare3 = #{customerSpare3,jdbcType=VARCHAR},
+      customer_spare4 = #{customerSpare4,jdbcType=VARCHAR},
+      customer_spare5 = #{customerSpare5,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </update>
+  
+    <select id="queryTempList" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfCustomer">
+		select
+		<include refid="Base_Column_List" />
+		from tf_customer
+		<where>
+		 (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+			<if test="customerComplete!=null and customerComplete!=''">
+				and customer_complete like concat(concat(#{customerComplete}))
+			</if>
+			<if test="customerName!=null and customerName!=''">
+				and customer_name like concat(concat('%',#{customerName}),'%')
+			</if>
+			<if test="customerSpare1!=null and customerSpare1!=''">
+				and customer_spare1 like concat(concat(#{customerSpare1}))
+			</if>
+			<if test="customerSpare1!=null and customerSpare1!='' and customerSpare1=='999' ">
+				and customer_spare1 > 1
+			</if>
+			<if test="customerSpare4!=null and customerSpare4!=''">
+				and customer_spare4 like concat(concat('%',#{customerSpare4}),'%')
+			</if>
+		</where>
+		order by customer_spare4 desc , customer_name asc ,customer_id desc
+	</select>
+
+	<select id="queryTempListByUser" resultType="java.lang.Integer" parameterType="java.util.Map">
+		select 
+		count(*)
+		from tf_customer 
+		where user_id in
+		<foreach collection="mapList" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		<if test="begin!=null and begin!=''">
+				and customer_spare4 like concat(concat('%',#{begin,jdbcType=VARCHAR}),'%') 
+		</if>		
+	</select>
+	
+	<select id="queryCusNo" resultType="java.lang.Integer" parameterType="com.back.phone.model.TfCustomer">
+		select 
+		count(*)
+		from tf_customer 
+		where (1=1)
+		<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+		</if>
+		<if test="customerSpare1!=null and customerSpare1!='' and customerSpare1=='no1' ">
+				and customer_spare1 > 1
+		</if>
+		<if test="customerSpare1!=null and customerSpare1!='' and customerSpare1=='no2' ">
+				and customer_spare1 = 1
+		</if>
+		<if test="customerSpare1!=null and customerSpare1!='' and customerSpare1=='no3' ">
+				and customer_spare1 = 0
+		</if>
+		<if test="customerSpare4!=null and customerSpare4!=''">
+				and customer_spare4 like concat(concat('%',#{customerSpare4}),'%')
+		</if>
+	</select>
+	
+	
+	<select id="queryMoneyNo" resultType="java.lang.Integer" parameterType="com.back.phone.model.TfCustomer">
+		select 
+		count(*)
+		from tf_customer 
+		where (1=1)
+		<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+		</if>
+		<if test="customerSpare4!=null and customerSpare4!=''">
+				and customer_spare4 like concat(concat('%',#{customerSpare4}),'%')
+		</if>
+		<if test="customerSpare1!=null and customerSpare1!='' and customerSpare1=='no4' ">
+				and customer_allmoney >= 10000
+		</if>
+		<if test="customerSpare1!=null and customerSpare1!='' and customerSpare1=='no5' ">
+				and 10000 > customer_allmoney
+		</if>
+	</select>
+</mapper>

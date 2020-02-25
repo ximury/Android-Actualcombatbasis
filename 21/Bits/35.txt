@@ -1,0 +1,5 @@
+    public void OnOne(View v){   //单击事件  进入数字1书写界面
+        //当前界面跳转至数字1书写界面
+        startActivity(new Intent(SelectActivity.this,OneActivity.class));
+    }
+

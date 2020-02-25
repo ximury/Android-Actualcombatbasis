@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.CodePoolMapper" >
+  <resultMap id="BaseResultMap" type="com.back.base.model.CodePoolVo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="KEY_VALUE" property="keyValue" jdbcType="VARCHAR" />
+    <result column="CODE_VALUE" property="codeValue" jdbcType="VARCHAR" />
+    <result column="VALIDITY" property="validity" jdbcType="VARCHAR" />
+    <result column="RELEASE_VALUE" property="releaseValue" jdbcType="VARCHAR" />
+    <result column="RECODE" property="recode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, KEY_VALUE, CODE_VALUE, VALIDITY, RELEASE_VALUE, RECODE
+  </sql>
+  <!--  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_codepool
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bs_codepool
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.base.model.CodePoolVo" >
+    insert into bs_codepool (ID, KEY_VALUE, CODE_VALUE, 
+      VALIDITY, RELEASE_VALUE, RECODE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{keyValue,jdbcType=VARCHAR}, #{codeValue,jdbcType=VARCHAR}, 
+      #{validity,jdbcType=VARCHAR}, #{releaseValue,jdbcType=VARCHAR}, #{recode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.base.model.CodePoolVo" >
+    insert into bs_codepool
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="keyValue != null" >
+        KEY_VALUE,
+      </if>
+      <if test="codeValue != null" >
+        CODE_VALUE,
+      </if>
+      <if test="validity != null" >
+        VALIDITY,
+      </if>
+      <if test="releaseValue != null" >
+        RELEASE_VALUE,
+      </if>
+      <if test="recode != null" >
+        RECODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="keyValue != null" >
+        #{keyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="codeValue != null" >
+        #{codeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="validity != null" >
+        #{validity,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseValue != null" >
+        #{releaseValue,jdbcType=VARCHAR},
+      </if>
+      <if test="recode != null" >
+        #{recode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.CodePoolVo" >
+    update bs_codepool
+    <set >
+      <if test="keyValue != null" >
+        KEY_VALUE = #{keyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="codeValue != null" >
+        CODE_VALUE = #{codeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="validity != null" >
+        VALIDITY = #{validity,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseValue != null" >
+        RELEASE_VALUE = #{releaseValue,jdbcType=VARCHAR},
+      </if>
+      <if test="recode != null" >
+        RECODE = #{recode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.base.model.CodePoolVo" >
+    update bs_codepool
+    set KEY_VALUE = #{keyValue,jdbcType=VARCHAR},
+      CODE_VALUE = #{codeValue,jdbcType=VARCHAR},
+      VALIDITY = #{validity,jdbcType=VARCHAR},
+      RELEASE_VALUE = #{releaseValue,jdbcType=VARCHAR},
+      RECODE = #{recode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+-->
+  <select id="findMaxCode" resultType="String" parameterType="com.back.base.model.CodePoolVo">
+  	SELECT
+		MAX(t.code_value)
+	FROM
+	(
+	SELECT
+		MAX(
+		<if test="column != null">
+			${column}
+		</if>
+		) code_value
+	FROM
+		<if test="table != null">
+			${table}
+		</if>
+	WHERE
+		<if test="column != null">
+			${column}
+		</if> 
+		<if test="prefixKeySetup != null">
+			LIKE concat(concat('' ,#{prefixKeySetup,jdbcType=VARCHAR}), '%')
+		</if> 
+		<if test="condititon != null">
+			${condititon}
+		</if> 
+	UNION ALL
+		SELECT
+			MAX(code_value) code_value
+		FROM
+			bs_codepool
+		WHERE
+			<if test="key != null">
+			key_value = #{key,jdbcType=VARCHAR}
+			</if>
+			<if test="key != null">
+			AND code_value LIKE concat(concat('' ,#{prefixKeySetup,jdbcType=VARCHAR}), '%')
+			</if>
+	) as t
+  </select>
+
+  <select id="findCodePool" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT ID, KEY_VALUE, CODE_VALUE, VALIDITY, RELEASE_VALUE, RECODE FROM bs_codepool
+    where KEY_VALUE = #{keyValue,jdbcType=VARCHAR}
+    ORDER BY CODE_VALUE
+  </select>
+
+  <insert id="insertCodePool" parameterType="com.back.base.model.CodePoolVo" >
+    insert into bs_codepool (ID, KEY_VALUE, CODE_VALUE, 
+      VALIDITY, RELEASE_VALUE, RECODE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{keyValue,jdbcType=VARCHAR}, #{codeValue,jdbcType=VARCHAR}, 
+      #{validity,jdbcType=VARCHAR}, #{releaseValue,jdbcType=VARCHAR}, #{recode,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <delete id="deleteCodePool" parameterType="java.lang.String" >
+    delete from bs_codepool
+    where code_value = #{codeValue,jdbcType=VARCHAR}
+  </delete>
+  
+  <update id="updateRelease" parameterType="com.back.base.model.CodePoolVo" >
+    update bs_codepool
+    set 
+      RELEASE_VALUE = #{releaseValue,jdbcType=VARCHAR}
+    where CODE_VALUE = #{codeValue,jdbcType=VARCHAR}
+  </update>
+</mapper>

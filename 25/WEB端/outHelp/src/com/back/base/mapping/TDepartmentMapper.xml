@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.base.dao.TDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.back.base.model.TDepartment" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="MARK" property="mark" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="GRADE" property="grade" jdbcType="VARCHAR" />
+    <result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+    <result column="LINKMANEXP" property="linkmanexp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MARK, TYPE, GRADE, LINKMAN, LINKMANEXP
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TDEPARTMENT
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TDEPARTMENT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.base.model.TDepartment" >
+    insert into TDEPARTMENT (ID, MARK, TYPE, 
+      GRADE, LINKMAN, LINKMANEXP)
+    values (#{id,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}), #{linkmanexp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.base.model.TDepartment" >
+    insert into TDEPARTMENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="mark != null" >
+        MARK,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="grade != null" >
+        GRADE,
+      </if>
+      <if test="linkman != null" >
+        LINKMAN,
+      </if>
+      <if test="linkmanexp != null" >
+        LINKMANEXP,
+      </if>      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanexp != null" >
+        #{linkmanexp,jdbcType=VARCHAR},
+      </if>      
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.TDepartment" >
+    update TDEPARTMENT
+    <set >
+      <if test="mark != null" >
+        MARK = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        GRADE = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        LINKMAN = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanexp != null" >
+        LINKMANEXP = #{linkmanexp,jdbcType=VARCHAR},
+      </if>      
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.base.model.TDepartment" >
+    update TDEPARTMENT
+    set MARK = #{mark,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      GRADE = #{grade,jdbcType=VARCHAR},
+      LINKMAN = #{linkman,jdbcType=VARCHAR},
+      LINKMANEXP = #{linkmanexp,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <resultMap id="ResultMap" type="com.back.base.pageModel.Department" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="PID" property="pid" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="MARK" property="mark" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="GRADE" property="grade" jdbcType="VARCHAR" />
+    <result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+    <result column="LINKMANEXP" property="linkmanexp" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />    
+  </resultMap>
+  <sql id="Column_List" >
+    TDEPARTMENT.ID, PID, NAME, MARK, TYPE, GRADE, LINKMAN, LINKMANEXP, DESCRIPTION, CREATETIME, UPDATETIME
+  </sql>
+  
+  <select id="find" resultMap="ResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Column_List" />
+    from TDEPARTMENT join TPARTY on TDEPARTMENT.ID = TPARTY.ID
+    where TDEPARTMENT.ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="query" resultMap="ResultMap" parameterType="com.back.base.pageModel.Department" >
+    select 
+    <include refid="Column_List" />
+    from TDEPARTMENT join TPARTY on TDEPARTMENT.ID = TPARTY.ID
+    where TDEPARTMENT.ID = #{id,jdbcType=VARCHAR}
+    <if test="name != null">  
+        and name = #{name}  
+    </if> 
+    <if test="mark != null">  
+        and mark = #{mark}  
+    </if>         
+  </select>      
+    
+</mapper>

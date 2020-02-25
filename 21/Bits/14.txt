@@ -1,0 +1,7 @@
+
+    public void OnAbout(View v){	//单击事件  进入关于界面
+        //当前界面跳转至关于界面
+        startActivity(new Intent(MainActivity.this, AboutActivity.class));
+    }
+
+

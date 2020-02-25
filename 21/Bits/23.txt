@@ -1,0 +1,24 @@
+ <!--显示第二行4至6数字-->
+ <TableRow android:layout_weight="1">
+     <!--显示数字4图片-->
+     <ImageView
+         android:layout_width="0dp"
+         android:layout_margin="10dp"
+         android:layout_weight="1"
+         android:onClick="OnFour"
+         android:src="@drawable/on4_24"/>
+     <!--显示数字5图片-->
+     <ImageView
+         android:layout_width="0dp"
+         android:layout_margin="10dp"
+         android:layout_weight="1"
+         android:onClick="OnFive"
+         android:src="@drawable/on5_24"/>
+     <!--显示数字6图片-->
+     <ImageView
+         android:layout_width="0dp"
+         android:layout_margin="10dp"
+         android:layout_weight="1"
+         android:onClick="OnSix"
+         android:src="@drawable/on6_24"/>
+ </TableRow>

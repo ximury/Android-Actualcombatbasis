@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mrkj.flowersdemo.ui.activity.PlantFlowerBoxActivity">
+    <!-- 名言警句 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/with_5dp"
+        android:layout_marginRight="@dimen/with_20dp"
+        android:layout_marginLeft="@dimen/with_20dp">
+        <TextView
+            android:id="@+id/show_quotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="输入删除，重复好几遍，最后还是发出一句简单的“我喜欢你”"
+            android:textColor="@color/text_color_blue"
+            android:textSize="@dimen/font_16sp"/>
+        <TextView
+            android:id="@+id/show_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-Doge"
+            android:gravity="right"
+            android:textColor="@color/text_color_blue"
+            android:textSize="@dimen/font_16sp"/>
+        <TextView
+            android:layout_marginTop="@dimen/with_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="花圃"
+            android:textColor="@color/red"
+            android:textSize="@dimen/font_20sp"
+            android:layout_gravity="center_horizontal"
+            />
+        <mrkj.flowersdemo.view.ShowFlower
+            android:id="@+id/show_flowers"
+            android:layout_marginTop="@dimen/with_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/with_0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_margin="@dimen/with_10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mrkj_flower_num"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/with_3dp"
+            />
+        <TextView
+            android:id="@+id/flower_counts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#F6003C"
+            android:textSize="@dimen/font_20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</RelativeLayout>

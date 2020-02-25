@@ -1,0 +1,34 @@
+01		/**
+02	     * 初始化相关的属性
+03	     */
+04	private void initValues(){
+05	//1、获取所在城市并获取该城市的天气信息
+06	query_city_name = SaveKeyValues.getStringValues("city", "北京");//获取城市信息
+07	try {
+08	//使用URLEncoder方法
+09	            // 请在gradle中依赖
+10	            // compile 'org.apache.httpcomponents:httpcore:4.4.4'
+11	weather_url = String.format(Constant.GET_DATA,
+12	                    URLEncoder.encode(query_city_name, "utf-8"));		//获取网络连接的URL
+13	            downLoadDataFromNet();									//下载网络数据
+14	} catch (UnsupportedEncodingException e) {
+15	            e.printStackTrace();
+16	        }
+17	//2、获取计算里程和热量的相关参数（默认步数1000步；步长70cm；体重50kg）
+18	isStop = false;					//设置初始值默认为false
+19	duration = 800;					//设置执行动画的初始时间长度为800ms
+20	//获取默认值用于计算公里数和消耗的热量
+21	custom_steps = SaveKeyValues.getIntValues("step_plan",6000);	//用户的步数
+22	custom_step_length = SaveKeyValues.getIntValues("length",70);//用户的步长
+23	custom_weight = SaveKeyValues.getIntValues("weight", 50);			//用户的体重
+24	//开启计步服务
+25	int history_values = SaveKeyValues.getIntValues("sport_steps", 0);	//获取历史记录
+26	int service_values = StepDetector.CURRENT_SETP;						//获取步数
+27	boolean isLaunch = getArguments().getBoolean("is_launch",false);		//用于数据处理
+28	if (isLaunch){
+29	            StepDetector.CURRENT_SETP = history_values + service_values;
+30	        }
+31	//开启计步服务
+32	step_service = new Intent(getContext(),StepCounterService.class);
+33	        getContext().startService(step_service);
+    }

@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {margin: 0px; text-align:center; font-family:Arial;background:#FFF;}
+div {font-size:12px;text-align:left;}
+form{padding:0px;margin:0px;}
+a{color:#0066ca; text-decoration:none;}
+a:hover{color:#F90;}
+#login{width:1004px;margin:0px auto;}
+.log-header{/*background:url(../images/login_logo.jpg) no-repeat left top;*/padding-top:75px;padding-left:398px;height:78px;color:#053b7f;font-size:22px; font-family:"微软雅黑", "黑体";}
+.log-center{height:318px; background:url(../images/login_bg1.jpg) no-repeat left top;padding-left:398px;}
+.log-right{height:245px; background:url(../images/login_dlbg.jpg) no-repeat left top;padding-left:252px;padding-top:73px;}
+.log-input{width:235px;height:1.3em;font-size:12px;border:1px solid #aabace;}
+.footer{background:url(../images/login_footer.jpg);padding-top:21px;padding-left:134px;color:#053b7f;height:48px;}

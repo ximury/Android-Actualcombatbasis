@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    tools:context="com.mingrisoft.MainActivity">
+    <!--输入要发表的内容-->
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="@dimen/width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margintop"
+        android:background="@null"
+        android:hint="@string/edit_hint" />
+    <!--发表按钮-->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="@dimen/width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/btn_margintop"
+        android:background="@color/btn_bg"
+        android:text="@string/button" />
+
+    <!--滚动视图-->
+    <ScrollView
+        android:layout_width="@dimen/scrollview_width"
+        android:layout_height="@dimen/scrollview_height"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+</LinearLayout>

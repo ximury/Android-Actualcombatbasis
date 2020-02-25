@@ -1,0 +1,8 @@
+	/**
+	 * ½â³ý¹ã²¥¼àÌý
+	 */
+	@Override
+	protected void onDestroy() {
+	    super.onDestroy();
+	    screenListener.unregisterListener();
+	}

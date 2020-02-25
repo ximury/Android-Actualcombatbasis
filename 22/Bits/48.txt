@@ -1,0 +1,17 @@
+	  /**
+	     * 获取screen的状态
+	     * */
+	    private void getScreenState() {
+		//初始化powerManager       
+	 PowerManager manager = (PowerManager) context.
+	                             getSystemService(Context.POWER_SERVICE); 
+	        if (manager.isScreenOn()){   //如果监听已经开启
+	            if (mScreenStateListener != null){
+	                mScreenStateListener.onScreenOn();	
+	            }
+	        }else {					  //如果监听没开启
+	            if (mScreenStateListener != null){
+	                mScreenStateListener.onScreenOff();
+	            }
+	        }
+	}

@@ -1,0 +1,9 @@
+	switch (v.getId()){
+	    /**
+	     * 跳转到错题页面
+	     * */
+	    case R.id.wrong_btn:
+	        Toast.makeText(this, "跳转到错题界面", Toast.LENGTH_SHORT).show();
+	        //详情请参考源码
+	        break;
+	}

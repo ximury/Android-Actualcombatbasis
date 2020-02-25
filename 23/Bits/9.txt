@@ -1,0 +1,66 @@
+   /**
+    * 线程
+    */
+@Override
+public void run() {
+while (isRunning) {
+try {
+mCanvas = mHolder.lockCanvas();							//锁定画布
+if (mCanvas != null) {
+mCanvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);		//绘制时清空画布
+//绘制图形
+for (int i = 0; i <drawCounts; i++) {
+			    //绘制图片
+mCanvas.drawBitmap(bitmaps[0], dandelionModels_S.get(i).getPointX(),
+dandelionModels_S.get(i).getPointY(), null);
+			    //绘制图片
+mCanvas.drawBitmap(bitmaps[1], dandelionModels_M.get(i).getPointX(),
+dandelionModels_M.get(i).getPointY(), null);
+			    //绘制图片
+mCanvas.drawBitmap(bitmaps[2], dandelionModels_L.get(i).getPointX(),
+dandelionModels_L.get(i).getPointY(), null);
+			    //绘制图片
+mCanvas.drawBitmap(bitmaps[3], dandelionModels_X.get(i).getPointX(),
+dandelionModels_X.get(i).getPointY(), null);
+			    //绘制图片
+mCanvas.drawBitmap(bitmaps[4], dandelionModels_XX.get(i).getPointX(),
+dandelionModels_XX.get(i).getPointY(), null);
+               }
+//改变位置
+for (int i = 0; i <drawCounts;i++){
+                  offsetXY(dandelionModels_S.get(i),bitmaps[0]);		//更新图片的绘制中心
+                  offsetXY(dandelionModels_M.get(i),bitmaps[1]);		//更新图片的绘制中心
+                  offsetXY(dandelionModels_L.get(i),bitmaps[2]);		//更新图片的绘制中心
+                  offsetXY(dandelionModels_X.get(i),bitmaps[3]);		//更新图片的绘制中心
+                  offsetXY(dandelionModels_XX.get(i),bitmaps[4]);		//更新图片的绘制中心
+               }
+               Thread.sleep(150);									//让线程睡150ms
+            }
+if (mCanvas != null) {
+mHolder.unlockCanvasAndPost(mCanvas);					//解除锁定画布
+            }
+         } catch (InterruptedException e) {
+            e.printStackTrace();
+         }
+      }
+   }
+/**
+    * 偏移
+    * @param dandelionModel
+* @param bitmap
+*/
+private void offsetXY(DandelionModel dandelionModel, Bitmap bitmap) {
+//降落
+if (dandelionModel.getPointY() >screenHeight){		//判断是否到屏幕的底部
+         dandelionModel.setPointY(bitmap.getHeight() >>1);	//如果到底部则绘制位置从头开始
+      }
+      dandelionModel.setPointY(dandelionModel.getPointY()
+		 + dandelionModel.getPortOffset());				//设置新的纵坐标位置
+	 //左右偏移,判断左右偏移是否超出屏幕
+if (dandelionModel.getPointX() >screenWidth || dandelionModel.getPointX() <0) {
+         dandelionModel.setPointX(bitmap.getWidth() >>1);//如果超出屏幕则绘制位置从头开始
+      }
+      dandelionModel.setPointX(dandelionModel.getPointX() +
+            ((random.nextInt(2)<<1) - 1)*dandelionModel.getLandOffset());//设置新的横坐标位置
+   }
+}

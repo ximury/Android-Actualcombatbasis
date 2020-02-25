@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">静待花开</string>
+    <string name="http">QQ：4006751066</string>
+    <string name="tel">电话：0431-84978981</string>
+    <string name="email">邮箱:mingrisoft@mingrisoft.com</string>
+    <string name="company">吉林省明日科技有限公司版权所有</string>
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_unknown">未知错误</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

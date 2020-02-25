@@ -1,0 +1,23 @@
+ /**
+     * 设置选项的不同颜色
+     */
+    private void btnGetText(String msg, RadioButton btn) {
+        /**
+         * 答题答对了 设置绿色 答错设置红色
+         * */
+        if (msg.equals(datas.get(k).getChina())) {
+            wordText.setTextColor(Color.GREEN);        //设置单词为绿色
+            englishText.setTextColor(Color.GREEN);    //设置音标为绿色
+            btn.setTextColor(Color.GREEN);             //设置选项为绿色
+        } else {
+            wordText.setTextColor(Color.RED);          //设置单词为红色
+            englishText.setTextColor(Color.RED);       //设置音标为红色
+            btn.setTextColor(Color.RED);                //设置选项为红色
+            saveWrongData();                             //执行存入错题的方法
+            //保存到数据库
+            int wrong = sharedPreferences.getInt("wrong", 0);//从数据库里面取出数据
+            editor.putInt("wrong", wrong + 1);         //写入数据库
+            editor.putString("wrongId", "," + datas.get(j).getId());  //写入数据库
+            editor.commit();                             //保存
+        }
+    }

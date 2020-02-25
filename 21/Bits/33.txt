@@ -1,0 +1,5 @@
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {//创建的onCreate()方法头部
+      super.onCreate(savedInstanceState);
+
+  }   //创建的onCreate()方法尾部

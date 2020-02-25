@@ -1,0 +1,13 @@
+/**
+ * 把从百度地图定位获取到的数据存放到数据库里面
+ * **/
+SharedPreferences.Editor editor = sharedPreferences.edit();
+editor.putString("city", location.getCity());					//存储定位到的城市
+editor.putString("location", poi.getName());					//存储定位到的位置
+//将城市与位置信息结合起来存储到数据库里面
+editor.putString("alllocation",location.getCity()+location.getDistrict()+poi.getName());
+editor.putString("latitude", location.getLatitude()+"");		//存储定位经度
+editor.putString("longitude", location.getLongitude()+"");		//存储定位纬度
+editor.commit();												//保存
+locationService.unregisterListener(mListener);        			//为百度地图的服务设置监听
+locationService.stop();

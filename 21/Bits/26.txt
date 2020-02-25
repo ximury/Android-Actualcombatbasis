@@ -1,0 +1,8 @@
+public class SelectActivity extends Activity {   //SelectActivity类头部
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {   // onCreate()方法头部
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout. activity_select);
+    }   //onCreate()方法尾部
+}   //SelectActivity类尾部

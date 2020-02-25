@@ -1,0 +1,8 @@
+	/**
+	     * 自定义接口
+	     * */
+	    public interface ScreenStateListener{
+	        void onScreenOn();			//手机屏幕点亮
+	        void onScreenOff();		//手机屏幕关闭
+	        void onUserPresent();		//手机屏幕解锁
+	}

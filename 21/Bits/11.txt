@@ -1,0 +1,8 @@
+public class MainActivity extends Activity {  //MainActivity类头部
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {   // onCreate()方法头部
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }   // onCreate()方法尾部
+}   //MainActivity类尾部

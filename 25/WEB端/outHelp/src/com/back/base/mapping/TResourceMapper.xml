@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.back.base.dao.TResourceMapper">
+	<resultMap id="BaseResultMap" type="com.back.base.model.TResource">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="MENUID" jdbcType="VARCHAR" property="menuid" />
+		<result column="PID" jdbcType="VARCHAR" property="pid" />
+		<result column="NAME" jdbcType="VARCHAR" property="name" />
+		<result column="PATH" jdbcType="VARCHAR" property="path" />
+		<result column="ORDERNUM" jdbcType="DECIMAL" property="ordernum" />
+		<result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+		<result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+		<result column="TYPE" jdbcType="VARCHAR" property="type" />
+		<result column="EXEMODE" jdbcType="VARCHAR" property="exemode" />
+		<result column="CLASSSTYLE" jdbcType="VARCHAR" property="classstyle" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, MENUID, PID, NAME, PATH, ORDERNUM, CREATETIME, UPDATETIME, TYPE, EXEMODE, CLASSSTYLE, REMARK
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TRESOURCE
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from TRESOURCE
+		where ID = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.back.base.model.TResource">
+		insert into TRESOURCE (ID, MENUID, PID, NAME,
+		PATH, ORDERNUM, CREATETIME,
+		UPDATETIME, TYPE, EXEMODE)
+		values (#{id,jdbcType=VARCHAR}, #{menuid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{path,jdbcType=VARCHAR}, #{ordernum,jdbcType=DECIMAL}, #{createtime,jdbcType=VARCHAR},
+		#{updatetime,jdbcType=VARCHAR}), #{type,jdbcType=VARCHAR}), #{exemode,jdbcType=VARCHAR}), #{classstyle,jdbcType=VARCHAR}), #{remark,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.back.base.model.TResource">
+		insert into TRESOURCE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="menuid != null">
+				MENUID,
+			</if>
+			<if test="pid != null">
+				PID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="path != null">
+				PATH,
+			</if>
+			<if test="ordernum != null">
+				ORDERNUM,
+			</if>
+			<if test="createtime != null">
+				CREATETIME,
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME,
+			</if>
+			<if test="type != null">
+				TYPE,
+			</if>
+			<if test="exemode != null">
+				EXEMODE,
+			</if>
+			<if test="classstyle != null">
+				CLASSSTYLE,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>												
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="menuid != null">
+				#{menuid,jdbcType=VARCHAR},
+			</if>
+			<if test="pid != null">
+				#{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null">
+				#{path,jdbcType=VARCHAR},
+			</if>
+			<if test="ordernum != null">
+				#{ordernum,jdbcType=DECIMAL},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="exemode != null">
+				#{exemode,jdbcType=VARCHAR},
+			</if>
+			<if test="classstyle != null">
+				#{classstyle,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>												
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.back.base.model.TResource">
+		update TRESOURCE
+		<set>
+			<if test="menuid != null">
+				MENUID = #{menuid,jdbcType=VARCHAR},
+			</if>
+			<if test="pid != null">
+				PID = #{pid,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null">
+				PATH = #{path,jdbcType=VARCHAR},
+			</if>
+			<if test="ordernum != null">
+				ORDERNUM = #{ordernum,jdbcType=DECIMAL},
+			</if>
+			<if test="createtime != null">
+				CREATETIME = #{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="updatetime != null">
+				UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				TYPE = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="exemode != null">
+				EXEMODE = #{exemode,jdbcType=VARCHAR},
+			</if>
+			<if test="classstyle != null">
+				CLASSSTYLE = #{classstyle,jdbcType=VARCHAR},
+			</if>	
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>													
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.back.base.model.TResource">
+		update TRESOURCE
+		set MENUID = #{menuid,jdbcType=VARCHAR},
+		PID = #{pid,jdbcType=VARCHAR},
+		NAME = #{name,jdbcType=VARCHAR},
+		PATH = #{path,jdbcType=VARCHAR},
+		ORDERNUM = #{ordernum,jdbcType=DECIMAL},
+		CREATETIME = #{createtime,jdbcType=VARCHAR},
+		UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+		TYPE = #{type,jdbcType=VARCHAR},
+		EXEMODE = #{exemode,jdbcType=VARCHAR}
+		CLASSSTYLE = #{classstyle,jdbcType=VARCHAR}
+		REMARK = #{remark,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+
+	<select id="select" resultMap="BaseResultMap" parameterType="com.back.base.model.TResource">
+		select
+		<include refid="Base_Column_List" />
+		from TRESOURCE
+		<where>
+			<if test="path != null">
+				PATH = #{path,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="query" resultMap="BaseResultMap" parameterType="com.back.base.model.TResource">
+		select
+		<include refid="Base_Column_List" />
+		from TRESOURCE
+		where MENUID = #{menuid,jdbcType=VARCHAR} and PID is not null
+
+		<if test="name != null">
+			and NAME like concat(concat('%',#{name}),'%')
+		</if>
+		
+		order by ordernum desc
+
+	</select>
+
+	<select id="queryRoot" resultMap="BaseResultMap" parameterType="com.back.base.model.TResource">
+		select
+		<include refid="Base_Column_List" />
+		from TRESOURCE
+		where MENUID = #{menuid,jdbcType=VARCHAR} and pid is null
+	</select>
+	
+	
+	<select id="selectSiblingsCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(0) from tresource where pid = (select pid from tresource where ID = #{id,jdbcType=VARCHAR})
+	</select>	
+	
+	
+	<select id="selectByPrincipalid" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select r.* from tacl a LEFT JOIN tresource r on a.RESOURCEID = r.ID where a.PRINCIPALTYPE = 'role' and a.RESOURCETYPE='resource' and a.PRINCIPALID = #{id,jdbcType=VARCHAR} and pid is not null order by r.MENUID , type desc 
+	</select>
+
+
+</mapper>

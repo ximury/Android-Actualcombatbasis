@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mrkj.flowersdemo.ui.activity.AboutUsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/mrkj"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/with_5dp"/>
+        <TextView
+            android:id="@+id/about_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_margin="@dimen/with_5dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_18sp"
+            />
+
+        <TextView
+            android:layout_marginTop="@dimen/with_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/with_5dp"
+            android:gravity="center"
+            android:text="@string/http"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/with_5dp"
+            android:gravity="center"
+            android:text="@string/tel"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/with_5dp"
+            android:gravity="center"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/with_5dp"
+            android:gravity="center"
+            android:text="@string/company"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16sp"
+            />
+    </LinearLayout>
+</RelativeLayout>

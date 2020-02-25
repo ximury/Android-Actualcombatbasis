@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fa="http://schemas.android.com/apk/res-auto"
+    >
+    <RelativeLayout
+        android:id="@+id/show_progress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_size_0"
+        android:layout_marginLeft="@dimen/width_size_10"
+        android:layout_marginRight="@dimen/width_size_10"
+        android:layout_marginTop="@dimen/width_size_30"
+        android:layout_weight="4">
+        <SurfaceView
+            android:id="@+id/preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+        <mrkj.library.wheelview.progressbar.RoundProgressBarHeartBMP
+            android:id="@+id/bpm_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:max="60"
+            fa:progress_text_color="@color/theme_blue_two"
+            fa:progress_text_size="@dimen/font_size_20"
+            fa:progress_unreached_color="@color/yellow"
+            fa:progress_unreached_bar_height="@dimen/width_size_5"/>
+    </RelativeLayout>
+   <!-- <lecho.lib.hellocharts.view.LineChartView
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_size_0"
+        android:layout_weight="4"
+        android:layout_marginTop="@dimen/width_size_30"
+        android:layout_marginLeft="@dimen/width_size_10"
+        android:layout_marginRight="@dimen/width_size_10"
+        android:layout_marginBottom="@dimen/width_size_30">
+    </lecho.lib.hellocharts.view.LineChartView>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/width_size_10"
+        android:text="※心率测试时，请将手指放置摄像头上！"
+        android:gravity="center"
+        android:textSize="@dimen/font_size_16"
+        android:textColor="@color/red"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width_size_0"
+        android:layout_weight="4"
+        android:layout_marginTop="@dimen/width_size_10"
+        android:layout_marginLeft="@dimen/width_size_10"
+        android:layout_marginRight="@dimen/width_size_10"
+        android:layout_marginBottom="@dimen/width_size_30">
+
+        <LinearLayout
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical"/>
+
+        <ImageButton
+            android:id="@+id/start_heart_test"
+            android:background="@null"
+            android:layout_marginTop="@dimen/width_size_20"
+            android:layout_width="@dimen/width_size_100"
+            android:layout_height="@dimen/width_size_100"
+            android:scaleType="fitXY"
+            android:layout_centerInParent="true"
+            android:src="@drawable/heart_test_selector"
+            />
+    </RelativeLayout>
+</LinearLayout>

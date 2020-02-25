@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.back.phone.dao.TfAttenceMapper" >
+  <resultMap id="BaseResultMap" type="com.back.phone.model.TfAttence" >
+    <id column="attence_id" property="attenceId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="attence_data" property="attenceData" jdbcType="VARCHAR" />
+    <result column="attence_time" property="attenceTime" jdbcType="VARCHAR" />
+    <result column="attence_status" property="attenceStatus" jdbcType="VARCHAR" />
+    <result column="attence_result" property="attenceResult" jdbcType="VARCHAR" />
+    <result column="attence_place" property="attencePlace" jdbcType="VARCHAR" />
+    <result column="attence_photo" property="attencePhoto" jdbcType="VARCHAR" />
+    <result column="attence_spare1" property="attenceSpare1" jdbcType="VARCHAR" />
+    <result column="attence_spare2" property="attenceSpare2" jdbcType="VARCHAR" />
+    <result column="attence_spare3" property="attenceSpare3" jdbcType="VARCHAR" />
+    <result column="attence_spare4" property="attenceSpare4" jdbcType="VARCHAR" />
+    <result column="attence_spare5" property="attenceSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    attence_id, user_id, attence_data, attence_time, attence_status, attence_result, 
+    attence_place, attence_photo, attence_spare1, attence_spare2, attence_spare3, attence_spare4, 
+    attence_spare5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tf_attence
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tf_attence
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.back.phone.model.TfAttence" >
+    insert into tf_attence (attence_id, user_id, attence_data, 
+      attence_time, attence_status, attence_result, 
+      attence_place, attence_photo, attence_spare1, 
+      attence_spare2, attence_spare3, attence_spare4, 
+      attence_spare5)
+    values (#{attenceId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{attenceData,jdbcType=VARCHAR}, 
+      #{attenceTime,jdbcType=VARCHAR}, #{attenceStatus,jdbcType=VARCHAR}, #{attenceResult,jdbcType=VARCHAR}, 
+      #{attencePlace,jdbcType=VARCHAR}, #{attencePhoto,jdbcType=VARCHAR}, #{attenceSpare1,jdbcType=VARCHAR}, 
+      #{attenceSpare2,jdbcType=VARCHAR}, #{attenceSpare3,jdbcType=VARCHAR}, #{attenceSpare4,jdbcType=VARCHAR}, 
+      #{attenceSpare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.back.phone.model.TfAttence" >
+    insert into tf_attence
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attenceId != null" >
+        attence_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="attenceData != null" >
+        attence_data,
+      </if>
+      <if test="attenceTime != null" >
+        attence_time,
+      </if>
+      <if test="attenceStatus != null" >
+        attence_status,
+      </if>
+      <if test="attenceResult != null" >
+        attence_result,
+      </if>
+      <if test="attencePlace != null" >
+        attence_place,
+      </if>
+      <if test="attencePhoto != null" >
+        attence_photo,
+      </if>
+      <if test="attenceSpare1 != null" >
+        attence_spare1,
+      </if>
+      <if test="attenceSpare2 != null" >
+        attence_spare2,
+      </if>
+      <if test="attenceSpare3 != null" >
+        attence_spare3,
+      </if>
+      <if test="attenceSpare4 != null" >
+        attence_spare4,
+      </if>
+      <if test="attenceSpare5 != null" >
+        attence_spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attenceId != null" >
+        #{attenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceData != null" >
+        #{attenceData,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceTime != null" >
+        #{attenceTime,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceStatus != null" >
+        #{attenceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceResult != null" >
+        #{attenceResult,jdbcType=VARCHAR},
+      </if>
+      <if test="attencePlace != null" >
+        #{attencePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="attencePhoto != null" >
+        #{attencePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare1 != null" >
+        #{attenceSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare2 != null" >
+        #{attenceSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare3 != null" >
+        #{attenceSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare4 != null" >
+        #{attenceSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare5 != null" >
+        #{attenceSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.back.phone.model.TfAttence" >
+    update tf_attence
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceData != null" >
+        attence_data = #{attenceData,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceTime != null" >
+        attence_time = #{attenceTime,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceStatus != null" >
+        attence_status = #{attenceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceResult != null" >
+        attence_result = #{attenceResult,jdbcType=VARCHAR},
+      </if>
+      <if test="attencePlace != null" >
+        attence_place = #{attencePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="attencePhoto != null" >
+        attence_photo = #{attencePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare1 != null" >
+        attence_spare1 = #{attenceSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare2 != null" >
+        attence_spare2 = #{attenceSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare3 != null" >
+        attence_spare3 = #{attenceSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare4 != null" >
+        attence_spare4 = #{attenceSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceSpare5 != null" >
+        attence_spare5 = #{attenceSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.back.phone.model.TfAttence" >
+    update tf_attence
+    set user_id = #{userId,jdbcType=VARCHAR},
+      attence_data = #{attenceData,jdbcType=VARCHAR},
+      attence_time = #{attenceTime,jdbcType=VARCHAR},
+      attence_status = #{attenceStatus,jdbcType=VARCHAR},
+      attence_result = #{attenceResult,jdbcType=VARCHAR},
+      attence_place = #{attencePlace,jdbcType=VARCHAR},
+      attence_photo = #{attencePhoto,jdbcType=VARCHAR},
+      attence_spare1 = #{attenceSpare1,jdbcType=VARCHAR},
+      attence_spare2 = #{attenceSpare2,jdbcType=VARCHAR},
+      attence_spare3 = #{attenceSpare3,jdbcType=VARCHAR},
+      attence_spare4 = #{attenceSpare4,jdbcType=VARCHAR},
+      attence_spare5 = #{attenceSpare5,jdbcType=VARCHAR}
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </update>
+  
+	<select id="queryTempList" resultMap="BaseResultMap"
+		parameterType="com.back.phone.model.TfAttence">
+		select
+		<include refid="Base_Column_List" />
+		from tf_attence
+		<where>
+		 (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+			<if test="attenceData!=null and attenceData!=''">
+				and attence_data like concat(concat(#{attenceData}))
+			</if>
+		</where>
+		order by attence_data asc,attence_status asc,attence_time asc
+	</select>
+	
+	
+	  <select id="queryCheckList" resultMap="BaseResultMap" parameterType="com.back.phone.model.TfAttence">
+    select 
+    <include refid="Base_Column_List" />
+    from tf_attence
+    <where>
+     (1=1) 
+			<if test="userId!=null and userId!=''">
+				and user_id like concat(concat(#{userId}))
+			</if>
+			<if test="attenceData!=null and attenceData!=''">
+				and attence_data like concat(concat(#{attenceData}),'%')
+			</if>
+	</where>
+    order by attence_data asc,attence_status asc,attence_time asc
+  </select>
+</mapper>

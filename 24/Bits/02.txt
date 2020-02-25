@@ -1,0 +1,26 @@
+public class SportFragment extends BaseFragment{		//此处直接继承Fragment即可
+private static final int WEATHER_MESSAGE = 1;		//显示天气信息
+private static final int STEP_PROGRESS = 2;			//显示步数信息
+private View view;								//界面的布局
+private TextView city_name,city_temperature,city_air_quality;//展示天气相关控件
+//显示精度的圆形进度条
+private CircleBar circleBar;						//进度条
+private TextView show_mileage,show_heat,want_steps;	//显示里程和热量
+private ImageButton warm_btn;						//跳转按钮
+//下载天气预报的相关信息
+private TodayInfo todayInfo;						//今日的天气
+private PMInfo pmInfo;							//今日空气质量
+private String weather_url;						//天气接口
+private String query_city_name;					//城市名称
+//展示进度、里程、热量的相关参数
+private int custom_steps;							//用户的步数
+private int custom_step_length;					//用户的步长
+private int custom_weight;							//用户的体重
+private Thread get_step_thread;					//定义线程对象
+private Intent step_service;						//计步服务
+private boolean isStop;							//是否运行子线程
+private Double distance_values;					//路程：米
+private int steps_values;							//步数
+private Double heat_values;						//热量
+private int duration;								//动画时间
+private Context context;
