@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">样式资源</string>
+    <string name="title">Android 6.0 份额大幅上升 : 原因让人震惊</string>
+    <string name="text1">
+        据 外 媒 报 道 , 谷 歌 周 二 公 布 了 3 月 份 不 同 Android 版 本 的份额数据。其中Android6.0“棉花糖”的份额上升最快,增长至2.3% ，而Android 5.0/5.1“棒棒糖”的合计份额则上升至第一。</string>
+<string name="text_down">Android 6.0份额大幅上升</string>
+</resources>

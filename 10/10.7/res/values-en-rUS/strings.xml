@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Windows Phone</string>
+    <string name="textView1">WeChat</string>
+    <string name="textView2">Contacts</string>
+    <string name="textView3">QQ</string>
+    <string name="textView4">Camera</string>
+    <string name="textView5">Clock</string>
+    <string name="textView6">Notes</string>
+    <string name="textView7">Music</string>
+    <string name="textView8">Browser</string>
+    <string name="textView9">E-mail</string>
+</resources>

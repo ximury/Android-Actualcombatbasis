@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context="com.mingrisoft.MainActivity">
+    <!-- 标题-->
+    <TextView
+        android:id="@+id/title"
+        style="@style/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/title"
+        android:textSize="@dimen/style_title"
+        />
+    <!--介绍-->
+    <TextView
+        android:id="@+id/text"
+        android:lineSpacingExtra="@dimen/margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginTop="@dimen/text_margin_top"
+        android:text="@string/text1"/>
+    <!--图片-->
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
+        android:layout_marginTop="@dimen/margin"
+        android:src="@drawable/image"
+        android:layout_gravity="center"
+        />
+    <!--图注字-->
+    <TextView
+        android:id="@+id/text_down"
+        style="@style/text_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/text_down"
+        />
+</LinearLayout>
